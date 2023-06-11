@@ -1,4 +1,4 @@
-const AdminSignUp = () => {
+const AdminSignIn = () => {
     return ( 
         <div>
             
@@ -6,4 +6,4 @@ const AdminSignUp = () => {
      );
 }
  
-export default AdminSignUp;
+export default AdminSignIn;

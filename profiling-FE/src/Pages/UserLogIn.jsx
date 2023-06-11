@@ -26,24 +26,18 @@ const UserLogIn = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <Card style={{ width: '18rem', margin: 'auto', marginTop: '10vh' }}>
+                            <Card style={{ width: '18rem', margin: 'auto', marginTop: '10vh' }} className='shadow-lg'>
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>ADMIN</Card.Title>
-                                    <Card.Text>
-                                       
-                                    </Card.Text>
                                     <Button variant="outline-primary">SELECT</Button>
                                 </Card.Body>
                             </Card></Col>
                         <Col>
-                            <Card style={{ width: '18rem', margin: 'auto', marginTop: '10vh' }}>
+                            <Card style={{ width: '18rem', margin: 'auto', marginTop: '10vh' }} className='shadow-lg'>
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>CLERK</Card.Title>
-                                    <Card.Text>
-                                       
-                                    </Card.Text>
                                     <Button variant="outline-primary">SELECT</Button>
                                 </Card.Body>
                             </Card></Col>

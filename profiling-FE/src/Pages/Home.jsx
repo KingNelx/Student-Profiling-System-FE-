@@ -1,15 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
+import home from '../Images/home.jpg'
+import sidelogo from '../Images/side-nav-logo.png'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
         <div>
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
+            <Navbar bg="dark" variant="dark" className='shadow-lg'>
+                <Navbar.Brand className='mx-3'>
                     <img
                         alt=""
-                        src="/img/logo.svg"
+                        src={sidelogo}
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -17,19 +20,19 @@ const Home = () => {
                     WELCOME TO STUDENT PROFILING SYSTEM
                 </Navbar.Brand>
             </Navbar>
-            <section className='mt-5'>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
+            <section className='mt-5 text-center'>
+                <Card style={{ width: '18rem', margin: 'auto', marginTop: '20vh' }}>
+                    <Card.Img variant="top" src={home} />
+                    <Card.Body className='shadow-lg'>
+                        <Card.Title>Hi There!</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
+                            "Record, View, Edit, or Delete the Students' Data."
                         </Card.Text>
-                        <Button variant="primary">Get Started</Button>
+                      <Link to='/userLogIn'>   <Button variant="primary">Get Started</Button> </Link>
                     </Card.Body>
                 </Card>
             </section>
+
         </div>
     );
 }

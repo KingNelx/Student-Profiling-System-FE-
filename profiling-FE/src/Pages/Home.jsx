@@ -4,8 +4,33 @@ import Navbar from 'react-bootstrap/Navbar';
 import home from '../Images/home.jpg'
 import sidelogo from '../Images/side-nav-logo.png'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Home = () => {
+
+    const loadContent = () => {
+        let timerInterval
+        Swal.fire({
+            title: 'Loading!',
+            html: 'Please Wait!',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
     return (
         <div>
             <Navbar bg="dark" variant="dark" className='shadow-lg'>
@@ -28,7 +53,7 @@ const Home = () => {
                         <Card.Text>
                             "Record, View, Edit, or Delete the Students' Data."
                         </Card.Text>
-                      <Link to='/userLogIn'>   <Button variant="primary">Get Started</Button> </Link>
+                        <Link to='/userLogIn' type='button'>   <Button variant="primary" onClick={loadContent}>Get Started</Button> </Link>
                     </Card.Body>
                 </Card>
             </section>

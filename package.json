@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.12"
   }
 }

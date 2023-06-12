@@ -53,7 +53,7 @@ const AdminSignIn = () => {
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type={"text"} placeholder="Username" />
+                            <Form.Control type={"text"} placeholder="Username" required />
                         </FloatingLabel>
 
                         <FloatingLabel
@@ -61,7 +61,7 @@ const AdminSignIn = () => {
                             label="Email address"
                             className="mb-3"
                         >
-                            <Form.Control type={"email"} placeholder="name@example.com" />
+                            <Form.Control type={"email"} placeholder="name@example.com" required />
                         </FloatingLabel>
 
                         <FloatingLabel

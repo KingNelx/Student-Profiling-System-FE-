@@ -30,7 +30,7 @@ const UserLogIn = () => {
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>ADMIN</Card.Title>
-                                    <Button variant="outline-primary">SELECT</Button>
+                                    <Link to='/adminSignIn'><Button variant="outline-primary">SELECT</Button></Link>
                                 </Card.Body>
                             </Card></Col>
                         <Col>
@@ -38,7 +38,7 @@ const UserLogIn = () => {
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>CLERK</Card.Title>
-                                    <Button variant="outline-primary">SELECT</Button>
+                                    <Link><Button variant="outline-primary">SELECT</Button></Link>
                                 </Card.Body>
                             </Card></Col>
                     </Row>

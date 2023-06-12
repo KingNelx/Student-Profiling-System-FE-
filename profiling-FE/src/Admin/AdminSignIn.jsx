@@ -4,7 +4,31 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import sidelogo from '../Images/side-nav-logo.png'
+import Swal from 'sweetalert2';
 const AdminSignIn = () => {
+    const loadContent = () => {
+        let timerInterval
+        Swal.fire({
+            title: 'Loading!',
+            html: 'Please Wait!',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
     return (
         <div>
             <Navbar bg="dark" variant="dark" className='shadow-lg'>
@@ -49,8 +73,8 @@ const AdminSignIn = () => {
                         </FloatingLabel>
 
                         <Button variant="outline-primary">Log in</Button>{' '}
-                        <Link> No Account?</Link>
-
+                        <Link to='/adminSignUp' onClick={loadContent}> No Account?</Link>
+                        <Link to='/' onClick={loadContent}> Go Back </Link>
                     </form>
 
                 </>

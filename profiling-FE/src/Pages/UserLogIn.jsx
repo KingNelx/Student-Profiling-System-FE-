@@ -6,8 +6,34 @@ import sidelogo from '../Images/side-nav-logo.png'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UserLogIn = () => {
+
+    const loadContent = () => {
+        let timerInterval
+        Swal.fire({
+            title: 'Loading!',
+            html: 'Please Wait!',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
+
     return (
         <div>
             <Navbar bg="dark" variant="dark" className='shadow-lg'>
@@ -30,7 +56,7 @@ const UserLogIn = () => {
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>ADMIN</Card.Title>
-                                    <Link to='/adminSignIn'><Button variant="outline-primary">SELECT</Button></Link>
+                                    <Link to='/adminSignIn'><Button variant="outline-primary" onClick={loadContent}>SELECT</Button></Link>
                                 </Card.Body>
                             </Card></Col>
                         <Col>

@@ -29,9 +29,9 @@ const AdminSignUp = () => {
         userName: '',
         email: '',
         password: ''
-      };
+    };
 
-      const [formData, setFormData] = useState(initialFormData);
+    const [formData, setFormData] = useState(initialFormData);
 
 
     const onInputChange = (e) => {
@@ -42,9 +42,18 @@ const AdminSignUp = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        await axios.post("http://localhost:8080/api/admin/createAdminAccount", admin)
-        navigate("/adminSignIn")
-        setFormData(initialFormData);
+
+        try {
+            const response = await axios.post("http://localhost:8080/api/admin/createAdminAccount", admin)
+
+            if (response.status == 200) {
+                alert(" ADMIN ACCOUNT CREATED ")
+                navigate("/adminSignIn")
+                setFormData(initialFormData);
+            }
+        } catch (error) {
+            alert(" ADMIN ACCOUNT ALREADY EXISTED ")
+        }
     };
 
     const saveData = () => {
@@ -54,7 +63,7 @@ const AdminSignUp = () => {
             title: 'YOUR DATA HAS BEEN SAVED',
             showConfirmButton: false,
             timer: 3000
-          })
+        })
     }
 
     const loadContent = () => {

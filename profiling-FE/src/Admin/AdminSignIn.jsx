@@ -3,11 +3,36 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
-import sidelogo from '../Images/side-nav-logo.png'
+import sidelogo from '../Images/side-nav-logo.png';
 import Swal from 'sweetalert2';
-import {useState, useNavigate} from 'react-router-dom'
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AdminSignIn = () => {
+
+    const navigate = useNavigate()
+
+    const [admin, setAdmin] = useState({
+        email: "",
+        userName: "",
+        password: ""
+    })
+
+    const { userName, email, password } = admin
+
+    const onInputChange = (e) => {
+        const { name, value } = e.target
+        setAdmin({ ...admin, [name]: value.toUpperCase() })
+    }
+
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        const response = await axios.get("http://localhost:8080/api/admin/logInAsAdmin", admin)
+        navigate("/adminView")
+    }
+
     const loadContent = () => {
         let timerInterval
         Swal.fire({
@@ -49,32 +74,32 @@ const AdminSignIn = () => {
                 maxWidth: '400px', borderStyle: 'inset', borderWidth: '10px'
             }}>
                 <>
-                    <form action="">
+                    <form onSubmit={(e) => onSubmit(e)}>
                         <FloatingLabel
-                           
-                            label="Username"
-                            className="mb-3"
-                        >
-                            <Form.Control type={"text"} placeholder="Username" required />
-                        </FloatingLabel>
 
-                        <FloatingLabel
-                            
                             label="Email address"
                             className="mb-3"
                         >
-                            <Form.Control type={"email"} placeholder="name@example.com" required />
+                            <Form.Control type={"email"} placeholder="name@example.com" required name='email' value={email} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            
+
+                            label="Username"
+                            className="mb-3"
+                        >
+                            <Form.Control type={"userName"} placeholder="userName" required name='userName' value={userName} onChange={(e) => onInputChange(e)} />
+                        </FloatingLabel>
+
+                        <FloatingLabel
+
                             label="Password"
                             className="mb-3"
                         >
-                            <Form.Control type={"password"} placeholder="Password" required />
+                            <Form.Control type={"password"} placeholder="Password" required name='password' value={password} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
-                        <Link to='/adminView'><Button variant="outline-primary">Log in</Button>{' '}</Link>
+                        <Button variant="outline-primary" type='submit'>Log in</Button>{' '}
                         <Link to='/adminSignUp' onClick={loadContent}> No Account?</Link>
                         <Link to='/' onClick={loadContent}> Go Back </Link>
                     </form>

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import sidelogo from '../Images/side-nav-logo.png'
 import Swal from 'sweetalert2';
+import {useState, useNavigate} from 'react-router-dom'
+
 const AdminSignIn = () => {
     const loadContent = () => {
         let timerInterval
@@ -72,7 +74,7 @@ const AdminSignIn = () => {
                             <Form.Control type={"password"} placeholder="Password" required />
                         </FloatingLabel>
 
-                        <Button variant="outline-primary">Log in</Button>{' '}
+                        <Link to='/adminView'><Button variant="outline-primary">Log in</Button>{' '}</Link>
                         <Link to='/adminSignUp' onClick={loadContent}> No Account?</Link>
                         <Link to='/' onClick={loadContent}> Go Back </Link>
                     </form>

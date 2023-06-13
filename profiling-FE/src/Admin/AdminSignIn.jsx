@@ -49,7 +49,7 @@ const AdminSignIn = () => {
                 <>
                     <form action="">
                         <FloatingLabel
-                            controlId="floatingInput"
+                           
                             label="Username"
                             className="mb-3"
                         >
@@ -57,7 +57,7 @@ const AdminSignIn = () => {
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            
                             label="Email address"
                             className="mb-3"
                         >
@@ -65,7 +65,7 @@ const AdminSignIn = () => {
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            
                             label="Password"
                             className="mb-3"
                         >

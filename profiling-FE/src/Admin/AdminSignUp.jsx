@@ -5,8 +5,57 @@ import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import sidelogo from '../Images/side-nav-logo.png'
 import Swal from 'sweetalert2'
+import axios from "axios"
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AdminSignUp = () => {
+
+    let navigate = useNavigate();
+
+    const [admin, setAdmin] = useState({
+        firstName: "",
+        lastName: "",
+        userName: "",
+        email: "",
+        password: ""
+    })
+
+    const { firstName, lastName, userName, email, password } = admin
+
+    const initialFormData = {
+        firstName: '',
+        lastName: '',
+        userName: '',
+        email: '',
+        password: ''
+      };
+
+      const [formData, setFormData] = useState(initialFormData);
+
+
+    const onInputChange = (e) => {
+        const { name, value } = e.target
+        setAdmin({ ...admin, [name]: value.toUpperCase() })
+        setFormData({ ...formData, [name]: value });
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        await axios.post("http://localhost:8080/api/admin/createAdminAccount", admin)
+        navigate("/adminSignIn")
+        setFormData(initialFormData);
+    };
+
+    const saveData = () => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'YOUR DATA HAS BEEN SAVED',
+            showConfirmButton: false,
+            timer: 3000
+          })
+    }
 
     const loadContent = () => {
         let timerInterval
@@ -50,48 +99,48 @@ const AdminSignUp = () => {
                 maxWidth: '400px', borderStyle: 'inset', borderWidth: '10px'
             }}>
                 <>
-                    <form action="">
+                    <form onSubmit={(e) => onSubmit(e)}>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+
                             label="Firstname"
                             className="mb-3"
                         >
-                            <Form.Control type={"text"} placeholder="Firstname" />
+                            <Form.Control type={"text"} placeholder="Firstname" name='firstName' required value={firstName} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+
                             label="Lastname"
                             className="mb-3"
                         >
-                            <Form.Control type={"text"} placeholder="Lastname" />
+                            <Form.Control type={"text"} placeholder="Lastname" name='lastName' required value={lastName} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
                         <FloatingLabel
-                            controlId="floatingInput"
+
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type={"text"} placeholder="Username" />
+                            <Form.Control type={"text"} placeholder="Username" required name='userName' value={userName} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+
                             label="Email address"
                             className="mb-3"
                         >
-                            <Form.Control type={"email"} placeholder="name@example.com" />
+                            <Form.Control type={"email"} placeholder="name@example.com" required name='email' value={email} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+
                             label="Password"
                             className="mb-3"
                         >
-                            <Form.Control type={"password"} placeholder="Password" required />
+                            <Form.Control type={"password"} placeholder="Password" required name='password' value={password} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
-                        <Button variant="outline-primary">Register</Button>{' '}
+                        <Button variant="outline-primary" type='submit' onClick={saveData}>Register</Button>
                         <Link to='/adminSignIn' onClick={loadContent}> Go Back </Link>
 
                     </form>

@@ -26,12 +26,20 @@ const AdminSignIn = () => {
         setAdmin({ ...admin, [name]: value.toUpperCase() })
     }
 
-
     const onSubmit = async (e) => {
-        e.preventDefault()
-        const response = await axios.get("http://localhost:8080/api/admin/logInAsAdmin", admin)
-        navigate("/adminView")
-    }
+        e.preventDefault();
+        try {
+            const response = await axios.get("http://localhost:8080/api/admin/logInAsAdmin", { params: admin });
+            if (response.status === 200) {
+                navigate("/adminView");
+            } else {
+                alert(response.data)
+            }
+        } catch (error) {
+            alert(error)
+        }
+    };
+
 
     const loadContent = () => {
         let timerInterval
@@ -99,7 +107,7 @@ const AdminSignIn = () => {
                             <Form.Control type={"password"} placeholder="Password" required name='password' value={password} onChange={(e) => onInputChange(e)} />
                         </FloatingLabel>
 
-                        <Button variant="outline-primary" type='submit'>Log in</Button>{' '}
+                        <Button variant="outline-primary" type='submit' onClick={loadContent}>Log in</Button>{' '}
                         <Link to='/adminSignUp' onClick={loadContent}> No Account?</Link>
                         <Link to='/' onClick={loadContent}> Go Back </Link>
                     </form>

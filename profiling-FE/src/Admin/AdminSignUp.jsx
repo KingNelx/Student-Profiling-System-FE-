@@ -1,13 +1,13 @@
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import sidelogo from '../Images/side-nav-logo.png'
 import Swal from 'sweetalert2'
 import axios from "axios"
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 
 const AdminSignUp = () => {
 
@@ -56,8 +56,8 @@ const AdminSignUp = () => {
         }
     };
 
-    const saveData = () => {
-        Swal.fire({
+    const saveData = async () => {
+       await Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'YOUR DATA HAS BEEN SAVED',
@@ -66,9 +66,9 @@ const AdminSignUp = () => {
         })
     }
 
-    const loadContent = () => {
+    const loadContent = async () => {
         let timerInterval
-        Swal.fire({
+        await Swal.fire({
             title: 'Loading!',
             html: 'Please Wait!',
             timer: 2000,

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import StudentTable from "../Student/StudentTable";
+import Accordions from "../Pages/Accordions";
 
 
 const AdminView = () => {
@@ -66,7 +67,7 @@ const AdminView = () => {
                         <Offcanvas.Title>DASHBOARD</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        TEST
+                        <Accordions />
                     </Offcanvas.Body>
                 </Offcanvas>
             </section>

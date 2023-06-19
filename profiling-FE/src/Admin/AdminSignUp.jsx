@@ -65,6 +65,7 @@ const AdminSignUp = () => {
             timer: 3000
         })
     }
+    
 
     const loadContent = async () => {
         let timerInterval

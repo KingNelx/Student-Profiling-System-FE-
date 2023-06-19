@@ -1,4 +1,4 @@
-const Accordion = () => {
+const AllMaleStudents = () => {
     return ( 
         <div>
             
@@ -6,4 +6,4 @@ const Accordion = () => {
      );
 }
  
-export default Accordion;
+export default AllMaleStudents;

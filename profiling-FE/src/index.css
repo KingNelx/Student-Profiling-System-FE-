@@ -1,3 +1,7 @@
 a{
     text-decoration: none;
 }
+
+.custom-modal {
+    width: 800px; 
+}

@@ -6,10 +6,40 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import StudentTable from "../Student/StudentTable";
 
+
 const AdminView = () => {
+
+    const loadContent = () => {
+        let timerInterval
+        Swal.fire({
+            title: 'Loading!',
+            html: 'Please Wait!',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
+
+    const render = () => {
+        loadContent()
+        handleShow()
+    }
     const handleShow = () => setShow(true);
     return (
         <div>
@@ -27,7 +57,7 @@ const AdminView = () => {
             </Navbar>
 
             <section>
-                <Button variant="primary" onClick={handleShow} className="mt-5 mx-5">
+                <Button variant="primary" onClick={render} className="mt-5 mx-5">
                     DASHBOARD
                 </Button>
 

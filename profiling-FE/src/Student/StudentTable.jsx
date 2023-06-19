@@ -31,25 +31,29 @@ const StudentTable = () => {
                         <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Address</th>
+                        <th>Course</th>
                         <th>Gender</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>
-                            <Button variant="outline-primary">VIEW</Button>{' '}
-                            <Button variant="outline-primary">UPDATE</Button>{' '}
+                    {
+                        students.map( (student, index) => (
+                            <tr>
+                            <td key={index}>{index+1}</td>
+                            <td>{student.studentID}</td>
+                            <td>{student.firstName}</td>
+                            <td>{student.lastName}</td>
+                            <td>{student.course}</td>
+                            <td>{student.gender}</td>
+                            <td>
+                                <Button variant="outline-primary">VIEW</Button>{' '}
+                                <Button variant="outline-primary">UPDATE</Button>{' '}
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                        ))
+                    }
                 </tbody>
             </Table>
         </div>

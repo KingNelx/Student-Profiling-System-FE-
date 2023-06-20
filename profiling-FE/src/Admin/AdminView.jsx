@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import StudentTable from "../Student/StudentTable";
 import Accordions from "../Pages/Accordions";
-import GraphComponent from "../Pages/GraphComponent ";
+
 
 
 const AdminView = () => {
@@ -62,7 +62,7 @@ const AdminView = () => {
                 <Button variant="primary" onClick={render} className="mt-5 mx-5">
                     DASHBOARD
                 </Button>
-           <GraphComponent />
+         
                 <Offcanvas show={show} onHide={handleClose} backdrop="static">
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>DASHBOARD</Offcanvas.Title>

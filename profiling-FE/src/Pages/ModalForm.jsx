@@ -41,7 +41,7 @@ const ModalForm = () => {
             <Button variant="outline-primary" onClick={fetchResult}>REGISTER STUDENT</Button>
 
             <Modal
-                size="lg"
+                size="xl"
                 show={lgShow}
                 onHide={() => setLgShow(false)}
                 backdrop="static"
@@ -52,7 +52,7 @@ const ModalForm = () => {
                         RECORD STUDENT'S DATA
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ maxHeight: 'calc(100vh - 150px)', overflowY: 'auto' }}>
 
             <AddStudent />
 

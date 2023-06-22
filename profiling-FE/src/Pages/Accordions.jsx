@@ -51,6 +51,18 @@ const Accordions = () => {
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="4">
+                    <Accordion.Header>STUDENT REPORTS</Accordion.Header>
+                    <Accordion.Body>
+                       TEST
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="5">
+                    <Accordion.Header>SUMMARY OF ENROLLMENT</Accordion.Header>
+                    <Accordion.Body>
+                       TEST
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="6">
                     <Accordion.Header>SETTINGS</Accordion.Header>
                     <Accordion.Body>
                      <Link to="/" onClick={loadContent}> LOG OUT </Link>

@@ -23,10 +23,10 @@ const StudentTable = () => {
     }, [])
 
     return (
-        <div className="container text-center">
+        <div className="container text-center" style={{ maxHeight: 'calc(80vh - 150px)', overflowY: 'auto' }}>
             <Table striped bordered hover>
-                <thead>
-                    <tr>
+            <thead style={{position: 'sticky', top: 0}}>
+                    <tr className="">
                         <th>#</th>
                         <th>Student ID</th>
                         <th>First Name</th>

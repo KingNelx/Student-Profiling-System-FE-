@@ -62,7 +62,7 @@ const AdminView = () => {
                 <Button variant="primary" onClick={render} className="mt-5 mx-5">
                     DASHBOARD
                 </Button>
-         
+            
                 <Offcanvas show={show} onHide={handleClose} backdrop="static">
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>DASHBOARD</Offcanvas.Title>

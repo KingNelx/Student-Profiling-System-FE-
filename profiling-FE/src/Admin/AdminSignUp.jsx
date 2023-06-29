@@ -42,10 +42,8 @@ const AdminSignUp = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-
         try {
             const response = await axios.post("http://localhost:8080/api/admin/createAdminAccount", admin)
-
             if (response.status == 200) {
                 alert(" ADMIN ACCOUNT CREATED ")
                 navigate("/adminSignIn")

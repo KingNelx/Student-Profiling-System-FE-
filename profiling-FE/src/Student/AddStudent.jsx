@@ -2,258 +2,139 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const AddStudent = () => {
 
+    let navigate = useNavigate();
+
     const [studentData, setStudentData] = useState({
         studentID: "",
-        firstName: "",
+        fistName: "",
         lastName: "",
         age: "",
         gender: "",
         course: "",
         email: "",
         contactNumber: "",
-        educationalBG: {
-            elementarySchool: "",
-            elementaryYearGraduated: "",
-            elementaryAcademicAward: "",
-            elementarySchoolAddress: "",
-            highSchool: "",
-            highSchoolYearGraduated: "",
-            highSchoolAcademicAward: "",
-            highSchoolAddress: "",
-            seniorHighSchool: "",
-            seniorHighYearGraduated: "",
-            seniorHighAcademicAward: "",
-            seniorHighAddress: "",
-            collegeSchool: "",
-            collegeYearGraduated: "",
-            collegeAcademicAward: "",
-            collegeAddress: "",
-        },
-        familyBG: {
-            fathersName: "",
-            fathersOccupation: "",
-            fathersAge: "",
-            fathersHighestEducation: "",
-            mothersName: "",
-            mothersOccupation: "",
-            mothersAge: "",
-            mothersHighestEducation: ""
-        }
     })
 
+    const { studentID, firstName, lastName, age, gender, course, email, contactNumber } = studentData
 
-    const { studentID, firstName, lastName, age, gender, course, email, contactNumber,
-        educationalBG: {
-            elementarySchool, elementaryYearGraduated, elementaryAcademicAward, elementarySchoolAddress,
-            highSchool, highSchoolYearGraduated, highSchoolAcademicAward, highSchoolAddress,
-            seniorHighSchool, seniorHighYearGraduated, seniorHighAcademicAward, seniorHighAddress,
-            collegeSchool, collegeYearGraduated, collegeAcademicAward, collegeAddress
-        },
-        familyBG: {
-            fathersName, fathersOccupation, fathersAge, fathersHighestEducation,
-            mothersName, mothersOccupation, mothersAge, mothersHighestEducation
+    const onInputChange = (e) => {
+        const { name, value } = e.target
+        setStudentData({ ...studentData, [name]: value.toUpperCase() })
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8080/api/admin/registerStudent', studentData)
+            if (response.status === 200) {
+                window.location.reload()
+                navigate("/adminView")
+            }
+        } catch (error) {
+            console.log(" ERROR MESSAGE: " + error);
         }
-    } = studentData
+    }
+
+    const saveData = () => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'NEW STUDENT ADDED',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
 
     return (
         <div>
-            <Form>
-
+            <Form onSubmit={(e) => onSubmit(e)}>
                 <Row className="mb-3">
                     <p className='text-center'> STUDENT BACKGROUND </p>
-                    <Form.Group as={Col} controlId="formGridCity">
+
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>STUDENT ID</Form.Label>
-                        <Form.Control type={"text"} value={studentID} name="studentID" />
+                        <Form.Control type={"text"}
+                            name="studentID"
+                            value={studentID}
+                            onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridCity">
+
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>FIRST NAME</Form.Label>
-                        <Form.Control type={"text"} value={firstName} name="firstName" />
+                        <Form.Control type={"text"}
+                            name="firstName"
+                            value={firstName}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
 
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>LAST NAME</Form.Label>
-                        <Form.Control type={"text"} value={lastName} name="lastName" />
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>LASTNAME</Form.Label>
+                        <Form.Control type={"text"}
+                            name="lastName"
+                            value={lastName}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>AGE</Form.Label>
-                        <Form.Control type={"text"} value={age} name="age" />
+                        <Form.Control type={"text"}
+                            name="age"
+                            value={age}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
+
                 </Row>
 
                 <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
+
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>GENDER</Form.Label>
-                        <Form.Control type={"text"} value={gender} name="gender" />
+                        <Form.Control type={"text"}
+                            name="gender"
+                            value={gender}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>COURSE</Form.Label>
-                        <Form.Control type={"text"} value={course} name="course" />
+                        <Form.Control type={"text"}
+                            name="course"
+                            value={course}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
 
-
-                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>EMAIL</Form.Label>
-                        <Form.Control type={"email"} value={email} name="email" />
+                        <Form.Control type={"email"}
+                            name="email"
+                            value={email}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} controlId="">
                         <Form.Label>CONTACT NUMBER</Form.Label>
-                        <Form.Control type={"text"} value={contactNumber} name="contactNumber" />
+                        <Form.Control type={"text"}
+                            name="contactNumber"
+                            value={contactNumber}
+                            onChange={(e) => onInputChange(e)}
+                        />
                     </Form.Group>
                 </Row>
-
-                <Row className="mb-3">
-                    <p className='text-center'> EDUCATIONAL BACKGROUND </p>
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>*ELEMENTARY SCHOOL</Form.Label>
-                        <Form.Control type={"text"} value={elementarySchool} name="elementarySchool" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>YEAR GRADUATED</Form.Label>
-                        <Form.Control type={"text"} value={elementaryYearGraduated} name="elementaryYearGraduated" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>ACADEMIC AWARDS/HONORS</Form.Label>
-                        <Form.Control type={"text"} value={elementaryAcademicAward} name="elementaryAcademicAward" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>ADDRESS</Form.Label>
-                        <Form.Control type={"text"} value={elementarySchoolAddress} name="elementarySchoolAddress" />
-                    </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>*JUNIOR HIGH SCHOOL</Form.Label>
-                        <Form.Control type={"text"} value={highSchool} name="highSchool" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>YEAR GRADUATED</Form.Label>
-                        <Form.Control type={"text"} value={highSchoolYearGraduated} name="highSchoolYearGraduated" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>ACADEMIC AWARDS/HONORS</Form.Label>
-                        <Form.Control type={"text"} value={highSchoolAcademicAward} name="highSchoolAcademicAward" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>ADDRESS</Form.Label>
-                        <Form.Control type={"text"} value={highSchoolAddress} name="highSchoolAddress" />
-                    </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>*SENIOR HIGH SCHOOL</Form.Label>
-                        <Form.Control type={"text"} value={seniorHighSchool} name="seniorHighSchool" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>YEAR GRADUATED</Form.Label>
-                        <Form.Control type={"text"} value={seniorHighYearGraduated} name="seniorHighYearGraduated" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>ACADEMIC AWARDS/HONORS</Form.Label>
-                        <Form.Control type={"text"} value={seniorHighAcademicAward} name="seniorHighAcademicAward" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>ADDRESS</Form.Label>
-                        <Form.Control type={"text"} value={seniorHighAddress} name="seniorHighAddress" />
-                    </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>*COLLEGE</Form.Label>
-                        <Form.Control type={"text"} value={collegeSchool} name="collegeSchool" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>YEAR GRADUATED</Form.Label>
-                        <Form.Control type={"text"} value={collegeYearGraduated} name="collegeYearGraduated" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>ACADEMIC AWARDS/HONORS</Form.Label>
-                        <Form.Control type={"text"} value={collegeAcademicAward} name="collegeAcademicAward" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>ADDRESS</Form.Label>
-                        <Form.Control type={"text"} value={collegeAddress} name="collegeAddress" />
-                    </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <p className='text-center'> FAMILY BACKGROUND </p>
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>FATHER'S NAME</Form.Label>
-                        <Form.Control type={"text"} value={fathersName} name="fathersName" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>FATHER'S OCCUPATION</Form.Label>
-                        <Form.Control type={"text"} value={fathersOccupation} name="fathersOccupation" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>FATHER'S AGE</Form.Label>
-                        <Form.Control type={"text"} value={fathersAge} name="fathersAge" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>FATHER'S ATTAINMENT</Form.Label>
-                        <Form.Control type={"text"} value={fathersHighestEducation} name="fathersHighestEducation" />
-                    </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>MOTHER'S NAME</Form.Label>
-                        <Form.Control type={"text"} value={mothersName} name="mothersName" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>MOTHER'S OCCUPATION</Form.Label>
-                        <Form.Control type={"text"} value={mothersOccupation} name="mothersOccupation" />
-                    </Form.Group>
-
-
-                    <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>MOTHER'S AGE</Form.Label>
-                        <Form.Control type={"text"} value={mothersAge} name="mothersAge" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>MOTHER'S ATTAINMENT</Form.Label>
-                        <Form.Control type={"text"} value={mothersHighestEducation} name="mothersHighestEducation" />
-                    </Form.Group>
-                </Row>
-
-
-                <Button variant="outline-primary" type="submit">
-                    Submit
-                </Button>
+                <Button variant="outline-primary" type="submit" onClick={saveData}>SUBMIT</Button>
             </Form>
         </div>
     );

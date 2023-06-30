@@ -100,20 +100,33 @@ const AddStudent = () => {
 
                     <Form.Group as={Col} controlId="">
                         <Form.Label>GENDER</Form.Label>
-                        <Form.Control type={"text"}
+                        <Form.Control
+                            as="Select"
                             name="gender"
                             value={gender}
                             onChange={(e) => onInputChange(e)}
-                        />
+                        >
+                            <option value="">Select Gender ..</option>
+                            <option value="male">MALE</option>
+                            <option value="female">FEMALE</option>
+                        </Form.Control>
                     </Form.Group>
+
+
 
                     <Form.Group as={Col} controlId="">
                         <Form.Label>COURSE</Form.Label>
-                        <Form.Control type={"text"}
+                        <Form.Control
+                            as="Select"
                             name="course"
                             value={course}
                             onChange={(e) => onInputChange(e)}
-                        />
+                        >
+                            <option value="">Select Course ...</option>
+                            <option value="bsis">BSIS</option>
+                            <option value="bsit">BSIT</option>
+                            <option value="bscs">BSCS</option>
+                        </Form.Control>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">

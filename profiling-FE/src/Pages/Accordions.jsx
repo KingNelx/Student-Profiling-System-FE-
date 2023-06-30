@@ -2,6 +2,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import ModalForm from './ModalForm';
+import ModalFormMales from './ModalFormMales';
 
 const Accordions = () => {
 
@@ -41,7 +42,7 @@ const Accordions = () => {
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>ALL MALE STUDENTS</Accordion.Header>
                     <Accordion.Body>
-                       TEST
+                       <ModalFormMales />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">

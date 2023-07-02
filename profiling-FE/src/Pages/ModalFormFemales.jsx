@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import AllMaleStudents from "../Student/AllMaleStudents";
+import AllFemaleStudents from "../Student/AllFemaleStudents";
 
-const ModalFormMales = () => {
+const ModalFormFemales = () => {
     
     const [lgShow, setLgShow] = useState(false);
     const loadContent = async () => {
@@ -38,7 +39,7 @@ const ModalFormMales = () => {
     return (
         <div>
           
-            <Button variant="outline-primary" onClick={fetchResult}>ALL MALE STUDENTS</Button>
+            <Button variant="outline-primary" onClick={fetchResult}>ALL FEMALE STUDENTS</Button>
 
             <Modal
                 size="xl"
@@ -49,12 +50,12 @@ const ModalFormMales = () => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-modal-sizes-title-lg">
-                        ALL MALE STUDENTS
+                        ALL FEMALE STUDENTS
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ maxHeight: 'calc(100vh - 150px)', overflowY: 'auto' }}>
 
-            <AllMaleStudents />
+            <AllFemaleStudents />
 
                 </Modal.Body>
             </Modal>
@@ -62,4 +63,4 @@ const ModalFormMales = () => {
     );
 }
 
-export default ModalFormMales;
+export default ModalFormFemales;

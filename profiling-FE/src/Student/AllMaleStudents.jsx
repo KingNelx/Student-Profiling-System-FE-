@@ -8,7 +8,7 @@ const AllMaleStudents = () => {
     const [maleStudent, setMaleStudents] = useState([])
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:8080/api/admin/allMaleStudent")
+        const response = await axios.get("http://localhost:8080/api/admin/allMaleStudents")
         try {
             if (response.status === 200) {
                 setMaleStudents(response.data)

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import ModalForm from './ModalForm';
 import ModalFormMales from './ModalFormMales';
+import ModalFormFemales from './ModalFormFemales';
 
 const Accordions = () => {
 
@@ -48,7 +49,7 @@ const Accordions = () => {
                 <Accordion.Item eventKey="3">
                     <Accordion.Header>ALL FEMALE STUDENTS</Accordion.Header>
                     <Accordion.Body>
-                       TEST
+                      <ModalFormFemales />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="4">

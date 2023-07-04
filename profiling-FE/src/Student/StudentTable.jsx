@@ -2,11 +2,12 @@ import axios from "axios"
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react'
+import { Link, useParams } from "react-router-dom";
 
 const StudentTable = () => {
 
     const [students, setStudents] = useState([])
-
+    const { id } = useParams()
     const loadStudentsData = async () => {
         const response = await axios.get("http://localhost:8080/api/admin/getAllStudents")
         try {
@@ -25,7 +26,7 @@ const StudentTable = () => {
     return (
         <div className="container text-center" style={{ maxHeight: 'calc(80vh - 150px)', overflowY: 'auto' }}>
             <Table striped bordered hover>
-            <thead style={{position: 'sticky', top: 0}}>
+                <thead style={{ position: 'sticky', top: 0 }}>
                     <tr className="">
                         <th>#</th>
                         <th>Student ID</th>
@@ -38,20 +39,24 @@ const StudentTable = () => {
                 </thead>
                 <tbody>
                     {
-                        students.map( (student, index) => (
+                        students.map((student, index) => (
                             <tr>
-                            <td key={index}>{index+1}</td>
-                            <td>{student.studentID}</td>
-                            <td>{student.firstName}</td>
-                            <td>{student.lastName}</td>
-                            <td>{student.course}</td>
-                            <td>{student.gender}</td>
-                            <td>
-                                <Button variant="outline-primary">VIEW</Button>{' '}
-                                <Button variant="outline-primary">UPDATE</Button>{' '}
-
-                            </td>
-                        </tr>
+                                <td key={index}>{index + 1}</td>
+                                <td>{student.studentID}</td>
+                                <td>{student.firstName}</td>
+                                <td>{student.lastName}</td>
+                                <td>{student.course}</td>
+                                <td>{student.gender}</td>
+                                <td>
+                                    <Link>
+                                        <Button variant="outline-primary">VIEW</Button>
+                                    </Link>
+                                    <Link>
+                                        <Button variant="outline-danger mx-2"
+                                        >DELETE</Button>
+                                    </Link>
+                                </td>
+                            </tr>
                         ))
                     }
                 </tbody>

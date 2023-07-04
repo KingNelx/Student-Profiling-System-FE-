@@ -2,7 +2,6 @@ import Swal from "sweetalert2"
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AllMaleStudents from "../Student/AllMaleStudents";
 import AllFemaleStudents from "../Student/AllFemaleStudents";
 
 const ModalFormFemales = () => {

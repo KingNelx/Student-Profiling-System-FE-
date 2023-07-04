@@ -7,6 +7,7 @@ import AdminSignIn from './Admin/AdminSignIn';
 import AdminSignUp from './Admin/AdminSignUp';
 import AdminView from './Admin/AdminView';
 
+
 const App = () => {
     return (
         <div>
@@ -17,6 +18,7 @@ const App = () => {
                     <Route path="/adminSignIn" element={<AdminSignIn />} />
                     <Route path="/adminSignUp" element={<AdminSignUp />} />
                     <Route path="/adminView" element={<AdminView />} />
+                
                 </Routes>
             </Router>
         </div>

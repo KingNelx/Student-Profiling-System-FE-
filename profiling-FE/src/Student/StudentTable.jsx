@@ -52,7 +52,10 @@ const StudentTable = () => {
                                         <Button variant="outline-primary">VIEW</Button>
                                     </Link>
                                     <Link>
-                                        <Button variant="outline-danger mx-2"
+                                        <Button variant="outline-success mx-2">UPDATE</Button>
+                                    </Link>
+                                    <Link>
+                                        <Button variant="outline-danger"
                                         >DELETE</Button>
                                     </Link>
                                 </td>

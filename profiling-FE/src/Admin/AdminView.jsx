@@ -71,6 +71,7 @@ const AdminView = () => {
                         <Accordions />
                     </Offcanvas.Body>
                 </Offcanvas>
+                
             </section>
 
             <div className="container mt-5">

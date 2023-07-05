@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 
+
 const StudentTable = () => {
 
     const [students, setStudents] = useState([])
@@ -49,14 +50,25 @@ const StudentTable = () => {
                                 <td>{student.gender}</td>
                                 <td>
                                     <Link>
-                                        <Button variant="outline-primary">VIEW</Button>
+                                        <Button variant="outline-primary">
+                                            <span class="material-icons">
+                                                person_add
+                                            </span>
+                                        </Button>
                                     </Link>
                                     <Link>
-                                        <Button variant="outline-success mx-2">UPDATE</Button>
+                                        <Button variant="outline-success mx-2">
+                                            <span class="material-icons">
+                                                update
+                                            </span>
+                                        </Button>
                                     </Link>
                                     <Link>
-                                        <Button variant="outline-danger"
-                                        >DELETE</Button>
+                                        <Button variant="outline-danger" >
+                                            <span class="material-icons">
+                                                delete
+                                            </span>
+                                        </Button>
                                     </Link>
                                 </td>
                             </tr>

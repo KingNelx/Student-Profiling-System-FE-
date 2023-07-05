@@ -5,6 +5,7 @@ import ModalForm from './ModalForm';
 import ModalFormMales from './ModalFormMales';
 import ModalFormFemales from './ModalFormFemales';
 
+
 const Accordions = () => {
 
     const loadContent = () => {
@@ -35,39 +36,69 @@ const Accordions = () => {
         <div>
             <Accordion defaultActiveKey="0" flush>
                 <Accordion.Item eventKey="1">
-                    <Accordion.Header>RECORD STUDENT</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">add</span>
+                        RECORD STUDENTS
+                    </Accordion.Header>
                     <Accordion.Body>
                         <ModalForm />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
-                    <Accordion.Header>ALL MALE STUDENTS</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">
+                            post_add
+                        </span>
+                        ALL MALE STUDENTS
+                    </Accordion.Header>
                     <Accordion.Body>
-                       <ModalFormMales />
+                        <ModalFormMales />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">
-                    <Accordion.Header>ALL FEMALE STUDENTS</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">
+                            post_add
+                        </span>
+                        ALL FEMALE STUDENTS
+                    </Accordion.Header>
                     <Accordion.Body>
-                      <ModalFormFemales />
+                        <ModalFormFemales />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="4">
-                    <Accordion.Header>STUDENT REPORTS</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">
+                            mail
+                        </span>
+                        STUDENT REPORTS
+                    </Accordion.Header>
                     <Accordion.Body>
-                       TEST
+                        TEST
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="5">
-                    <Accordion.Header>SUMMARY OF ENROLLMENT</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">
+                            admin_panel_settings
+                        </span>
+                        SUMMARY OF ENROLLMENT
+                    </Accordion.Header>
                     <Accordion.Body>
-                       TEST
+                        TEST
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="6">
-                    <Accordion.Header>SETTINGS</Accordion.Header>
+                    <Accordion.Header>
+                        <span class="material-icons">
+                            settings
+                        </span>
+                        SETTINGS
+                    </Accordion.Header>
                     <Accordion.Body>
-                     <Link to="/" onClick={loadContent}> LOG OUT </Link>
+                        <Link to="/" onClick={loadContent}>
+                            LOG OUT
+                           </Link>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

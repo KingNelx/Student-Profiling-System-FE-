@@ -47,7 +47,11 @@ const AllFemaleStudents = () => {
                                         <td>{value.lastName}</td>
                                         <td>{value.course}</td>
                                         <td>
-                                            <Button variant="outline-primary">VIEW</Button>{' '}
+                                            <Button variant="outline-primary">
+                                                <span class="material-icons">
+                                                    visibility
+                                                </span>
+                                            </Button>{' '}
                                         </td>
                                     </tr>
                                 ))

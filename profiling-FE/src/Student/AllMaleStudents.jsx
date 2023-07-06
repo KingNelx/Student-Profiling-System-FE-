@@ -41,13 +41,17 @@ const AllMaleStudents = () => {
                             {
                                 maleStudent.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{index+1}</td>
+                                        <td>{index + 1}</td>
                                         <td>{value.studentID}</td>
                                         <td>{value.firstName}</td>
                                         <td>{value.lastName}</td>
                                         <td>{value.course}</td>
                                         <td>
-                                            <Button variant="outline-primary">VIEW</Button>{' '}
+                                            <Button variant="outline-primary">
+                                                <span class="material-icons">
+                                                    visibility
+                                                </span>
+                                            </Button>{' '}
                                         </td>
                                     </tr>
                                 ))

@@ -4,6 +4,9 @@ import Swal from 'sweetalert2'
 import ModalForm from './ModalForm';
 import ModalFormMales from './ModalFormMales';
 import ModalFormFemales from './ModalFormFemales';
+import ModalFormBSCS from './ModalFormBSCS';
+import ModalFormBSIS from './ModalFormBSIS';
+import ModalFormBSIT from './ModalFormBSIT';
 
 
 const Accordions = () => {
@@ -74,7 +77,15 @@ const Accordions = () => {
                         STUDENT REPORTS
                     </Accordion.Header>
                     <Accordion.Body>
-                        TEST
+                        <div>
+                            <ModalFormBSCS />
+                        </div>
+                        <div className='mt-1'>
+                            <ModalFormBSIS />
+                        </div>
+                        <div className='mt-1'>
+                            <ModalFormBSIT />
+                        </div>
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="5">
@@ -98,7 +109,7 @@ const Accordions = () => {
                     <Accordion.Body>
                         <Link to="/" onClick={loadContent}>
                             LOG OUT
-                           </Link>
+                        </Link>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

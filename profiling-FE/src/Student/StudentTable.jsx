@@ -52,7 +52,7 @@ const StudentTable = () => {
                                     <Link>
                                         <Button variant="outline-primary">
                                             <span class="material-icons">
-                                                person_add
+                                               visibility
                                             </span>
                                         </Button>
                                     </Link>

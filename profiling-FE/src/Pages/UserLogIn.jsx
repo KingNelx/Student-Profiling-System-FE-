@@ -64,7 +64,7 @@ const UserLogIn = () => {
                                 <Card.Img variant="top" src={sidelogo} />
                                 <Card.Body>
                                     <Card.Title>CLERK</Card.Title>
-                                    <Link><Button variant="outline-primary">SELECT</Button></Link>
+                                    <Link to='/clerkSignIn'><Button variant="outline-primary">SELECT</Button></Link>
                                 </Card.Body>
                             </Card></Col>
                     </Row>

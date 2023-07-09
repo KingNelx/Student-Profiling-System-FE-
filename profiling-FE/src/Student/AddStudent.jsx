@@ -166,12 +166,11 @@ const AddStudent = () => {
 
                 {/* // elementary school */}
 
-
                 <Row className="mb-3">
                     <p className='text-center'> EDUCATIONAL BACKGROUND </p>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>STUDENT ID</Form.Label>
+                        <Form.Label>ELEMENTARY SCHOOL</Form.Label>
                         <Form.Control type={"text"}
                             name="studentID"
                             value={studentID}
@@ -180,7 +179,7 @@ const AddStudent = () => {
 
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>FIRST NAME</Form.Label>
+                        <Form.Label>YEAR GRADUATED</Form.Label>
                         <Form.Control type={"text"}
                             name="firstName"
                             value={firstName}
@@ -189,7 +188,7 @@ const AddStudent = () => {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>LASTNAME</Form.Label>
+                        <Form.Label>AWARD</Form.Label>
                         <Form.Control type={"text"}
                             name="lastName"
                             value={lastName}
@@ -198,7 +197,124 @@ const AddStudent = () => {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>AGE</Form.Label>
+                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Control type={"text"}
+                            name="age"
+                            value={age}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                </Row>
+
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>HIGH SCHOOL</Form.Label>
+                        <Form.Control type={"text"}
+                            name="studentID"
+                            value={studentID}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>YEAR GRADUATED</Form.Label>
+                        <Form.Control type={"text"}
+                            name="firstName"
+                            value={firstName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AWARD</Form.Label>
+                        <Form.Control type={"text"}
+                            name="lastName"
+                            value={lastName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Control type={"text"}
+                            name="age"
+                            value={age}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                </Row>
+
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>SENIOR HIGH SCHOOL</Form.Label>
+                        <Form.Control type={"text"}
+                            name="studentID"
+                            value={studentID}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>YEAR GRADUATED</Form.Label>
+                        <Form.Control type={"text"}
+                            name="firstName"
+                            value={firstName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AWARD</Form.Label>
+                        <Form.Control type={"text"}
+                            name="lastName"
+                            value={lastName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Control type={"text"}
+                            name="age"
+                            value={age}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                </Row>
+
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>COLLEGE</Form.Label>
+                        <Form.Control type={"text"}
+                            name="studentID"
+                            value={studentID}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>YEAR GRADUATED</Form.Label>
+                        <Form.Control type={"text"}
+                            name="firstName"
+                            value={firstName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AWARD</Form.Label>
+                        <Form.Control type={"text"}
+                            name="lastName"
+                            value={lastName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>ADDRESS</Form.Label>
                         <Form.Control type={"text"}
                             name="age"
                             value={age}

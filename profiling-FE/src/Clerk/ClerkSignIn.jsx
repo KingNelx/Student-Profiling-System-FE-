@@ -1,44 +1,44 @@
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import sidelogo from '../Images/side-nav-logo.png';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
 const ClerkSignIn = () => {
 
     const navigate = useNavigate()
 
-    const [admin, setAdmin] = useState({
+    const [clerk, setClerk] = useState({
         email: "",
         userName: "",
         password: ""
     })
 
-    const { userName, email, password } = admin
+    const { userName, email, password } = clerk
 
     const onInputChange = (e) => {
         const { name, value } = e.target
-        setAdmin({ ...admin, [name]: value.toUpperCase() })
+        setClerk({ ...clerk, [name]: value.toUpperCase() })
     }
 
     const onSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.get("http://localhost:8080/api/admin/logInAsClerk", { params: admin });
-            if (response.status === 200) {
-                navigate("/clerkView");
-            } else {
+        e.preventDefault()
+        try{
+            const response = await axios.get('http://localhost:8080/api/clerk/logInAsClerk', {params: clerk})
+            if(response.status == 200){
+                navigate('/clerkView')
+            }else{
                 alert(response.data)
             }
-        } catch (error) {
-            alert(error)
+        }catch(error){
+            console.log(" ERROR MESSAGE: " + error)
         }
-    };
+    }
 
 
     const loadContent = () => {

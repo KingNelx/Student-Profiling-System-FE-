@@ -6,8 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import StudentTable from "../Student/StudentTable";
 import Accordions from "../Pages/Accordions";
-
-
+import Accordion from 'react-bootstrap/Accordion';
 
 const AdminView = () => {
 
@@ -62,16 +61,19 @@ const AdminView = () => {
                 <Button variant="primary" onClick={render} className="mt-5 mx-5">
                     DASHBOARD
                 </Button>
-            
+
                 <Offcanvas show={show} onHide={handleClose} backdrop="static">
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>DASHBOARD</Offcanvas.Title>
+                        <Accordion.Header className='mx-auto'>
+                            <span class="material-icons">dashboard</span>
+                            DASHBOARD
+                        </Accordion.Header>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Accordions />
                     </Offcanvas.Body>
                 </Offcanvas>
-                
+
             </section>
 
             <div className="container mt-5">

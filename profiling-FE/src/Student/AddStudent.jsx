@@ -20,6 +20,22 @@ const AddStudent = () => {
         course: "",
         email: "",
         contactNumber: "",
+        elementarySchool: "",
+        elementaryYearGraduated: "",
+        elementaryAcademicAward: "",
+        elementarySchoolAddress: "",
+        highSchool: "",
+        highSchoolYearGraduated: "",
+        highSchoolAcademicAward: "",
+        highSchoolAddress: "",
+        seniorHighSchool: "",
+        seniorHighSchoolYearGraduated: "",
+        seniorHighSchoolAcademicAward: "",
+        seniorHighSchoolAddress: "",
+        collegeSchool: "",
+        collegeYearGraduated: "",
+        collegeAcademicAward: "",
+        collegeAddress: ""
     })
 
     const { studentID, firstName, lastName, age, gender, course, email, contactNumber } = studentData
@@ -147,6 +163,51 @@ const AddStudent = () => {
                         />
                     </Form.Group>
                 </Row>
+
+                {/* // elementary school */}
+
+
+                <Row className="mb-3">
+                    <p className='text-center'> EDUCATIONAL BACKGROUND </p>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>STUDENT ID</Form.Label>
+                        <Form.Control type={"text"}
+                            name="studentID"
+                            value={studentID}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>FIRST NAME</Form.Label>
+                        <Form.Control type={"text"}
+                            name="firstName"
+                            value={firstName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>LASTNAME</Form.Label>
+                        <Form.Control type={"text"}
+                            name="lastName"
+                            value={lastName}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AGE</Form.Label>
+                        <Form.Control type={"text"}
+                            name="age"
+                            value={age}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                </Row>
+
                 <Button variant="outline-primary" type="submit" onClick={saveData}>SUBMIT</Button>
             </Form>
         </div>

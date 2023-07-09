@@ -38,7 +38,12 @@ const AddStudent = () => {
         collegeAddress: ""
     })
 
-    const { studentID, firstName, lastName, age, gender, course, email, contactNumber } = studentData
+    const { studentID, firstName, lastName, age, gender, course, email, contactNumber,
+        elementarySchool, elementaryYearGraduated, elementaryAcademicAward, elementarySchoolAddress,
+        highSchool, highSchoolYearGraduated, highSchoolAcademicAward, highSchoolAddress,
+        seniorHighSchool, seniorHighSchoolYearGraduated, seniorHighSchoolAcademicAward, seniorHighSchoolAddress,
+        collegeSchool, collegeYearGraduated, collegeAcademicAward, collegeAddress
+    } = studentData
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -172,8 +177,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>ELEMENTARY SCHOOL</Form.Label>
                         <Form.Control type={"text"}
-                            name="studentID"
-                            value={studentID}
+                            name="elementarySchool"
+                            value={elementarySchool}
                             onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
@@ -181,8 +186,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>YEAR GRADUATED</Form.Label>
                         <Form.Control type={"text"}
-                            name="firstName"
-                            value={firstName}
+                            name="elementaryYearGraduated"
+                            value={elementaryYearGraduated}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -190,8 +195,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>AWARD</Form.Label>
                         <Form.Control type={"text"}
-                            name="lastName"
-                            value={lastName}
+                            name="elementaryAcademicAward"
+                            value={elementaryAcademicAward}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -199,8 +204,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>ADDRESS</Form.Label>
                         <Form.Control type={"text"}
-                            name="age"
-                            value={age}
+                            name="elementarySchoolAddress"
+                            value={elementarySchoolAddress}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -211,8 +216,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>HIGH SCHOOL</Form.Label>
                         <Form.Control type={"text"}
-                            name="studentID"
-                            value={studentID}
+                            name="highSchool"
+                            value={highSchool}
                             onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
@@ -220,8 +225,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>YEAR GRADUATED</Form.Label>
                         <Form.Control type={"text"}
-                            name="firstName"
-                            value={firstName}
+                            name="highSchoolYearGraduated"
+                            value={highSchoolYearGraduated}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -229,8 +234,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>AWARD</Form.Label>
                         <Form.Control type={"text"}
-                            name="lastName"
-                            value={lastName}
+                            name="highSchoolAcademicAward"
+                            value={highSchoolAcademicAward}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -238,8 +243,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>ADDRESS</Form.Label>
                         <Form.Control type={"text"}
-                            name="age"
-                            value={age}
+                            name="highSchoolAddress"
+                            value={highSchoolAddress}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -250,8 +255,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>SENIOR HIGH SCHOOL</Form.Label>
                         <Form.Control type={"text"}
-                            name="studentID"
-                            value={studentID}
+                            name="seniorHighSchool"
+                            value={seniorHighSchool}
                             onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
@@ -259,8 +264,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>YEAR GRADUATED</Form.Label>
                         <Form.Control type={"text"}
-                            name="firstName"
-                            value={firstName}
+                            name="seniorHighSchoolYearGraduated"
+                            value={seniorHighSchoolYearGraduated}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -268,17 +273,17 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>AWARD</Form.Label>
                         <Form.Control type={"text"}
-                            name="lastName"
-                            value={lastName}
+                            name="seniorHighSchoolAcademicAward"
+                            value={seniorHighSchoolAcademicAward}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Label>seniorHighSchoolAddress</Form.Label>
                         <Form.Control type={"text"}
                             name="age"
-                            value={age}
+                            value={seniorHighSchoolAddress}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -289,8 +294,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>COLLEGE</Form.Label>
                         <Form.Control type={"text"}
-                            name="studentID"
-                            value={studentID}
+                            name="collegeSchool"
+                            value={collegeSchool}
                             onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
@@ -298,8 +303,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>YEAR GRADUATED</Form.Label>
                         <Form.Control type={"text"}
-                            name="firstName"
-                            value={firstName}
+                            name="collegeYearGraduated"
+                            value={collegeYearGraduated}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -307,8 +312,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>AWARD</Form.Label>
                         <Form.Control type={"text"}
-                            name="lastName"
-                            value={lastName}
+                            name="collegeAcademicAward"
+                            value={collegeAcademicAward}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
@@ -316,8 +321,8 @@ const AddStudent = () => {
                     <Form.Group as={Col} controlId="">
                         <Form.Label>ADDRESS</Form.Label>
                         <Form.Control type={"text"}
-                            name="age"
-                            value={age}
+                            name="collegeAddress"
+                            value={collegeAddress}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>

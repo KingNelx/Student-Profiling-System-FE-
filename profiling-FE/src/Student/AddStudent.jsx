@@ -35,14 +35,23 @@ const AddStudent = () => {
         collegeSchool: "",
         collegeYearGraduated: "",
         collegeAcademicAward: "",
-        collegeAddress: ""
+        collegeAddress: "",
+        fathersName: "",
+        fathersOccupation: "",
+        fathersAge: "",
+        fathersHighestEducation: "",
+        mothersName: "",
+        mothersOccupation: "",
+        mothersAge: "",
+        mothersHighestEducation: ""
     })
 
     const { studentID, firstName, lastName, age, gender, course, email, contactNumber,
         elementarySchool, elementaryYearGraduated, elementaryAcademicAward, elementarySchoolAddress,
         highSchool, highSchoolYearGraduated, highSchoolAcademicAward, highSchoolAddress,
         seniorHighSchool, seniorHighSchoolYearGraduated, seniorHighSchoolAcademicAward, seniorHighSchoolAddress,
-        collegeSchool, collegeYearGraduated, collegeAcademicAward, collegeAddress
+        collegeSchool, collegeYearGraduated, collegeAcademicAward, collegeAddress, fathersName, fathersOccupation,
+        fathersAge, fathersHighestEducation, mothersName, mothersOccupation, mothersAge, mothersHighestEducation    
     } = studentData
 
     const onInputChange = (e) => {
@@ -280,9 +289,9 @@ const AddStudent = () => {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>seniorHighSchoolAddress</Form.Label>
+                        <Form.Label>ADDRESS</Form.Label>
                         <Form.Control type={"text"}
-                            name="age"
+                            name="seniorHighSchoolAddress"
                             value={seniorHighSchoolAddress}
                             onChange={(e) => onInputChange(e)}
                         />
@@ -326,8 +335,49 @@ const AddStudent = () => {
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
+                </Row>
+
+                <Row className="mb-3">
+                    <p className='text-center'> FAMILY BACKGROUND </p>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>FATHERS NAME</Form.Label>
+                        <Form.Control type={"text"}
+                            name="fathersName"
+                            value={fathersName}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>OCCUPATION</Form.Label>
+                        <Form.Control type={"text"}
+                            name="fathersOccupation"
+                            value={fathersOccupation}
+                            onChange={(e) => onInputChange(e)}   
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AGE</Form.Label>
+                        <Form.Control type={"text"}
+                            name="fathersAge"
+                            value={fathersAge}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Control type={"text"}
+                            name="elementarySchoolAddress"
+                            value={elementarySchoolAddress}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
 
                 </Row>
+
 
                 <Button variant="outline-primary" type="submit" onClick={saveData}>SUBMIT</Button>
             </Form>

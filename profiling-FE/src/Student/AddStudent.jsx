@@ -348,7 +348,6 @@ const AddStudent = () => {
                             onChange={(e) => onInputChange(e)} />
                     </Form.Group>
 
-
                     <Form.Group as={Col} controlId="">
                         <Form.Label>OCCUPATION</Form.Label>
                         <Form.Control type={"text"}
@@ -363,21 +362,59 @@ const AddStudent = () => {
                         <Form.Control type={"text"}
                             name="fathersAge"
                             value={fathersAge}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={(e) => onInputChange(e)}   
                         />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="">
-                        <Form.Label>ADDRESS</Form.Label>
+                        <Form.Label>HIGHEST ATTAINMENT</Form.Label>
                         <Form.Control type={"text"}
-                            name="elementarySchoolAddress"
-                            value={elementarySchoolAddress}
+                            name="fathersHighestEducation"
+                            value={fathersHighestEducation}
                             onChange={(e) => onInputChange(e)}
                         />
                     </Form.Group>
 
                 </Row>
 
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>MOTHERS NAME</Form.Label>
+                        <Form.Control type={"text"}
+                            name="mothersName"
+                            value={mothersName}
+                            onChange={(e) => onInputChange(e)} />
+                    </Form.Group>
+
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>OCCUPATION</Form.Label>
+                        <Form.Control type={"text"}
+                            name="mothersOccupation"
+                            value={mothersOccupation}
+                            onChange={(e) => onInputChange(e)}   
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>AGE</Form.Label>
+                        <Form.Control type={"text"}
+                            name="mothersAge"
+                            value={mothersAge}
+                            onChange={(e) => onInputChange(e)}   
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="">
+                        <Form.Label>HIGHEST ATTAINMENT</Form.Label>
+                        <Form.Control type={"text"}
+                            name="mothersHighestEducation"
+                            value={mothersHighestEducation}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </Form.Group>
+
+                </Row>
 
                 <Button variant="outline-primary" type="submit" onClick={saveData}>SUBMIT</Button>
             </Form>

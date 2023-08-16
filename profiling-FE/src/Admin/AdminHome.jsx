@@ -1,12 +1,18 @@
+import NavTitle from "../Components/NavTitle";
+import AdminSignIn from "./AdminSignIn";
 
 const AdminHome = () => {
 
-
-    return ( 
+    return (
         <div>
-          TEST 123
+           {<NavTitle />}
+
+           <section className='mt-5'>
+            {<AdminSignIn />}
+           </section>
         </div>
-     );
+        
+    );
 }
- 
+
 export default AdminHome;

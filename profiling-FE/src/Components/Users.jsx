@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import logo from '../Images/user.jpg'
 import { Link } from 'react-router-dom'
 import Swal from "sweetalert2";
+import Footer from './Footer';
 
 const Users = () => {
 
@@ -74,6 +75,9 @@ const Users = () => {
                             </Card.Body>
                         </Card></Col>
                 </Row>
+                <footer>
+                    <Footer />
+                </footer>
             </Container>
         </div>
     );

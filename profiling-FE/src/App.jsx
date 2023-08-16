@@ -2,6 +2,12 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Components/Home';
+import AdminView from './Admin/AdminView';
+import AdminSignIn from './Admin/AdminSignIn';
+import AdminHome from './Admin/AdminHome';
+import ClerkSignUp from './Clerk/ClerkSignUp';
+import ClerkSignIn from './Clerk/ClerkSignIn';
+import ClerkHome from './Clerk/ClerkHome';
 
 
 const App = () => {
@@ -9,8 +15,17 @@ const App = () => {
         <div>
             <Router>
                 <Routes>
-                   <Route path="/" element={<Home />} />
-                </Routes>
+                    <Route path="/" element={<Home />} />
+
+                    <Route path="/adminSignUp" element={<AdminView />} />
+                    <Route path="/adminSignIn" element={<AdminSignIn />} />
+                    <Route path="/adminHome" element={<AdminHome />} />
+                    
+                    <Route path="/clerkSignUp" element={<ClerkSignUp />} />
+                    <Route path="/clerkSignIn" element={<ClerkSignIn />} />
+                    <Route path="/clerkHome" element={<ClerkHome />} />
+
+                </Routes>   
             </Router>
         </div>
     );

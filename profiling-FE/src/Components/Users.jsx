@@ -71,7 +71,7 @@ const Users = () => {
                             <Card.Body>
                                 <Card.Title>CLERK</Card.Title>
 
-                                <Button variant="outline-primary">SELECT</Button>
+                                <Link to="/clerkHome"><Button variant="outline-primary" onClick={loading}>SELECT</Button></Link>
                             </Card.Body>
                         </Card></Col>
                 </Row>

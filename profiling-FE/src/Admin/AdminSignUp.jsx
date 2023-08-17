@@ -3,8 +3,36 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import NavTitle from '../Components/NavTitle';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AdminSignUp = () => {
+
+    const loading = () => {
+        let timerInterval
+        Swal.fire({
+            title: 'LOADING PLEASE WAIT!',
+            html: '..............',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
+
     return (
         <div>
             <>
@@ -48,6 +76,7 @@ const AdminSignUp = () => {
                             <Form.Control type="password" />
                         </FloatingLabel>
                         <Button variant='outline-primary'>Sign Up</Button> {' '}
+                        <Link to="/adminHome"><Button variant='outline-success' onClick={loading}>Go Back</Button></Link>
                     </Form>
                 </Container>
             </>

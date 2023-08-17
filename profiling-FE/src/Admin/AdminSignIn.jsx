@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import Footer from '../Components/Footer';
 import Swal from 'sweetalert2'
 
 const AdminSignIn = () => {
@@ -40,20 +39,6 @@ const AdminSignIn = () => {
                     <Form>
                         <FloatingLabel
                             controlId="floatingInput"
-                            label="First name"
-                            className="mb-4"
-                        >
-                            <Form.Control type="text" />
-                        </FloatingLabel>
-                        <FloatingLabel
-                            controlId="floatingInput"
-                            label="Last name"
-                            className="mb-4"
-                        >
-                            <Form.Control type="text" />
-                        </FloatingLabel>
-                        <FloatingLabel
-                            controlId="floatingInput"
                             label="Email"
                             className="mb-4"
                         >
@@ -80,9 +65,7 @@ const AdminSignIn = () => {
                             { color: "red" }
                         } onClick={loading}>No Account? Sign up now !.</Link>
                     </Form>
-                    <footer>
-                        <Footer />
-                    </footer>
+                    
                 </Container>
             </>
         </div>

@@ -4,9 +4,10 @@ import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import NavTitle from '../Components/NavTitle';
 import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import axios from "axios"
 import { useState } from 'react';
+import AccountSaved from '../Components/AccountSaved';
+import Loading from '../Components/Loading';
 
 const AdminSignUp = () => {
 
@@ -19,6 +20,7 @@ const AdminSignUp = () => {
         userName: "",
         password: ""
     })
+    
 
     const { firstName, lastName, email, userName, password } = admin
 
@@ -30,47 +32,25 @@ const AdminSignUp = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:8080/admin/create-acount", admin)
+            const response = await axios.post("http://localhost:8080/admin/create-account", admin)
             if (response.status === 200) {
                 navigate("/adminHome")
                 window.location.reload()
             }
         } catch (error) {
-            alert(" ERROR MESSAGE: " + error)
+            alert(" EMAIL and USERNAME ALREADY EXIST ")
+            console.log(error)
         }
     }
 
-    const loading = () => {
-        let timerInterval
-        Swal.fire({
-            title: 'LOADING PLEASE WAIT!',
-            html: '..............',
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
-            },
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-            }
-        })
-    }
+  
 
     return (
         <div>
             <>
                 {<NavTitle />}
                 <Container className='mt-5'>
-                    <Form onSubmit={(e) => onSubmit(e)}>
+                    <Form onSubmit={(e) => onSubmit(e)} >
                         <FloatingLabel
                             controlId="floatingInput"
                             label="First name"
@@ -82,6 +62,7 @@ const AdminSignUp = () => {
                                 name="firstName"
                                 required
                                 onChange={(e) => onInputChange(e)}
+                               
                             />
                         </FloatingLabel>
                         <FloatingLabel
@@ -137,8 +118,8 @@ const AdminSignUp = () => {
                                 onChange={(e) => onInputChange(e)}
                             />
                         </FloatingLabel>
-                        <Button variant='outline-primary' type="submit">Sign Up</Button> {' '}
-                        <Link to="/adminHome"><Button variant='outline-success' onClick={loading}>Go Back</Button></Link>
+                        <Button variant='outline-primary' type="submit" onClick={AccountSaved}>Sign Up</Button> {' '}
+                        <Link to="/adminHome"><Button variant='outline-success' onClick={Loading}>Go Back</Button></Link>
                     </Form>
                 </Container>
             </>

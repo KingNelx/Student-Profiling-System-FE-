@@ -5,35 +5,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 import logo from '../Images/user.jpg'
 import { Link } from 'react-router-dom'
-import Swal from "sweetalert2";
 import Footer from './Footer';
+import Loading from './Loading';
 
 const Users = () => {
 
-    const loading = () => {
-        let timerInterval
-        Swal.fire({
-            title: 'LOADING PLEASE WAIT!',
-            html: '..............',
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
-            },
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-            }
-        })
-    }
 
     return (
         <div>
@@ -47,7 +23,7 @@ const Users = () => {
                             <Card.Body>
                                 <Card.Title>ADMIN</Card.Title>
 
-                                <Link to="/adminHome"><Button variant="outline-primary"onClick={loading} >SELECT</Button></Link>
+                                <Link to="/adminHome"><Button variant="outline-primary"onClick={Loading} >SELECT</Button></Link>
                             </Card.Body>
                         </Card></Col>
 
@@ -71,7 +47,7 @@ const Users = () => {
                             <Card.Body>
                                 <Card.Title>CLERK</Card.Title>
 
-                                <Link to="/clerkHome"><Button variant="outline-primary" onClick={loading}>SELECT</Button></Link>
+                                <Link to="/clerkHome"><Button variant="outline-primary" onClick={Loading}>SELECT</Button></Link>
                             </Card.Body>
                         </Card></Col>
                 </Row>

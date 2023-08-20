@@ -4,33 +4,10 @@ import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import Loading from '../Components/Loading';
 
 const ClerkSignIn = () => {
 
-    const loading = () => {
-        let timerInterval
-        Swal.fire({
-            title: 'LOADING PLEASE WAIT!',
-            html: '..............',
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
-            },
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-            }
-        })
-    }
 
     return (
         <div>
@@ -60,10 +37,10 @@ const ClerkSignIn = () => {
                             <Form.Control type="password" />
                         </FloatingLabel>
                         <Button variant='outline-primary'>Sign in</Button> {' '}
-                        <Link to="/"><Button variant='outline-success' onClick={loading}>Go Back</Button> {' '}</Link>
+                        <Link to="/"><Button variant='outline-success' onClick={Loading}>Go Back</Button> {' '}</Link>
                         <Link to="/clerkSignUp" style={
                             { color: "red" }
-                        } onClick={loading}>No Account? Sign up now !.</Link>
+                        } onClick={Loading}>No Account? Sign up now !.</Link>
                     </Form>
                     
                 </Container>

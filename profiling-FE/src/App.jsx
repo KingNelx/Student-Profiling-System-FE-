@@ -8,6 +8,7 @@ import ClerkSignUp from './Clerk/ClerkSignUp';
 import ClerkSignIn from './Clerk/ClerkSignIn';
 import ClerkHome from './Clerk/ClerkHome';
 import AdminSignUp from './Admin/AdminSignUp';
+import AdminView from './Admin/AdminView';
 
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
                     <Route path="/adminSignUp" element={<AdminSignUp />} />
                     <Route path="/adminSignIn" element={<AdminSignIn />} />
                     <Route path="/adminHome" element={<AdminHome />} />
-                    
+                    <Route path="/adminView" element={<AdminView />} />
+
                     <Route path="/clerkSignUp" element={<ClerkSignUp />} />
                     <Route path="/clerkSignIn" element={<ClerkSignIn />} />
                     <Route path="/clerkHome" element={<ClerkHome />} />

@@ -1,7 +1,7 @@
 const AdminView = () => {
     return ( 
         <div>
-            
+            JONEL POGI
         </div>
      );
 }

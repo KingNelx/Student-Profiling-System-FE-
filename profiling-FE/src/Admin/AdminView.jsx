@@ -1,7 +1,9 @@
+import NavTitle from "../Components/NavTitle";
+
 const AdminView = () => {
     return ( 
         <div>
-            JONEL POGI
+           <NavTitle />
         </div>
      );
 }

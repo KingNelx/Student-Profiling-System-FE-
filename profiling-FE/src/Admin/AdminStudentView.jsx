@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Accordion from 'react-bootstrap/Accordion';
 import Navbar from 'react-bootstrap/Navbar';
+import Modal from 'react-bootstrap/Modal';
 
 const AdminStudentView = () => {
 
@@ -23,46 +24,47 @@ const AdminStudentView = () => {
                     DASHBOARD
                 </Button>
             </div>
-            
+
 
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>DASHBOARD</Offcanvas.Title>
+                    <Offcanvas.Title className='mx-auto'>DASHBOARD</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Accordion>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>ADD NEW STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-plus mx-auto"></i>
+                                ADD NEW STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>ALL MALE STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-male mx-auto"></i>MALE STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
-                            <Accordion.Header>ALL FEMALE STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-female mx-auto"></i>FEMALE STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">
-                            <Accordion.Header>BSIT STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSIT STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="4">
-                            <Accordion.Header>BSIS STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSIS STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="5">
-                            <Accordion.Header>BSCS STUDENTS</Accordion.Header>
+                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSCS STUDENTS</Accordion.Header>
                             <Accordion.Body>
                                 TEST
                             </Accordion.Body>
@@ -71,7 +73,7 @@ const AdminStudentView = () => {
                     <Link to='/'> Log out </Link>
                 </Offcanvas.Body>
             </Offcanvas>
-            
+
             <div className='container text-center mt-5'>
                 <Table striped>
                     {

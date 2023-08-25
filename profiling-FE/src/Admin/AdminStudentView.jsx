@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Accordion from 'react-bootstrap/Accordion';
-import Navbar from 'react-bootstrap/Navbar';
-import Modal from 'react-bootstrap/Modal';
+import Loading from '../Components/Loading';
+import ModalForMale from '../Components/ModalForMale';
 
 const AdminStudentView = () => {
 
@@ -15,6 +15,22 @@ const AdminStudentView = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const loadAllData = async () => {
+        const response = await axios.get('http://localhost:8080/admin/get-students');
+        try {
+            if (response.status === 200) {
+                setStudent(response.data)
+            }
+        } catch (e) {
+            console.log(" ERROR MESSAGE: " + e);
+            alert(" ERROR MESSAGE: " + e);
+        }
+    }
+
+    useEffect(() => {
+        loadAllData();
+    }, [])
 
     return (
         <>
@@ -28,53 +44,60 @@ const AdminStudentView = () => {
 
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title className='mx-auto'>DASHBOARD</Offcanvas.Title>
+                    <Offcanvas.Title className='mx-auto'><i class="fas fa-list mx-auto"></i>DASHBOARD</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Accordion>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header><i class="fas fa-plus mx-auto"></i>
+                            <Accordion.Header className="mx-auto">
                                 ADD NEW STUDENTS</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Body className="text-center">
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header><i class="fas fa-male mx-auto"></i>MALE STUDENTS</Accordion.Header>
-                            <Accordion.Body>
-                                TEST
+                            <Accordion.Header>MALE STUDENTS</Accordion.Header>
+                            <Accordion.Body className="text-center">
+                            <ModalForMale />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
-                            <Accordion.Header><i class="fas fa-female mx-auto"></i>FEMALE STUDENTS</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Header>FEMALE STUDENTS</Accordion.Header>
+                            <Accordion.Body className="text-center">
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">
-                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSIT STUDENTS</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Header>BSIT STUDENTS</Accordion.Header>
+                            <Accordion.Body className="text-center">
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="4">
-                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSIS STUDENTS</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Header>BSIS STUDENTS</Accordion.Header>
+                            <Accordion.Body className="text-center">
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="5">
-                            <Accordion.Header><i class="fas fa-list mx-auto"></i>BSCS STUDENTS</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Header>BSCS STUDENTS</Accordion.Header>
+                            <Accordion.Body className="text-center">
                                 TEST
                             </Accordion.Body>
                         </Accordion.Item>
+                        <Accordion.Item eventKey="6">
+                            <Accordion.Header>SETTINGS</Accordion.Header>
+                            <Accordion.Body className="text-center">
+                                <Link to='/'>
+                                    <Button variant='outline-primary' onClick={Loading}>LOG OUT</Button>
+                                </Link>
+                            </Accordion.Body>
+                        </Accordion.Item>
                     </Accordion>
-                    <Link to='/'> Log out </Link>
                 </Offcanvas.Body>
             </Offcanvas>
 
-            <div className='container text-center mt-5'>
+            <div className='container text-center mt-3'>
                 <Table striped>
                     {
                         student.length > 0 ? (
@@ -88,11 +111,11 @@ const AdminStudentView = () => {
                                 </tr>
                             </thead><tbody>
                                     {student.map((value, index) => (
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                        <tr key={index}>
+                                            <td>{index+1}</td>
+                                            <td>{value.firstName}</td>
+                                            <td>{value.lastName}</td>
+                                            <td>{value.gender}</td>
                                             <td>
                                                 <Button variant='outline-primary'><i class="fas fa-eye"></i></Button>
                                                 <Button variant='outline-success' className='mx-2'><i class="fas fa-recycle"></i></Button>

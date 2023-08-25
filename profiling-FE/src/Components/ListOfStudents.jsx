@@ -11,7 +11,7 @@ const ListOfStudents = () => {
             <Row>
                 <Col>
                     <Card style={{ width: '18rem', margin: "auto" }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <i class="fas fa-list mx-auto mt-2"></i>
                         <Card.Body>
                             <Card.Title>MALE STUDENTS</Card.Title>
                             <Card.Text>
@@ -24,7 +24,7 @@ const ListOfStudents = () => {
 
                 <Col>
                     <Card style={{ width: '18rem', margin: "auto" }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                    <i class="fas fa-list mx-auto mt-2"></i>
                         <Card.Body>
                             <Card.Title>FEMALE STUDENTS</Card.Title>
                             <Card.Text>
@@ -37,7 +37,7 @@ const ListOfStudents = () => {
 
                 <Col>
                     <Card style={{ width: '18rem' ,margin: "auto"}}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <i class="fas fa-list mx-auto mt-2"></i>
                         <Card.Body>
                             <Card.Title>ALL STUDENTS</Card.Title>
                             <Card.Text>

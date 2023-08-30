@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AllMales from './AllMales';
+import AllFemales from './AllFemales';
 
-const ModalForMale = () => {
+const ModalForFemale = () => {
 
     const [show, setShow] = useState(false);
 
@@ -16,7 +16,7 @@ const ModalForMale = () => {
         <div>
             <>
                 <Button variant="outline-primary" onClick={handleShow}>
-                    MALE STUDENTS
+                    FEMALE STUDENTS
                 </Button>
 
                 <Modal
@@ -30,7 +30,7 @@ const ModalForMale = () => {
                         <Modal.Title>MALE STUDENTS</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                       <AllMales />
+                       <AllFemales />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
@@ -43,4 +43,4 @@ const ModalForMale = () => {
     );
 }
 
-export default ModalForMale;
+export default ModalForFemale;

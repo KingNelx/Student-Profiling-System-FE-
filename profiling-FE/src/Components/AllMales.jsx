@@ -50,7 +50,7 @@ const AllMales = () => {
                         </tbody>
                     </Table>
                 ) : (
-                    <p> NO DATA </p>
+                    <p> NO DATA AVAILABLE </p>
                 )
             }
         </div>

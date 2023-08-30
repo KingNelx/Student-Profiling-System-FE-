@@ -7,6 +7,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Accordion from 'react-bootstrap/Accordion';
 import Loading from '../Components/Loading';
 import ModalForMale from '../Components/ModalForMale';
+import ModalForFemale from '../Components/ModalForFemale';
 
 const AdminStudentView = () => {
 
@@ -64,7 +65,7 @@ const AdminStudentView = () => {
                         <Accordion.Item eventKey="2">
                             <Accordion.Header>FEMALE STUDENTS</Accordion.Header>
                             <Accordion.Body className="text-center">
-                                TEST
+                               <ModalForFemale />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">

@@ -1,9 +1,56 @@
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import Table from 'react-bootstrap/Table';
+
 const AllFemales = () => {
-    return ( 
-        <div>
-            
+
+    const [female, setFemale] = useState([])
+
+    const loadData = async () => {
+        const response = await axios.get();
+        try {
+            if (response.status === 200) {
+                setFemale(response.data)
+            }
+        } catch (e) {
+            alert(" ERROR MESSAGE: " + e)
+            console.log(" ERROR MESSAGE: " + e);
+        }
+    }
+
+
+    useEffect(() => {
+        loadData();
+    })
+
+    return (
+        <div className="text-center">
+           {
+            female.length > 0 ? (
+                <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </Table>
+            ):(
+                <p> NO DATA AVAILABLE </p>
+            )
+           }
         </div>
-     );
+    );
 }
- 
+
 export default AllFemales;

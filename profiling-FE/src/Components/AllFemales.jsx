@@ -25,30 +25,34 @@ const AllFemales = () => {
 
     return (
         <div className="text-center">
-           {
-            female.length > 0 ? (
-                <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </Table>
-            ):(
-                <p> NO DATA AVAILABLE </p>
-            )
-           }
+            {
+                female.length > 0 ? (
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                female.map((value, index) => {
+                                    <tr key={index}>
+                                        <td>{index+1}</td>
+                                        <td>{value.firstName}</td>
+                                        <td>{value.lastName}</td>
+                                        <td>{value.age}</td>
+                                    </tr>
+                                })
+                            }
+                        </tbody>
+                    </Table>
+                ) : (
+                    <p> NO DATA AVAILABLE </p>
+                )
+            }
         </div>
     );
 }

@@ -27,7 +27,7 @@ const ModalForFemale = () => {
                     size="lg"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>MALE STUDENTS</Modal.Title>
+                        <Modal.Title>FEMALE STUDENTS</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                        <AllFemales />

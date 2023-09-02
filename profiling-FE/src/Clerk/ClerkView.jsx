@@ -1,7 +1,7 @@
 const ClerkView = () => {
     return (
         <div>
-            
+            JONEL POGI
         </div>
     );
 }

@@ -8,6 +8,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Loading from '../Components/Loading';
 import ModalForMale from '../Components/ModalForMale';
 import ModalForFemale from '../Components/ModalForFemale';
+import ModalPostStudent from '../Components/ModalPostStudent';
 
 const AdminStudentView = () => {
 
@@ -53,7 +54,7 @@ const AdminStudentView = () => {
                             <Accordion.Header className="mx-auto">
                                 ADD NEW STUDENTS</Accordion.Header>
                             <Accordion.Body className="text-center">
-                                TEST
+                                <ModalPostStudent />
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">

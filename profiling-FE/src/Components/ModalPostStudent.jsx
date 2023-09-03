@@ -31,11 +31,6 @@ const ModalPostStudent = () => {
                     <Modal.Body>
                       <AddStudent />
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
                 </Modal>
             </>
         </div>

@@ -118,7 +118,7 @@ const AdminStudentView = () => {
                                             <td>{value.firstName}</td>
                                             <td>{value.lastName}</td>
                                             <td>{value.gender}</td>
-                                            <td>
+                                            <td>                    
                                                 <Button variant='outline-primary'><i class="fas fa-eye"></i></Button>
                                                 <Button variant='outline-success' className='mx-2'><i class="fas fa-recycle"></i></Button>
                                                 <Button variant='outline-danger'><i class="fas fa-trash"></i></Button>

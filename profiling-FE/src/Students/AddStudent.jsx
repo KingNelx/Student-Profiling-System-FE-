@@ -4,6 +4,9 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import AddContent from "../Components/AddContent";
 
 const AddStudent = () => {
   const [student, setStudents] = useState({
@@ -11,38 +14,42 @@ const AddStudent = () => {
     lastName: "",
     gender: "",
     age: "",
-    elementarySchool: "",
-    elementarySchoolYearStarted: "",
-    elementarySchoolYearEnded: "",
-    elementarySchoolAddress: "",
-    highSchool: "",
-    highSchoolYearStarted: "",
-    highSchoolYearEnded: "",
-    highSchoolAddress: "",
-    seniorHighSchool: "",
-    seniorHighYearStarted: "",
-    seniorHighYearEnded: "",
-    seniorHighAddress: "",
-    college: "",
-    collegeYearStarted: "",
-    collegeYearEnded: "",
-    collegeAddress: "",
-    fathersFirstName: "",
-    fathersLastName: "",
-    fathersAddress: "",
-    fathersCivilStatus: "",
-    fathersAge: "",
-    fathersContactNumber: "",
-    fathersOccupation: "",
-    fathersHighestEducation: "",
-    mothersFirstName: "",
-    mothersLastName: "",
-    mothersAddress: "",
-    mothersCivilStatus: "",
-    mothersAge: "",
-    mothersContactNumber: "",
-    mothersOccupation: "",
-    mothersHighestEducation: "",
+    studentEducationalBackground: {
+      elementarySchool: "",
+      elementarySchoolYearStarted: "",
+      elementarySchoolYearEnded: "",
+      elementarySchoolAddress: "",
+      highSchool: "",
+      highSchoolYearStarted: "",
+      highSchoolYearEnded: "",
+      highSchoolAddress: "",
+      seniorHighSchool: "",
+      seniorHighYearStarted: "",
+      seniorHighYearEnded: "",
+      seniorHighAddress: "",
+      college: "",
+      collegeYearStarted: "",
+      collegeYearEnded: "",
+      collegeAddress: "",
+    },
+    studentFamilyBackground: {
+      fathersFirstName: "",
+      fathersLastName: "",
+      fathersAddress: "",
+      fathersCivilStatus: "",
+      fathersAge: "",
+      fathersContactNumber: "",
+      fathersOccupation: "",
+      fathersHighestEducation: "",
+      mothersFirstName: "",
+      mothersLastName: "",
+      mothersAddress: "",
+      mothersCivilStatus: "",
+      mothersAge: "",
+      mothersContactNumber: "",
+      mothersOccupation: "",
+      mothersHighestEducation: "",
+    }
   });
 
   const {
@@ -85,10 +92,29 @@ const AddStudent = () => {
   } = student;
 
 
-  const updateFormField = (e) => {
-    const {name, value} = e.target
-    setStudents({ ... student, [name]: value.toUpperCase()})
+  const navigate = useNavigate()
+
+  const updateFormFields = (e) => {
+    e.preventDefault()
+    const { name, value } = e.target
+    setStudents({ ...student, [name]: value.toUpperCase() })
   }
+
+
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await axios.post('http://localhost:8080/admin/add-student', student)
+      if (result.status === 200) {
+        window.location.reload()
+        navigate('/adminView')
+      }
+    } catch (e) {
+      alert(" ERROR MESSAGE: " + e)
+      console.log(" ERROR MESSAGE: " + e)
+    }
+  }
+
   return (
     <div
       style={{
@@ -97,7 +123,7 @@ const AddStudent = () => {
         overflowX: "hidden",
       }}
     >
-      <Form>
+      <Form onSubmit={(e) => formSubmit(e)}>
         <Row>
           <p className="text-center fw-bold"> PERSONAL DETAILS </p>
 
@@ -112,6 +138,7 @@ const AddStudent = () => {
                 placeholder="Firstname"
                 value={firstName}
                 name="firstName"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -120,14 +147,15 @@ const AddStudent = () => {
             <FloatingLabel
               controlId="floatingInput"
               label="LASTNAME"
-              className="mb0-3"
+              className="mb-3"
             >
               <Form.Control
                 type={"text"}
                 placeholder="Lastname"
                 value={lastName}
                 name="lastName"
-                
+                onChange={(e) => updateFormFields(e)}
+
               />
             </FloatingLabel>
           </Col>
@@ -143,6 +171,7 @@ const AddStudent = () => {
                 placeholder="Gender"
                 value={gender}
                 name="gender"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -153,11 +182,12 @@ const AddStudent = () => {
               label="AGE"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"}
-              placeholder="Age"
-              value={age}
-              name="age"
+              <Form.Control
+                type={"text"}
+                placeholder="Age"
+                value={age}
+                name="age"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -172,12 +202,13 @@ const AddStudent = () => {
               label="ELEMENTARY SCHOOL"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"}
-               placeholder="Elementary School"
-               value={elementarySchool}
-               name="elementarySchool"
-               />
+              <Form.Control
+                type={"text"}
+                placeholder="Elementary School"
+                value={elementarySchool}
+                name="elementarySchool"
+                onChange={(e) => updateFormFields(e)}
+              />
             </FloatingLabel>
           </Col>
 
@@ -187,12 +218,13 @@ const AddStudent = () => {
               label="YEAR STARTED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"}
-               placeholder="Year Started"
-               value={elementarySchoolYearStarted}
-               name="elementarySchoolYearStarted"
-               />
+              <Form.Control
+                type={"text"}
+                placeholder="Year Started"
+                value={elementarySchoolYearStarted}
+                name="elementarySchoolYearStarted"
+                onChange={(e) => updateFormFields(e)}
+              />
             </FloatingLabel>
           </Col>
 
@@ -202,11 +234,12 @@ const AddStudent = () => {
               label="YEAR ENDED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Ended" 
-              value={elementarySchoolYearEnded}
-              name="elementarySchoolYearEnded"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Ended"
+                value={elementarySchoolYearEnded}
+                name="elementarySchoolYearEnded"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -217,11 +250,12 @@ const AddStudent = () => {
               label="SCHOOL ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="School Address"
-              value={elementarySchoolAddress}
-              name="elementarySchoolAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="School Address"
+                value={elementarySchoolAddress}
+                name="elementarySchoolAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -234,11 +268,12 @@ const AddStudent = () => {
               label="HIGH SCHOOL"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="High School" 
-              value={highSchool}
-              name="highSchool"
+              <Form.Control
+                type={"text"}
+                placeholder="High School"
+                value={highSchool}
+                name="highSchool"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -249,11 +284,12 @@ const AddStudent = () => {
               label="YEAR STARTED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Started" 
-              value={highSchoolYearStarted}
-              name="highSchoolYearStarted"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Started"
+                value={highSchoolYearStarted}
+                name="highSchoolYearStarted"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -264,11 +300,12 @@ const AddStudent = () => {
               label="YEAR ENDED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Ended" 
-              value={highSchoolYearEnded}
-              name="highSchoolYearEnded"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Ended"
+                value={highSchoolYearEnded}
+                name="highSchoolYearEnded"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -279,11 +316,12 @@ const AddStudent = () => {
               label="SCHOOL ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="School Address"
-              value={highSchoolAddress}
-              name="highSchoolAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="School Address"
+                value={highSchoolAddress}
+                name="highSchoolAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -297,11 +335,12 @@ const AddStudent = () => {
               label="SENIOR SCHOOL"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Senior High School" 
-              value={seniorHighSchool}
-              name="seniorHighSchool"
+              <Form.Control
+                type={"text"}
+                placeholder="Senior High School"
+                value={seniorHighSchool}
+                name="seniorHighSchool"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -312,11 +351,12 @@ const AddStudent = () => {
               label="YEAR STARTED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Started" 
-              value={seniorHighYearStarted}
-              name="seniorHighYearStarted"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Started"
+                value={seniorHighYearStarted}
+                name="seniorHighYearStarted"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -327,11 +367,12 @@ const AddStudent = () => {
               label="YEAR ENDED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Ended" 
-              value={seniorHighYearEnded}
-              name="seniorHighYearEnded"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Ended"
+                value={seniorHighYearEnded}
+                name="seniorHighYearEnded"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -342,11 +383,12 @@ const AddStudent = () => {
               label="SCHOOL ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="School Address"
-              value={seniorHighAddress}
-              name="highSchoolAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="School Address"
+                value={seniorHighAddress}
+                name="seniorHighAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -359,11 +401,12 @@ const AddStudent = () => {
               label="COLLEGE SCHOOL"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="College School" 
-              value={college}
-              name="college"
+              <Form.Control
+                type={"text"}
+                placeholder="College School"
+                value={college}
+                name="college"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -374,11 +417,12 @@ const AddStudent = () => {
               label="YEAR STARTED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Started" 
-              value={collegeYearStarted}
-              name="collegeYearStarted"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Started"
+                value={collegeYearStarted}
+                name="collegeYearStarted"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -389,11 +433,12 @@ const AddStudent = () => {
               label="YEAR ENDED"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Year Ended" 
-              value={collegeYearEnded}
-              name="collegeYearEnded"
+              <Form.Control
+                type={"text"}
+                placeholder="Year Ended"
+                value={collegeYearEnded}
+                name="collegeYearEnded"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -404,11 +449,12 @@ const AddStudent = () => {
               label="SCHOOL ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="School Address" 
-              value={collegeAddress}
-              name="collegeAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="School Address"
+                value={collegeAddress}
+                name="collegeAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -422,11 +468,12 @@ const AddStudent = () => {
               label="FATHERS FIRSTNAME"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Fathers Firstname" 
-              value={fathersFirstName}
-              name="fathersFirstName"
+              <Form.Control
+                type={"text"}
+                placeholder="Fathers Firstname"
+                value={fathersFirstName}
+                name="fathersFirstName"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -437,11 +484,12 @@ const AddStudent = () => {
               label="FATHERS LASTNAME"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Fathers Lastname"
-              vale={fathersLastName}
-              name="fathersLastName"
+              <Form.Control
+                type={"text"}
+                placeholder="Fathers Lastname"
+                value={fathersLastName}
+                name="fathersLastName"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -452,11 +500,12 @@ const AddStudent = () => {
               label="ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Address"
-              value={fathersAddress}
-              name="fathersAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="Address"
+                value={fathersAddress}
+                name="fathersAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -467,11 +516,12 @@ const AddStudent = () => {
               label="CIVIL STATUS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Civil Status" 
-              value={fathersCivilStatus}
-              name="fathersCivilStatus"
+              <Form.Control
+                type={"text"}
+                placeholder="Civil Status"
+                value={fathersCivilStatus}
+                name="fathersCivilStatus"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -484,11 +534,12 @@ const AddStudent = () => {
               label="AGE"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Age" 
-              value={fathersAge}
-              name="fathersAge"
+              <Form.Control
+                type={"text"}
+                placeholder="Age"
+                value={fathersAge}
+                name="fathersAge"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -499,11 +550,12 @@ const AddStudent = () => {
               label="CONTACT NUMBER"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Contact Number" 
-              value={fathersContactNumber}
-              name="fathersContactNumber"
+              <Form.Control
+                type={"text"}
+                placeholder="Contact Number"
+                value={fathersContactNumber}
+                name="fathersContactNumber"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -514,11 +566,12 @@ const AddStudent = () => {
               label="OCCUPATION"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Occupation" 
-              value={fathersOccupation}
-              name="fathersOccupation"
+              <Form.Control
+                type={"text"}
+                placeholder="Occupation"
+                value={fathersOccupation}
+                name="fathersOccupation"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -529,11 +582,12 @@ const AddStudent = () => {
               label="HIGHEST ATTAINMENT"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Highes Attainment" 
-              value={fathersHighestEducation}
-              name="fathersHighestEducation"
+              <Form.Control
+                type={"text"}
+                placeholder="Highes Attainment"
+                value={fathersHighestEducation}
+                name="fathersHighestEducation"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -546,11 +600,12 @@ const AddStudent = () => {
               label="MOTHERS FIRSTNAME"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Mothers Firstname" 
-              value={mothersFirstName}
-              name="mothersFirstName"
+              <Form.Control
+                type={"text"}
+                placeholder="Mothers Firstname"
+                value={mothersFirstName}
+                name="mothersFirstName"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -561,11 +616,12 @@ const AddStudent = () => {
               label="MOTHERS LASTNAME"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Mothers Lastname" 
-              value={mothersLastName}
-              name="mothersLastName"
+              <Form.Control
+                type={"text"}
+                placeholder="Mothers Lastname"
+                value={mothersLastName}
+                name="mothersLastName"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -576,11 +632,12 @@ const AddStudent = () => {
               label="ADDRESS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Address" 
-              value={mothersAddress}
-              name="mothersAddress"
+              <Form.Control
+                type={"text"}
+                placeholder="Address"
+                value={mothersAddress}
+                name="mothersAddress"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -591,11 +648,12 @@ const AddStudent = () => {
               label="CIVIL STATUS"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Civil Status" 
-              value={mothersCivilStatus}
-              name="mothersCivilStatus"
+              <Form.Control
+                type={"text"}
+                placeholder="Civil Status"
+                value={mothersCivilStatus}
+                name="mothersCivilStatus"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -608,11 +666,12 @@ const AddStudent = () => {
               label="AGE"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Age" 
-              value={mothersAge}
-              name="mothersAge"
+              <Form.Control
+                type={"text"}
+                placeholder="Age"
+                value={mothersAge}
+                name="mothersAge"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -623,11 +682,12 @@ const AddStudent = () => {
               label="CONTACT NUMBER"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Contact Number" 
-              value={mothersContactNumber}
-              name="mothersContactNumber"
+              <Form.Control
+                type={"text"}
+                placeholder="Contact Number"
+                value={mothersContactNumber}
+                name="mothersContactNumber"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -638,11 +698,12 @@ const AddStudent = () => {
               label="OCCUPATION"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Occupation" 
-              value={mothersOccupation}
-              name="mothersOccupation"
+              <Form.Control
+                type={"text"}
+                placeholder="Occupation"
+                value={mothersOccupation}
+                name="mothersOccupation"
+                onChange={(e) => updateFormFields(e)}
               />
             </FloatingLabel>
           </Col>
@@ -653,17 +714,19 @@ const AddStudent = () => {
               label="HIGHEST ATTAINMENT"
               className="mb-3"
             >
-              <Form.Control 
-              type={"text"} 
-              placeholder="Highest Attainment" 
-              value={mothersHighestEducation}
-              
+              <Form.Control
+                type={"text"}
+                placeholder="Highest Attainment"
+                value={mothersHighestEducation}
+                name="mothersHighestEducation"
+                onChange={(e) => updateFormFields(e)}
+
               />
             </FloatingLabel>
           </Col>
         </Row>
 
-        <Button type="submit" variant="outline-primary">
+        <Button type="submit" variant="outline-primary" onClick={AddContent}>
           REGISTER
         </Button>
       </Form>

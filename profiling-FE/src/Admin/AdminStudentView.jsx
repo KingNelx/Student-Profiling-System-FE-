@@ -69,24 +69,7 @@ const AdminStudentView = () => {
                                <ModalForFemale />
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="3">
-                            <Accordion.Header>BSIT STUDENTS</Accordion.Header>
-                            <Accordion.Body className="text-center">
-                                TEST
-                            </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item eventKey="4">
-                            <Accordion.Header>BSIS STUDENTS</Accordion.Header>
-                            <Accordion.Body className="text-center">
-                                TEST
-                            </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item eventKey="5">
-                            <Accordion.Header>BSCS STUDENTS</Accordion.Header>
-                            <Accordion.Body className="text-center">
-                                TEST
-                            </Accordion.Body>
-                        </Accordion.Item>
+                        
                         <Accordion.Item eventKey="6">
                             <Accordion.Header>SETTINGS</Accordion.Header>
                             <Accordion.Body className="text-center">

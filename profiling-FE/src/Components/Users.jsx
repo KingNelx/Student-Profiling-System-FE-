@@ -32,7 +32,7 @@ const Users = () => {
                                 <Card.Img variant="top" src={homeLogo} className='shadow-lg' />
                                 <Card.Body>
                                     <Card.Title>CLERK</Card.Title>
-                                    <Link to="/users"><Button variant="primary" onClick={Loading}>SELECT</Button></Link>
+                                    <Link to="/clerkSignIn"><Button variant="primary" onClick={Loading}>SELECT</Button></Link>
                                 </Card.Body>
                             </Card>
                         </Col>

@@ -4,11 +4,11 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import TopNav from '../Components/TopNav'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import Success from '../Components/Success'
 
 const AdminSignIn = () => {
 
@@ -25,7 +25,6 @@ const AdminSignIn = () => {
     const { firstName, lastName, email, userName, password } = admin
 
     const updateFormField = (e) => {
-        e.preventDefault()
         const { name, value } = e.target
         setAdmin({ ...admin, [name]: value.toUpperCase() })
     }
@@ -33,21 +32,20 @@ const AdminSignIn = () => {
     const submitForm = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/admin/create-admin-account'.admin)
+            const response = await axios.post("http://localhost:8080/admin/create-admin-account", admin );
             if (response.status === 200) {
-                window.location.reload()
                 navigate("/adminSignIn")
             }
         } catch (e) {
-            alert(" ERROR MESSAGE: " + e)
-            console.log(" ERROR MESSAGE: " + e)
+            console.log(" ERROR MESSAGE: " + e);
+            alert(" ERROR MESSAGE: " + e);
         }
     }
 
     return (
         <div>
             <TopNav />
-            <Form>
+            <Form onSubmit={(e) => submitForm(e)}>
                 <Container className='mt-5'>
                     <Row>
                         <Col>
@@ -123,7 +121,7 @@ const AdminSignIn = () => {
                             </FloatingLabel>
                         </Col>
                     </Row>
-                    <Button type="submit" variant="outline-primary"> REGISTER </Button>{" "}
+                    <Button type="submit" variant="outline-primary" onClick={Success}> REGISTER </Button>{" "}
                 </Container>
             </Form>
         </div>

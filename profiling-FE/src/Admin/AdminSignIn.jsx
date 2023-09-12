@@ -7,14 +7,47 @@ import { Link } from 'react-router-dom'
 import TopNav from "../Components/TopNav";
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel'
 import Loading from '../Components/Loading'
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const AdminSignIn = () => {
+
+
+    const nav = useNavigate();
+
+    const [adminLog, setAdminLog] = useState({
+        email: "",
+        userName: "",
+        password: ""
+    })
+
+    const { email, userName, password } = adminLog
+
+    const updateFormField = (e) => {
+        const { name, value } = e.target
+        setAdminLog({ ...adminLog, [name]: value.toUpperCase() });
+    }
+
+    const submitForm = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.get('http://localhost:8080/admin/admin-login', {params: adminLog})
+            if (response.status === 200) {
+                nav("/adminHome")
+            }
+        } catch (e) {
+            alert(" ERROR MESSAGE: " + e);
+            console.log(" ERROR MESSAGE: " + e);
+        }
+    }
+
     return (
         <div>
             <TopNav />
             <div className='text-center'>
                 <h3 className='mt-5'>ADMIN SIGN IN</h3>
-                <Form>
+                <Form onSubmit={(e) => submitForm(e)}>
                     <Container>
                         <Row style={{ width: '50rem', margin: 'auto', marginTop: '10vh' }}>
                             <Col>
@@ -23,7 +56,12 @@ const AdminSignIn = () => {
                                     label='EMAIL ADDRESS'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='EMAIL ADDRESS' />
+                                    <Form.Control
+                                        type={"text"}
+                                        value={email}
+                                        name="email"
+                                        onChange={(e) => updateFormField(e)}
+                                        placeholder='EMAIL ADDRESS' />
                                 </FloatingLabel>
                             </Col>
 
@@ -33,7 +71,12 @@ const AdminSignIn = () => {
                                     label='USER NAME'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='USER NAME' />
+                                    <Form.Control
+                                        type={"text"}
+                                        value={userName}
+                                        name="userName"
+                                        onChange={(e) => updateFormField(e)}
+                                        placeholder='USER NAME' />
                                 </FloatingLabel>
                             </Col>
 
@@ -43,14 +86,19 @@ const AdminSignIn = () => {
                                     label='PASSWORD'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='PASSWORD' />
+                                    <Form.Control
+                                        type={"text"}
+                                        value={password}
+                                        name="password"
+                                        onChange={(e) => updateFormField(e)}
+                                        placeholder='PASSWORD' />
                                 </FloatingLabel>
                             </Col>
                         </Row>
-                        <Button variant='outline-primary'>SUBMIT</Button>{" "}
+                        <Button type="submit" variant='outline-primary' onClick={Loading}>SUBMIT</Button>{" "}
                         <Link to='/adminSignUp' variant="outline-primary" onClick={Loading}>No Account? Sign up.</Link>
                     </Container>
-                    
+
                 </Form>
             </div>
         </div>

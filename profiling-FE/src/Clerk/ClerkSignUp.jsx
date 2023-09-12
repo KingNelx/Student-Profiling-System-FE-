@@ -4,10 +4,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import TopNav from '../Components/TopNav'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 const ClerkSignUp = () => {
@@ -33,7 +32,7 @@ const ClerkSignUp = () => {
     const submitForm = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/clerk/create-admin-account'.clerk)
+            const response = await axios.post('http://localhost:8080/clerk/create-account', clerk)
             if (response.status === 200) {
                 window.location.reload()
                 navigate("/clerkSignIn")

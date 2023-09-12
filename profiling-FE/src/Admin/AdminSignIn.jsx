@@ -87,7 +87,7 @@ const AdminSignIn = () => {
                                     className='mb-3'
                                 >
                                     <Form.Control
-                                        type={"text"}
+                                        type={"password"}
                                         value={password}
                                         name="password"
                                         onChange={(e) => updateFormField(e)}

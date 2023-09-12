@@ -1,9 +1,15 @@
+import TopNav from "../Components/TopNav";
+import DataTable from "../Student/DataTable";
+
 const AdminHome = () => {
-    return (  
+    return (
         <div>
-            TEST
+            <TopNav />
+            <div>
+                <DataTable />
+            </div>
         </div>
     );
 }
- 
+
 export default AdminHome;

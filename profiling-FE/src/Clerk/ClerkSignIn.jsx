@@ -8,26 +8,37 @@ import TopNav from "../Components/TopNav";
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel'
 import Loading from '../Components/Loading'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const ClerkSignIn = () => {
 
+    const nav = useNavigate()
+
     const [clerkLog, setClerkLog] = useState({
-        firstName: "",
-        lastName: "",
         email: "",
         userName: "",
         password: ""
     })
 
-    const { firstName, lastName, email, userName, password } = clerkLog
+    const { email, userName, password } = clerkLog
 
     const updateFormField = (e) => {
         const { name, value } = e.target
         setClerkLog({ ...clerkLog, [name]: value.toUpperCase() })
     }
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault()
+        try {
+            const response = await axios.get('http://localhost:8080/clerk/clerkLogIn', { params: clerkLog });
+            if (response.status === 200) {
+                nav('/clerkHome')
+            }
+        } catch (e) {
+            console.log(" ERROR MESSAGE: " + e);
+            alert(" ERROR MESSAGE: " + e);
+        }
     }
 
     return (
@@ -35,7 +46,7 @@ const ClerkSignIn = () => {
             <TopNav />
             <div className='text-center'>
                 <h3 className='mt-5'>CLERK SIGN IN</h3>
-                <Form>
+                <Form onSubmit={(e) => submitForm(e)}>
                     <Container>
                         <Row style={{ width: '50rem', margin: 'auto', marginTop: '10vh' }}>
                             <Col>
@@ -44,7 +55,12 @@ const ClerkSignIn = () => {
                                     label='EMAIL ADDRESS'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='EMAIL ADDRESS' />
+                                    <Form.Control
+                                        type={"email"}
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => updateFormField(e)}
+                                        placeholder='EMAIL ADDRESS' />
                                 </FloatingLabel>
                             </Col>
 
@@ -54,7 +70,12 @@ const ClerkSignIn = () => {
                                     label='USER NAME'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='USER NAME' />
+                                    <Form.Control
+                                        type={"text"}
+                                        name="userName"
+                                        value={userName}
+                                        onChange={(e) => updateFormField(e)}
+                                        placeholder='USER NAME' />
                                 </FloatingLabel>
                             </Col>
 
@@ -64,11 +85,17 @@ const ClerkSignIn = () => {
                                     label='PASSWORD'
                                     className='mb-3'
                                 >
-                                    <Form.Control type={"text"} placeholder='PASSWORD' />
+                                    <Form.Control
+                                        type={"password"}
+                                        name="password"
+                                        onChange={(e) => updateFormField(e)}
+                                        value={password}
+                                        placeholder='PASSWORD' />
                                 </FloatingLabel>
                             </Col>
                         </Row>
-                        <Button variant='outline-primary'>SUBMIT</Button>{" "}
+                        <Button type="submit" variant='outline-primary' onClick={Loading}>SUBMIT</Button>{" "}
+                        <Link to="/"><Button variant="outline-success" onClick={Loading}> GO BACK </Button></Link> {" "}
                         <Link to='/clerkSignUp' variant="outline-primary" onClick={Loading}>No Account? Sign up.</Link>
                     </Container>
 

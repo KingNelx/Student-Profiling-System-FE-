@@ -8,6 +8,7 @@ import AdminSignUp from './Admin/AdminSignUp';
 import ClerkSignIn from './Clerk/ClerkSignIn';
 import ClerkSignUp from './Clerk/ClerkSignUp';
 import AdminHome from './Admin/AdminHome';
+import ClerkHome from './Clerk/ClerkHome';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path="/adminHome" element={<AdminHome />} />
                     <Route path="/clerkSignIn" element={<ClerkSignIn />} />
                     <Route path="/clerkSignUp" element={<ClerkSignUp />} />
+                    <Route path="/clerkHome" element={<ClerkHome />} />
                 </Routes>
             </Router>
         </div>

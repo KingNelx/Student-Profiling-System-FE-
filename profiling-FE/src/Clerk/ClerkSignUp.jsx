@@ -8,6 +8,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
+import Success from '../Components/Success'
+import { Link } from 'react-router-dom'
+import Loading from '../Components/Loading'
 
 const ClerkSignUp = () => {
 
@@ -34,7 +37,6 @@ const ClerkSignUp = () => {
         try {
             const response = await axios.post('http://localhost:8080/clerk/create-account', clerk)
             if (response.status === 200) {
-                window.location.reload()
                 navigate("/clerkSignIn")
             }
         } catch (e) {
@@ -46,7 +48,7 @@ const ClerkSignUp = () => {
     return (
         <div>
             <TopNav />
-            <Form>
+            <Form onSubmit={(e) => submitForm(e)}>
                 <Container className='mt-5'>
                     <Row>
                         <Col>
@@ -122,7 +124,8 @@ const ClerkSignUp = () => {
                             </FloatingLabel>
                         </Col>
                     </Row>
-                    <Button type="submit" variant="outline-primary"> REGISTER </Button>{" "}
+                    <Button type="submit" variant="outline-primary" onClick={Success}> REGISTER </Button>{" "}
+                    <Link to="/clerkSignIn" ><Button variant='outline-success' onClick={Loading}> GO BACK </Button></Link>
                 </Container>
             </Form>
         </div>

@@ -36,22 +36,30 @@ const DataTable = () => {
                                 <th>Firstname</th>
                                 <th>Lastname</th>
                                 <th>Middlename</th>
+                                <th>Education Level</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 student.map((value, index) => (
-                                    <tr key={index + 1}>
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{value.studentID}</td>
                                         <td>{value.firstName}</td>
-                                        <td>TEST</td>
-                                        <td>TEST</td>
-                                        <td>TEST</td>
-                                        <td>TEST</td>
+                                        <td>{value.lastName}</td>
+                                        <td>{value.lastName}</td>
+                                        <td>{value.education.educationLevel}</td>
                                         <td>
-                                            <Button variant="outline-primary"> VIEW </Button>{" "}
-                                            <Button variant="outline-success" > UPDATE </Button> {" "}
-                                            <Button variant="outline-danger"> DELETE </Button> {" "}
+                                            <Button variant="outline-primary">
+                                                <span class="material-icons">visibility</span>
+                                            </Button>{" "}
+                                            <Button variant="outline-success">
+                                                <span class="material-icons">update</span>
+                                            </Button>{" "}
+                                            <Button variant="outline-danger">
+                                                <span class="material-icons">delete</span>
+                                            </Button>{" "}
                                         </td>
                                     </tr>
                                 ))

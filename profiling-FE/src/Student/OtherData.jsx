@@ -1,16 +1,16 @@
 import Dropdown from 'react-bootstrap/Dropdown'
 import Males from './Males';
+import Females from './Females';
 
 const OtherData = () => {
     return (
         <Dropdown>
-            <Dropdown.Toggle variant='outline-primary' id='dropdown-basic'>
-                SEE MORE
+            <Dropdown.Toggle variant='outline-primary' id='dropdown-basic' className='text-center'>
+                SEE OTHERS
             </Dropdown.Toggle>
-            <Dropdown.Menu>
+            <Dropdown.Menu className='text-center'>
                 <Dropdown.Item>{<Males />}</Dropdown.Item>
-                <Dropdown.Item> LINK 1</Dropdown.Item>
-                <Dropdown.Item> LINK 1</Dropdown.Item>
+                <Dropdown.Item> {<Females />} </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );

@@ -14,6 +14,7 @@ const Females = () => {
         <>
             <Button variant="outline-primary" onClick={handleShow}>
                 FEMALE
+                <span class='material-icons'>female</span>
             </Button>
 
             <Modal

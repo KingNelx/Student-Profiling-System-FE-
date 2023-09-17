@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import MaleData from './MaleData';
 
-const Males = () => {
+const AddStudentModal = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <>
-            <Button variant="outline-primary" onClick={handleShow}>
-                MALE
-            <span class='material-icons'>male</span>
+        <div>
+            <Button variant="outline-primary" onClick={handleShow} className='mt-2'>
+                ADD STUDENT
             </Button>
 
             <Modal
@@ -21,22 +19,23 @@ const Males = () => {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-                size='xl'
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>MALE</Modal.Title>
+                    <Modal.Title>Modal title</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <MaleData />
+                    I will not close if you click outside me. Don not even try to press
+                    escape key.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
+                    <Button variant="primary">Understood</Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div >
     );
 }
 
-export default Males;
+export default AddStudentModal;

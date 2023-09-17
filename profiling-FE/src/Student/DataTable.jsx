@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import OtherData from './OtherData'
+import AddStudentModal from './AddStudentModal'
 
 const DataTable = () => {
 
@@ -29,6 +30,7 @@ const DataTable = () => {
         <>
             <div className='mt-5 mx-5'>
                 <OtherData />
+                <AddStudentModal />
             </div>
             <Container className='text-center mt-5'>
                 {

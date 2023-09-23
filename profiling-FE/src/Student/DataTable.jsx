@@ -17,7 +17,6 @@ const DataTable = () => {
                 setStudentData(result.data)
             }
         } catch (e) {
-            alert(" ERROR MESSAGE: " + e)
             console.log(" ERROR MESSAGE: " + e)
         }
     }

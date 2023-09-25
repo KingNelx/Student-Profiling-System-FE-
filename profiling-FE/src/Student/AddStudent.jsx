@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Success from '../Components/Success'
 
 const AddStudent = () => {
 
@@ -35,7 +36,7 @@ const AddStudent = () => {
         fathersEducationLevel: "",
         fathersDateOfBirth: "",
         mothersFullName: "",
-        motherssAge: "",
+        mothersAge: "",
         mothersAddress: "",
         mothersContactNumber: "",
         mothersCivilStatus: "",
@@ -46,9 +47,9 @@ const AddStudent = () => {
 
 
     const { studentID, firstName, lastName, middleInitial, dateOfBirth, gender, contactNumber, emailAddress, address,
-        educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddres,
+        educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress,
         fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation, fathersEducationLevel, fathersDateOfBirth,
-        mothersFullName, motherssAge, mothersAddress, mothersContactNumber, mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth,
+        mothersFullName, mothersAge, mothersAddress, mothersContactNumber, mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth,
     } = student
 
 
@@ -57,10 +58,9 @@ const AddStudent = () => {
     const updateForm = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/admin/add-student', student)
-            if (response.status === 200) {
+            const response = await axios.post("http://localhost:8080/admin/add-student", student)
+            if (response.status === 200)
                 navigate('/adminHome')
-            }
         } catch (e) {
             console.log(" ERROR MESSAGE: " + e);
         }
@@ -306,8 +306,8 @@ const AddStudent = () => {
                             >
                                 <Form.Control
                                     type={"text"}
-                                    name='address'
-                                    value={address}
+                                    name='schoolAddress'
+                                    value={schoolAddress}
                                     onChange={(e) => updateFormField(e)}
                                 />
                             </FloatingLabel>
@@ -463,7 +463,7 @@ const AddStudent = () => {
                                 <Form.Control
                                     type={"text"}
                                     name='mothersAge'
-                                    value={motherssAge}
+                                    value={mothersAge}
                                     onChange={(e) => updateFormField(e)}
                                 />
                             </FloatingLabel>
@@ -562,7 +562,7 @@ const AddStudent = () => {
                         </Row>
                     </Row>
                 </Container>
-                <Button className='mx-2' variant='outline-primary' type='submit'>SUBMIT</Button>
+                <Button className='mx-2' variant='outline-primary' type='submit' onClick={Success}>SUBMIT</Button>
             </Form>
         </div >
     );

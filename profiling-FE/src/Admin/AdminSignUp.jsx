@@ -9,6 +9,8 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
 import Success from '../Components/Success'
+import {Link} from 'react-router-dom'
+import Loading from '../Components/Loading'
 
 const AdminSignIn = () => {
 
@@ -123,6 +125,7 @@ const AdminSignIn = () => {
                     </Row>
                     
                     <Button type="submit" variant="outline-primary" onClick={Success}> REGISTER </Button>{" "}
+                    <Link to='/adminSignIn'> <Button variant='outline-danger' onClick={Loading}>GO BACK</Button></Link>
                 </Container>
             </Form>
         </div>

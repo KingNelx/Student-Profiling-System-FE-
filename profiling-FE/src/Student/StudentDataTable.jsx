@@ -14,7 +14,7 @@ const StudentDataTable = () => {
                 setStudentData(result.data)
             }
         } catch (e) {
-            alert(HttpStatusCode.BadRequest)
+            console.log(e);
         }
     }
 

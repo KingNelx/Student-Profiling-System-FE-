@@ -2,67 +2,79 @@ import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import StudentDataTable from '../Student/StudentDataTable';
 import MaleModal from '../Student/Modal/MaleModal';
+import FemaleModal from '../Student/Modal/FemaleModal';
+import ElementaryModal from '../Student/Modal/ElementaryModal';
+import HighSchoolModal from '../Student/Modal/HighSchoolModal';
+import SeniorHighModal from '../Student/Modal/SeniorHighModal';
+import VocationalModal from '../Student/Modal/VocationalModal';
+import CollegeModal from '../Student/Modal/CollegeModal';
 
 const AdminSideBar = () => {
     return (
         <Container fluid>
             <Row>
                 <Col sm={2} className="bg-dark sidebar">
-                    <Nav className="flex-column mt-3">
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center'>
-                                <span class='material-icons mx-3'>home</span>
-                                <span>HOME</span>
-                            </Nav.Link>
-                        </Nav.Item>
+                    <Nav className="flex-column">
                         <Nav.Item>
                             <Nav.Link className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>male</span>
+                                <span class='material-icons mx-2'>male</span>
                                 <span>
                                     <MaleModal />
                                 </span>
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>female</span>
-                                <span>FEMALE</span>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>female</span>
+                                <span>
+                                    <FemaleModal />
+                                </span>
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>school</span>
+                                <span>
+                                    <ElementaryModal />
+                                </span>
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>school</span>
+                                <span>
+                                    <HighSchoolModal />
+                                </span>
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>school</span>
+                                <span>
+                                    <SeniorHighModal />
+                                </span>
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item> 
+                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>school</span>
+                                <span>
+                                    <VocationalModal lapit='lapitNiJayson'/>
+                                </span>
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                                <span class='material-icons mx-2'>school</span>
+                                <span>
+                                    <CollegeModal />
+                                </span>
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>school</span>
-                                <span>ELEMENTARY</span>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>school</span>
-                                <span>HIGH SCHOOL</span>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>school</span>
-                                <span>SENIOR HIGH</span>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>school</span>
-                                <span>VOCATIONAL</span>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>school</span>
-                                <span>COLLEGE</span>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/" className='d-flex align-items-center mt-3'>
-                                <span class='material-icons mx-3'>exit_to_app</span>
-                                <span>LOG OUT</span>
+                                <span class='material-icons mx-2'>exit_to_app</span>
+                                <span className='mx-3'>LOG OUT</span>
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import MalesStudent from '../MaleStudents';
+import CollegeData from '../CollegeData';
 
-const MaleModal = () => {
+const CollegeModal = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -12,8 +12,8 @@ const MaleModal = () => {
 
     return (
         <>
-            <Button variant='outline-primary' onClick={handleShow}  style={{ border: 'none', background: 'transparent' }}>
-                MALE
+            <Button variant='outline-primary' onClick={handleShow} style={{ border: 'none', background: 'transparent' }}>
+                COLLEGE
             </Button>
 
             <Modal
@@ -21,22 +21,22 @@ const MaleModal = () => {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-                size='lg'
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>MALE STUDENTS</Modal.Title>
+                    <Modal.Title>Modal title</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <MalesStudent />
+                    <CollegeData />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
+                    <Button variant="primary">Understood</Button>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
 
-export default MaleModal;
+export default CollegeModal;

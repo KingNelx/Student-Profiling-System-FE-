@@ -2,6 +2,7 @@ import Table from 'react-bootstrap/esm/Table'
 import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import axios, { HttpStatusCode } from 'axios'
+import AddStudentModal from './Modal/AddStudentModal'
 
 const StudentDataTable = () => {
 
@@ -27,10 +28,7 @@ const StudentDataTable = () => {
             { marginTop: '5vh ' }
         }>
 
-            <Button className='mb-3' variant='outline-primary'>
-                <span class='material-icons'>add</span>
-                ADD STUDENT
-            </Button>
+            <AddStudentModal />
             {
                 student.length > 0 ? (
                     <Table striped bordered hover>

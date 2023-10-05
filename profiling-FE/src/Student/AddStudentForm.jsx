@@ -8,7 +8,9 @@ import { useState } from 'react'
 import axios, { HttpStatusCode } from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+
 const AddStudentForm = () => {
+
 
     const [student, setStudent] = useState({
         studentID: "",
@@ -20,28 +22,32 @@ const AddStudentForm = () => {
         contactNumber: "",
         emailAddress: "",
         address: "",
-        educationLevel: "",
-        schoolName: "",
-        gradeLevel: "",
-        dateStarted: "",
-        expectedGraduationYear: "",
-        schoolAddress: "",
-        fathersFullName: "",
-        fathersAge: "",
-        fathersAddress: "",
-        fathersContactNumber: "",
-        fathersCivilStatus: "",
-        fathersOccupation: "",
-        fathersEducationLevel: "",
-        fathersDateOfBirth: "",
-        mothersFullName: "",
-        mothersAge: "",
-        mothersAddress: "",
-        mothersContactNumber: "",
-        mothersCivilStatus: "",
-        mothersOccupation: "",
-        mothersEducationLevel: "",
-        mothersDateOfBirth: ""
+        education: {
+            educationLevel: "",
+            schoolName: "",
+            gradeLevel: "",
+            dateStarted: "",
+            expectedGraduationYear: "",
+            schoolAddress: "",
+        },
+        parents: {
+            fathersFullName: "",
+            fathersAge: "",
+            fathersAddress: "",
+            fathersContactNumber: "",
+            fathersCivilStatus: "",
+            fathersOccupation: "",
+            fathersEducationLevel: "",
+            fathersDateOfBirth: "",
+            mothersFullName: "",
+            mothersAge: "",
+            mothersAddress: "",
+            mothersContactNumber: "",
+            mothersCivilStatus: "",
+            mothersOccupation: "",
+            mothersEducationLevel: "",
+            mothersDateOfBirth: ""
+        }
     })
 
     const { studentID, firstName, lastName, middleInitial, dateOfBirth, gender, contactNumber, emailAddress, address,
@@ -61,9 +67,8 @@ const AddStudentForm = () => {
     const submitFormData = async (e) => {
         e.preventDefault()
         try {
-            const result = await axios.post('http://localhost:8080/admin/add-student', student);
-            if (result.status === 200) {
-                setStudent(result.data);
+            const response = await axios.post('http://localhost:8080/admin/add-student', student);
+            if (response.status === 200) {
                 navigate('/admin-home');
             }
         } catch (error) {
@@ -74,8 +79,10 @@ const AddStudentForm = () => {
                 console.log("ERROR: " + error.message);
             }
         }
-        
+
     }
+
+
 
     return (
         <Container>
@@ -87,12 +94,12 @@ const AddStudentForm = () => {
                             controlId='floatingInput'
                             className='mb-3'
                             label='STUDENT ID'
-                            required
                         >
                             <Form.Control
                                 type={"text"}
                                 name='studentID'
                                 value={studentID}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -102,12 +109,13 @@ const AddStudentForm = () => {
                             controlId='floatingInput'
                             className='mb-3'
                             label='FIRST NAME'
-                            required
+
                         >
                             <Form.Control
                                 type={"text"}
                                 name='firstName'
                                 value={firstName}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -123,6 +131,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='lastName'
                                 value={lastName}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -141,6 +150,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='middleInitial'
                                 value={middleInitial}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -154,9 +164,10 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"date"}
+                                type={"text"}
                                 name='dateOfBirth'
                                 value={dateOfBirth}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -173,6 +184,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='gender'
                                 value={gender}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -191,6 +203,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='contactNumber'
                                 value={contactNumber}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -207,6 +220,7 @@ const AddStudentForm = () => {
                                 type={"email"}
                                 name='emailAddress'
                                 value={emailAddress}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -223,6 +237,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='address'
                                 value={address}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -241,7 +256,8 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='educationLevel'
                                 value={educationLevel}
-                                onChange ={ (e) => updateFormField(e)}
+                                required
+                                onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>
@@ -257,7 +273,8 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='schoolName'
                                 value={schoolName}
-                                onChange ={ (e) => updateFormField(e)}
+                                required
+                                onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>
@@ -273,6 +290,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='gradeLevel'
                                 value={gradeLevel}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -287,9 +305,10 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"date"}
+                                type={"text"}
                                 name='dateStarted'
                                 value={dateStarted}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -303,9 +322,10 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"date"}
+                                type={"text"}
                                 name='expectedGraduationYear'
                                 value={expectedGraduationYear}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -322,6 +342,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='schoolAddress'
                                 value={schoolAddress}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -341,6 +362,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersFullName'
                                 value={fathersFullName}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -357,6 +379,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersAge'
                                 value={fathersAge}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -373,6 +396,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersAddress'
                                 value={fathersAddress}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -390,6 +414,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersContactNumber'
                                 value={fathersContactNumber}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -406,6 +431,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersCivilStatus'
                                 value={fathersCivilStatus}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -422,6 +448,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersOccupation'
                                 value={fathersOccupation}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -440,6 +467,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='fathersEducationLevel'
                                 value={fathersEducationLevel}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -453,10 +481,11 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"date"}
+                                type={"text"}
                                 name='fathersDateOfBirth'
                                 value={fathersDateOfBirth}
-                                onChange = {(e) => updateFormField(e)}
+                                required
+                                onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>
@@ -474,6 +503,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersFullName'
                                 value={mothersFullName}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -489,6 +519,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersAge'
                                 vaue={mothersAge}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -504,6 +535,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersAddress'
                                 value={mothersAddress}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -521,6 +553,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersContactNumber'
                                 value={mothersContactNumber}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -536,6 +569,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersCivilStatus'
                                 value={mothersCivilStatus}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -550,6 +584,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersOccupation'
                                 value={mothersOccupation}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -567,6 +602,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='mothersEducationLevel'
                                 value={mothersEducationLevel}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
@@ -578,9 +614,10 @@ const AddStudentForm = () => {
                             label='DATE OF BIRTH'
                         >
                             <Form.Control
-                                type={"date"}
+                                type={"text"}
                                 name='mothersDateOfBirth'
                                 value={mothersDateOfBirth}
+                                required
                                 onChange={(e) => updateFormField(e)}
                             />
                         </FloatingLabel>

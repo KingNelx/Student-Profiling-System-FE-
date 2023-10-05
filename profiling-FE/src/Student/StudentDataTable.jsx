@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import axios, { HttpStatusCode } from 'axios'
 import AddStudentModal from './Modal/AddStudentModal'
+import { useParams } from 'react-router-dom'
 
 const StudentDataTable = () => {
+
+    const { id } = useParams()
 
     const [student, setStudentData] = useState([])
 
@@ -22,6 +25,21 @@ const StudentDataTable = () => {
     useEffect(() => {
         loadAllData()
     }, [])
+
+    const removeStudentData = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:8080/admin/delete-student/${id}`)
+            if (response.status === 200) {
+                loadAllData()
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+        } catch (e) {
+            console.log("ERROR: " + error.response.data);
+            console.log("STATUS CODE: " + error.response.status);
+        }
+    }
 
     return (
         <div className='text-center' style={
@@ -82,7 +100,7 @@ const StudentDataTable = () => {
                                                 <span class='material-icons'>update</span>
                                             </Button>
 
-                                            <Button variant='outline-danger'>
+                                            <Button variant='outline-danger' onClick={() => removeStudentData(value.id)}>
                                                 <span class='material-icons'>delete</span>
                                             </Button>
                                         </td>

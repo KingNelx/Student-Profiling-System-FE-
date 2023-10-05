@@ -63,12 +63,18 @@ const AddStudentForm = () => {
         try {
             const result = await axios.post('http://localhost:8080/admin/add-student', student);
             if (result.status === 200) {
-                setStudent(result.data)
-                navigate('/admin-home')
+                setStudent(result.data);
+                navigate('/admin-home');
             }
-        } catch (e) {
-            console.log(" ERROR: " + e + " " + HttpStatusCode.BadRequest);
+        } catch (error) {
+            if (error.response) {
+                console.log("ERROR: " + error.response.data);
+                console.log("STATUS CODE: " + error.response.status);
+            } else {
+                console.log("ERROR: " + error.message);
+            }
         }
+        
     }
 
     return (
@@ -215,7 +221,7 @@ const AddStudentForm = () => {
                         >
                             <Form.Control
                                 type={"text"}
-                                name='adress'
+                                name='address'
                                 value={address}
                                 onChange={(e) => updateFormField(e)}
                             />
@@ -235,6 +241,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='educationLevel'
                                 value={educationLevel}
+                                onChange ={ (e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>
@@ -250,6 +257,7 @@ const AddStudentForm = () => {
                                 type={"text"}
                                 name='schoolName'
                                 value={schoolName}
+                                onChange ={ (e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>
@@ -448,6 +456,7 @@ const AddStudentForm = () => {
                                 type={"date"}
                                 name='fathersDateOfBirth'
                                 value={fathersDateOfBirth}
+                                onChange = {(e) => updateFormField(e)}
                             />
                         </FloatingLabel>
                     </Col>

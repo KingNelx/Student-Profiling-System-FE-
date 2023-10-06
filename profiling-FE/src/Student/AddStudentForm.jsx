@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/esm/Button'
 import { useState } from 'react'
 import axios, { HttpStatusCode } from 'axios'
 import { useNavigate } from 'react-router-dom'
+import SuccessAlert from '../Alerts/SuccessAlert'
 
 
 const AddStudentForm = () => {
@@ -69,6 +70,7 @@ const AddStudentForm = () => {
         try {
             const response = await axios.post('http://localhost:8080/admin/add-student', student);
             if (response.status === 200) {
+                location.reload()
                 navigate('/admin-home');
             }
         } catch (error) {
@@ -164,7 +166,7 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"text"}
+                                type={"date"}
                                 name='dateOfBirth'
                                 value={dateOfBirth}
                                 required
@@ -305,7 +307,7 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"text"}
+                                type={"date"}
                                 name='dateStarted'
                                 value={dateStarted}
                                 required
@@ -322,7 +324,7 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"text"}
+                                type={"date"}
                                 name='expectedGraduationYear'
                                 value={expectedGraduationYear}
                                 required
@@ -481,7 +483,7 @@ const AddStudentForm = () => {
                             required
                         >
                             <Form.Control
-                                type={"text"}
+                                type={"date"}
                                 name='fathersDateOfBirth'
                                 value={fathersDateOfBirth}
                                 required
@@ -614,7 +616,7 @@ const AddStudentForm = () => {
                             label='DATE OF BIRTH'
                         >
                             <Form.Control
-                                type={"text"}
+                                type={"date"}
                                 name='mothersDateOfBirth'
                                 value={mothersDateOfBirth}
                                 required
@@ -623,7 +625,7 @@ const AddStudentForm = () => {
                         </FloatingLabel>
                     </Col>
                 </Row>
-                <Button type="submit" variant='outline-primary'>SUBMIT</Button>
+                <Button type="submit" variant='outline-primary' onClick={() =>SuccessAlert()}>SUBMIT</Button>
             </Form>
         </Container>
     );

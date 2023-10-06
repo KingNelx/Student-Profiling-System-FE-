@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/esm/Button'
 import axios, { HttpStatusCode } from 'axios'
 import AddStudentModal from './Modal/AddStudentModal'
 import { useParams } from 'react-router-dom'
+import DeleteAlert from '../Alerts/DeleteAlert'
 
 const StudentDataTable = () => {
 
@@ -100,7 +101,10 @@ const StudentDataTable = () => {
                                                 <span class='material-icons'>update</span>
                                             </Button>
 
-                                            <Button variant='outline-danger' onClick={() => removeStudentData(value.id)}>
+                                            <Button variant='outline-danger' onClick={() => {
+                                                removeStudentData(value.id)
+                                                DeleteAlert()
+                                            }}>
                                                 <span class='material-icons'>delete</span>
                                             </Button>
                                         </td>

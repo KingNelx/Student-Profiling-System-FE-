@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import AddStudentForm from '../AddStudentForm';
+import LoadingAlert from '../../Alerts/LoadingAlert';
 
 const AddStudentModal = () => {
 
@@ -11,7 +12,10 @@ const AddStudentModal = () => {
 
     return (
         <>
-            <Button variant="outline-primary mb-3" onClick={handleShow}>
+            <Button variant="outline-primary mb-3" onClick={() => {
+                LoadingAlert()
+                handleShow()
+            }}>
                 <span class='material-icons'>add</span>
                 ADD STUDENT
             </Button>
@@ -27,7 +31,7 @@ const AddStudentModal = () => {
                     <Modal.Title>ADD STUDENT</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                   <AddStudentForm />
+                    <AddStudentForm />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

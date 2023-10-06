@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react'
 import axios, { HttpStatusCode } from 'axios'
 import { useNavigate } from "react-router-dom";
+import LoadingAlert from "../Alerts/LoadingAlert";
+import LogInAlert from "../Alerts/LogInAlert";
 
 const AdminSignIn = () => {
 
@@ -98,8 +100,8 @@ const AdminSignIn = () => {
                             </FloatingLabel>
                         </Col>
                     </Row>
-                    <Button type="submit" variant='outline-primary' className='shadow-lg'> Sign in </Button> {" "}
-                    <Link to="/admin-sign-up" > No Account?  Sign up. </Link>
+                    <Button type="submit" variant='outline-primary' className='shadow-lg' onClick={() => LogInAlert()}> Sign in </Button> {" "}
+                    <Link to="/admin-sign-up" onClick={() => LoadingAlert()} > No Account?  Sign up.  </Link>
                 </Container>
             </Form>
         </>

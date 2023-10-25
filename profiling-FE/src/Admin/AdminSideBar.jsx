@@ -32,7 +32,7 @@ const AdminSideBar = () => {
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
                                 <span class='material-icons mx-2'>school</span>
                                 <span>
                                     <ElementaryModal />
@@ -40,7 +40,7 @@ const AdminSideBar = () => {
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
                                 <span class='material-icons mx-2'>school</span>
                                 <span>
                                     <HighSchoolModal />
@@ -48,23 +48,23 @@ const AdminSideBar = () => {
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
                                 <span class='material-icons mx-2'>school</span>
                                 <span>
                                     <SeniorHighModal />
                                 </span>
                             </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item> 
-                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                        <Nav.Item>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
                                 <span class='material-icons mx-2'>school</span>
                                 <span>
-                                    <VocationalModal lapit='lapitNiJayson'/>
+                                    <VocationalModal />
                                 </span>
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link  className='d-flex align-items-center mt-3'>
+                            <Nav.Link className='d-flex align-items-center mt-3'>
                                 <span class='material-icons mx-2'>school</span>
                                 <span>
                                     <CollegeModal />

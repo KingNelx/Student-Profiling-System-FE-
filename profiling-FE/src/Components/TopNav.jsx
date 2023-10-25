@@ -7,7 +7,7 @@ const TopNav = () => {
     return (
         <Navbar className="bg-body-tertiary shadow-lg p-3">
             <Container className='flex justify-content-center'>
-                <Link to="/" onClick={() => LoadingAlert()}>
+                <Link to="/" onClick={() => LoadingAlert()} >
                     <Navbar.Brand >
                         STUDENT PROFILING SYSTEM
                     </Navbar.Brand>

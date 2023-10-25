@@ -5,13 +5,12 @@ import Col from 'react-bootstrap/esm/Col'
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel'
 import Button from 'react-bootstrap/esm/Button'
 import { useState } from 'react'
-import axios, { HttpStatusCode } from 'axios'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import SuccessAlert from '../Alerts/SuccessAlert'
 
 
 const AddStudentForm = () => {
-
 
     const [student, setStudent] = useState({
         studentID: "",
@@ -57,6 +56,7 @@ const AddStudentForm = () => {
         fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
         mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth
     } = student
+    
 
     const updateFormField = (e) => {
         const { name, value } = e.target
@@ -515,12 +515,11 @@ const AddStudentForm = () => {
                             controlId='floatingInput'
                             className='mb-3'
                             label='MOTHERS AGE'
-                            required
                         >
                             <Form.Control
                                 type={"text"}
                                 name='mothersAge'
-                                vaue={mothersAge}
+                                value={mothersAge}
                                 required
                                 onChange={(e) => updateFormField(e)}
                             />
@@ -625,7 +624,7 @@ const AddStudentForm = () => {
                         </FloatingLabel>
                     </Col>
                 </Row>
-                <Button type="submit" variant='outline-primary' onClick={() =>SuccessAlert()}>SUBMIT</Button>
+                <Button type="submit" variant='outline-primary' onClick={() => SuccessAlert()}>SUBMIT</Button>
             </Form>
         </Container>
     );

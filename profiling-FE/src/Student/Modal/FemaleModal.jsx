@@ -21,9 +21,10 @@ const FemaleModal = () => {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
+                size='lg'
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>FEMALE STUDENTS</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <FemaleStudents />
@@ -32,7 +33,6 @@ const FemaleModal = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary">Understood</Button>
                 </Modal.Footer>
             </Modal>
         </>

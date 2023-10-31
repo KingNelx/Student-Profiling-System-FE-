@@ -22,53 +22,60 @@ const AddStudentForm = () => {
         contactNumber: "",
         emailAddress: "",
         address: "",
-        education: {
-            educationLevel: "",
-            schoolName: "",
-            gradeLevel: "",
-            dateStarted: "",
-            expectedGraduationYear: "",
-            schoolAddress: "",
-        },
-        parents: {
-            fathersFullName: "",
-            fathersAge: "",
-            fathersAddress: "",
-            fathersContactNumber: "",
-            fathersCivilStatus: "",
-            fathersOccupation: "",
-            fathersEducationLevel: "",
-            fathersDateOfBirth: "",
-            mothersFullName: "",
-            mothersAge: "",
-            mothersAddress: "",
-            mothersContactNumber: "",
-            mothersCivilStatus: "",
-            mothersOccupation: "",
-            mothersEducationLevel: "",
-            mothersDateOfBirth: ""
-        }
+    })
+
+    const [education, setEducation] = useState({
+        educationLevel: "",
+        schoolName: "",
+        gradeLevel: "",
+        dateStarted: "",
+        expectedGraduationYear: "",
+        schoolAddress: "",
+    })
+
+    const [parents, setParents] = useState({
+        fathersFullName: "",
+        fathersAge: "",
+        fathersAddress: "",
+        fathersContactNumber: "",
+        fathersCivilStatus: "",
+        fathersOccupation: "",
+        fathersEducationLevel: "",
+        fathersDateOfBirth: "",
+        mothersFullName: "",
+        mothersAge: "",
+        mothersAddress: "",
+        mothersContactNumber: "",
+        mothersCivilStatus: "",
+        mothersOccupation: "",
+        mothersEducationLevel: "",
+        mothersDateOfBirth: ""
     })
 
     const { studentID, firstName, lastName, middleInitial, dateOfBirth, gender, contactNumber, emailAddress, address,
-        educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress,
-        fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation,
-        fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
-        mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth
     } = student
-    
+
+    const { educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress } = education
+
+    const { fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation,
+        fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
+        mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth } = parents
 
     const updateFormField = (e) => {
         const { name, value } = e.target
         setStudent({ ...student, [name]: value.toUpperCase() })
+        setEducation({ ...education, [name]: value.toUpperCase() })
+        setParents({ ...parents, [name]: value.toUpperCase() })
     }
+
+
 
     const navigate = useNavigate()
 
     const submitFormData = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/admin/add-student', student);
+            const response = await axios.post('http://localhost:8080/admin/add-student', {student, education, parents});
             if (response.status === 200) {
                 location.reload()
                 navigate('/admin-home');
@@ -83,8 +90,6 @@ const AddStudentForm = () => {
         }
 
     }
-
-
 
     return (
         <Container>

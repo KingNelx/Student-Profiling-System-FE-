@@ -81,7 +81,7 @@ const StudentDataTable = () => {
                                             {index + 1}
                                         </td>
                                         <td>
-                                            {value.studentID}
+                                            {value.parents.fathersOccupation}
                                         </td>
                                         <td>
                                             {value.firstName}

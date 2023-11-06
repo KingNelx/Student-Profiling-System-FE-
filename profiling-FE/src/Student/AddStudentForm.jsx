@@ -53,14 +53,18 @@ const AddStudentForm = () => {
     })
 
     const { studentID, firstName, lastName, middleInitial, dateOfBirth, gender, contactNumber, emailAddress, address,
+        educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress,
+        fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation,
+        fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
+        mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth
     } = student
 
-    const { educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress } = education
+    // const { educationLevel, schoolName, gradeLevel, dateStarted, expectedGraduationYear, schoolAddress } = education
 
-    const { fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation,
-        fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
-        mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth } = parents
-
+    /* const { fathersFullName, fathersAge, fathersAddress, fathersContactNumber, fathersCivilStatus, fathersOccupation,
+         fathersEducationLevel, fathersDateOfBirth, mothersFullName, mothersAge, mothersAddress, mothersContactNumber,
+         mothersCivilStatus, mothersOccupation, mothersEducationLevel, mothersDateOfBirth } = parents
+ */
     const updateFormField = (e) => {
         const { name, value } = e.target
         setStudent({ ...student, [name]: value.toUpperCase() })
@@ -68,14 +72,16 @@ const AddStudentForm = () => {
         setParents({ ...parents, [name]: value.toUpperCase() })
     }
 
-
-
     const navigate = useNavigate()
 
     const submitFormData = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8080/admin/add-student', {student, education, parents});
+            const response = await axios.post('http://localhost:8080/admin/add-student', {
+                student: student,
+                education: education,
+                parents: parents
+            });
             if (response.status === 200) {
                 location.reload()
                 navigate('/admin-home');

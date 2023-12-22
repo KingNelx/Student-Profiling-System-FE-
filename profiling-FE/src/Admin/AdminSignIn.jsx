@@ -15,10 +15,9 @@ const AdminSignIn = () => {
         email: "",
         userName: "",
         password: "",
-        confirmPassword: ""
     })
 
-    const { email, userName, password, confirmPassword } = admin
+    const { email, userName, password } = admin
 
     const updateFormFields = (e) => {
         const { name, value } = e.target
@@ -29,7 +28,7 @@ const AdminSignIn = () => {
         e.preventDefault()
         try {
             const response = await axios.post("")
-            if(response.status === 200){
+            if (response.status === 200) {
                 setAdmin(response.data)
                 navigate("/")
             }
@@ -47,31 +46,24 @@ const AdminSignIn = () => {
                     className="mb-4 mt-5"
                     label="Email Address"
                 >
-                    <Form.Control type="text" placeholder="Email Address" />
+                    <Form.Control type={"email"} placeholder="Email Address" />
                 </FloatingLabel>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-4"
                     label="Username"
                 >
-                    <Form.Control type="text" placeholder="Username" />
+                    <Form.Control type={"text"} placeholder="Username" />
                 </FloatingLabel>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-4"
                     label="Password"
                 >
-                    <Form.Control type="password" placeholder="Password" />
-                </FloatingLabel>
-                <FloatingLabel
-                    controlId="floatingInput"
-                    className="mb-4 mt-4"
-                    label="Confirm Password"
-                >
-                    <Form.Control type="password" placeholder="Confirm Password" />
+                    <Form.Control type={"password"} placeholder="Password" />
                 </FloatingLabel>
 
-                <Button variant="outline-primary">Submit</Button>
+                <Button variant="outline-primary">Sign In</Button>
             </Form>
             <div>
                 <Link>No Account? Sign Up Here.</Link>

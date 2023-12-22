@@ -1,21 +1,24 @@
-import Card from "react-bootstrap/Card"
-import Form from "react-bootstrap/Form"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import signInAnimated from "../Animations/signIn.json"
+import Lottie from "lottie-react"
+import AdminSignIn from "./AdminSignIn"
 
 const AdminPage = () => {
     return (
-        <Container>
+        <Container className="text-center mt-5">
             <Card>
                 <Card.Text>
                     <Row>
                         <Col>
-                            TEST
+                            <Lottie
+                                animationData={signInAnimated}
+                            />
                         </Col>
                         <Col>
-                            TEST
+                            <AdminSignIn />
                         </Col>
                     </Row>
                 </Card.Text>

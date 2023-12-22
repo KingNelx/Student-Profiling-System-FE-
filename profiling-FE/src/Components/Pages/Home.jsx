@@ -23,6 +23,9 @@ const Home = () => {
                             <Link to="/adminPage"><Button variant="outline-primary"
                             style={{marginTop: "40vh"}} onClick={Loading}
                             >GET STARTED</Button></Link>
+                            <div className = "mt-3">
+                               <p className="bold"> WELCOME TO STUDENT PROFILING SYSTEM </p>
+                            </div>
                         </Col>
                     </Row>
                 </Card.Text>

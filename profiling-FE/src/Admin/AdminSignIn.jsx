@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Loading from "../SweetAlerts/Loading"
 
 const AdminSignIn = () => {
 
@@ -27,7 +28,7 @@ const AdminSignIn = () => {
     const submitForm = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("")
+            const response = await axios.get("")
             if (response.status === 200) {
                 setAdmin(response.data)
                 navigate("/")
@@ -39,34 +40,47 @@ const AdminSignIn = () => {
 
     return (
         <Container>
-
-            <Form>
+            <Form onSubmit = {(e) => submitForm(e)}>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-5"
                     label="Email Address"
                 >
-                    <Form.Control type={"email"} placeholder="Email Address" />
+                    <Form.Control type={"email"}
+                        name="email"
+                        value={email}
+                        onChange={(e) => updateFormFields(e)}
+                        required
+                        placeholder="Email Address" />
                 </FloatingLabel>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-4"
                     label="Username"
                 >
-                    <Form.Control type={"text"} placeholder="Username" />
+                    <Form.Control type={"text"}
+                        name="userName"
+                        value={userName}
+                        onChange={(e) => updateFormFields(e)}
+                        required
+                        placeholder="Username" />
                 </FloatingLabel>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-4"
                     label="Password"
                 >
-                    <Form.Control type={"password"} placeholder="Password" />
+                    <Form.Control type={"password"}
+                        name="password"
+                        value={password}
+                        required
+                        placeholder="Password" />
                 </FloatingLabel>
 
-                <Button variant="outline-primary">Sign In</Button>
+                <Button variant="outline-primary" type="submit">Sign In</Button>
             </Form>
             <div>
-                <Link>No Account? Sign Up Here.</Link>
+                <Link to="/adminSignUp" onClick = {Loading} >No Account? Sign Up Here.</Link>
             </div>
 
         </Container>

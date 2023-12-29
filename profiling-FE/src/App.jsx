@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Pages/Home";
 import AdminPage from "./Admin/AdminPage";
 import AdminHome from "./Admin/AdminHome";
+import AdminSignUp from "./Admin/AdminSignUp";
+
 
 const App = () => {
     return (
@@ -13,7 +15,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/adminPage" element={<AdminPage />} />
                     <Route path="/adminHome" element={<AdminHome />} />
-                    <Route path="/adminSignIn" />
+                    <Route path="/adminSignUp" element={<AdminSignUp />} />
                 </Routes>
             </Router>
         </div>

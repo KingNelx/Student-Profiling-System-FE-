@@ -12,6 +12,7 @@ import Lottie from "lottie-react"
 import signUpAnimated from "../Animations/signIn.json"
 import { Link } from "react-router-dom"
 import Loading from "../SweetAlerts/Loading"
+import SignUpSuccess from "../SweetAlerts/SignUpSuccess"
 
 const AdminSignUp = () => {
 
@@ -34,13 +35,13 @@ const AdminSignUp = () => {
     const submitForm = async (e) => {
         e.preventDefault()
         try {
-            const result = await axios.post();
+            const result = await axios.post("http://localhost:8080/clerk/create-account", admin);
             if (result.status === 200) {
                 setAdmin(result.data)
-                navigate("/")
+                navigate("/adminPage")
             }
         } catch (e) {
-            alert(" WRONG CREDENTIALS " + e)
+            alert(" ACCOUNT ALREADY EXIST " + e)
         }
     }
 
@@ -110,7 +111,7 @@ const AdminSignUp = () => {
                                         required
                                     />
                                 </FloatingLabel>
-                                <Button type="submit" variant="outline-primary"> Sign Up </Button>
+                                <Button type="submit" variant="outline-primary" onClick={SignUpSuccess}> Sign Up </Button>
                             </Form>
                             <div>
                                 <Link to="/adminPage" onClick={Loading}> Already Have an account? Sign in here </Link>

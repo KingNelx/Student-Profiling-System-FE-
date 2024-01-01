@@ -6,7 +6,8 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import Loading from "../SweetAlerts/Loading"
+import Loading from "../SweetAlerts/Loading"    
+import SignInSuccess from "../SweetAlerts/SignInSuccess"
 
 const AdminSignIn = () => {
 
@@ -28,10 +29,10 @@ const AdminSignIn = () => {
     const submitForm = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.get("")
+            const response = await axios.get("http://localhost:8080/clerk/sign-in", { params: admin })
             if (response.status === 200) {
                 setAdmin(response.data)
-                navigate("/")
+                navigate("/adminHome")
             }
         } catch (e) {
             alert(" WRONG CREDENTIALS " + e)
@@ -40,7 +41,7 @@ const AdminSignIn = () => {
 
     return (
         <Container>
-            <Form onSubmit = {(e) => submitForm(e)}>
+            <Form onSubmit={(e) => submitForm(e)}>
                 <FloatingLabel
                     controlId="floatingInput"
                     className="mb-4 mt-5"
@@ -73,14 +74,15 @@ const AdminSignIn = () => {
                     <Form.Control type={"password"}
                         name="password"
                         value={password}
+                        onChange={(e) => updateFormFields(e)}
                         required
                         placeholder="Password" />
                 </FloatingLabel>
 
-                <Button variant="outline-primary" type="submit">Sign In</Button>
+                <Button variant="outline-primary" type="submit" onClick={SignInSuccess}>Sign In</Button>
             </Form>
             <div>
-                <Link to="/adminSignUp" onClick = {Loading} >No Account? Sign Up Here.</Link>
+                <Link to="/adminSignUp" onClick={Loading} >No Account? Sign Up Here.</Link>
             </div>
 
         </Container>

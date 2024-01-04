@@ -9,7 +9,7 @@ import { useState, useEffect } from "react"
 
 const ListOfStudents = () => {
 
-    const [student, setStudents] = useState([])
+    const [student, setStudents] = useState({})
 
     const allStudents = async () => {
         const result = await axios.get("http://localhost:8080/clerk/student/queryAll");

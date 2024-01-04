@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col"
 import male from "../../Animations/male.json"
 import female from "../../Animations/female.json"
 import ListOfStudents from "./ListOfStudents"
+import MaleModals from "../../Modals/MaleModals"
+import FemaleModals from "../../Modals/FemaleModals"
 
 const TotalStudents = () => {
     return (
@@ -20,7 +22,7 @@ const TotalStudents = () => {
                                     animationData={male}
                                 />
                             </Card.Text>
-                            <Button variant="outline-primary"> VIEW </Button>
+                            <MaleModals />
                         </Card.Body>
                     </Card>
                 </Col>
@@ -34,7 +36,7 @@ const TotalStudents = () => {
                                     animationData={female}
                                 />
                             </Card.Text>
-                            <Button variant="outline-primary"> VIEW </Button>
+                            <FemaleModals />
                         </Card.Body>
                     </Card>
                 </Col>

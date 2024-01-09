@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { FaHome, FaCog, FaEnvelope, FaBell } from 'react-icons/fa';
+import { FaHome, FaBell } from 'react-icons/fa';
 import { FaListCheck } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import { SiMicrosoftacademic } from "react-icons/si";
 import TotalStudents from '../Components/Pages/TotalStudents';
 import AddStudentModal from '../Modals/AddStudentModal';
+import AcademLevels from '../Modals/AcademLevels';
 
 
 const AdminSideBar = () => {
@@ -18,7 +18,7 @@ const AdminSideBar = () => {
               <Link className='p-3'><FaHome /> Home</Link>
               <Link className='p-3'><AddStudentModal /> </Link>
               <Link className='p-3'><FaListCheck /> View Students</Link>
-              <Link className='p-3'><SiMicrosoftacademic /> Academic Levels</Link>
+              <Link className='p-3'> <AcademLevels /></Link>
               <Link className='p-3'><FaBell /> Notifications</Link>
             </Nav>
           </Col>

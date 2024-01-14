@@ -22,7 +22,7 @@ const AllMales = () => {
     }, [])
 
     return (
-        <div>
+        <div style={{ maxHeight: '500px', overflowY: 'auto', border: '1px solid #ccc' }}>
             {
                 males.length > 0 ? (
                     <Table striped bordered hover className="text-center">

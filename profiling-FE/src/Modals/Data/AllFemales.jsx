@@ -22,7 +22,7 @@ const AllFemales = () => {
     }, [])
 
     return (
-        <div>
+        <div style={{ maxHeight: '500px', overflowY: 'auto', border: '1px solid #ccc' }}>
             {
                 females.length > 0 ? (
                     <Table striped bordered hover className="text-center">

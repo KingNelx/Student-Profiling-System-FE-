@@ -8,6 +8,7 @@ import junior from "../Animations/junior.json"
 import senior from "../Animations/senior.json"
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom"
+import Loading from "../SweetAlerts/Loading";
 
 const AcademicsList = () => {
     return (
@@ -19,7 +20,7 @@ const AcademicsList = () => {
                         <Lottie
                             animationData={freshman}
                         />
-                        <Button variant='outline-primary'>SELECT</Button>
+                        <Link to="/freshman"><Button variant='outline-primary' onClick={Loading}>SELECT</Button></Link>
                     </Col>
 
                     <Col>
@@ -27,7 +28,7 @@ const AcademicsList = () => {
                         <Lottie
                             animationData={sophomore}
                         />
-                        <Button variant='outline-primary'>SELECT</Button>
+                        <Link to="/sophomore"><Button variant='outline-primary' onClick={Loading}>SELECT</Button></Link>
                     </Col>
 
                     <Col>
@@ -35,7 +36,7 @@ const AcademicsList = () => {
                         <Lottie
                             animationData={junior}
                         />
-                        <Button variant='outline-primary'>SELECT</Button>
+                        <Link to="/junior"><Button variant='outline-primary' onClick={Loading}>SELECT</Button></Link>
                     </Col>
 
                     <Col>
@@ -43,7 +44,7 @@ const AcademicsList = () => {
                         <Lottie
                             animationData={senior}
                         />
-                        <Button variant='outline-primary'>SELECT</Button>
+                        <Link to="/senior"><Button variant='outline-primary' onClick={Loading}>SELECT</Button></Link>
                     </Col>
                 </Row>
             </Container>

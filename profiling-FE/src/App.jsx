@@ -5,6 +5,10 @@ import Home from "./Components/Pages/Home";
 import AdminPage from "./Admin/AdminPage";
 import AdminHome from "./Admin/AdminHome";
 import AdminSignUp from "./Admin/AdminSignUp";
+import FreshmanPage from "./Components/Pages/FreshmanPage";
+import SophomorePage from "./Components/Pages/SophomorePage";
+import JuniorPage from "./Components/Pages/JuniorPage";
+import SeniorPage from "./Components/Pages/SeniorPage";
 
 
 const App = () => {
@@ -16,6 +20,10 @@ const App = () => {
                     <Route path="/adminPage" element={<AdminPage />} />
                     <Route path="/adminHome" element={<AdminHome />} />
                     <Route path="/adminSignUp" element={<AdminSignUp />} />
+                    <Route path="/freshman" element={<FreshmanPage />} />
+                    <Route path="/sophomore" element={<SophomorePage />} />
+                    <Route path="/junior" element={<JuniorPage />} />
+                    <Route path="/senior" element={<SeniorPage />} />
                 </Routes>
             </Router>
         </div>

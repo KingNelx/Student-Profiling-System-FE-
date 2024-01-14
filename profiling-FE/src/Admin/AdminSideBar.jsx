@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { FaHome, FaBell } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import { FaListCheck } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import TotalStudents from '../Components/Pages/TotalStudents';
 import AddStudentModal from '../Modals/AddStudentModal';
 import AcademLevels from '../Modals/AcademLevels';
-
+import { FiLogOut } from "react-icons/fi";
 
 const AdminSideBar = () => {
   return (
@@ -19,7 +19,7 @@ const AdminSideBar = () => {
               <Link className='p-3'><AddStudentModal /> </Link>
               <Link className='p-3'><FaListCheck /> View Students</Link>
               <Link className='p-3'> <AcademLevels /></Link>
-              <Link className='p-3'><FaBell /> Notifications</Link>
+              <Link className='p-3'><FiLogOut /> Sign Out</Link>
             </Nav>
           </Col>
           <Col xs={10} id="page-content">

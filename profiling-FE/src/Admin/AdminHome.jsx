@@ -6,13 +6,12 @@ import Container from "react-bootstrap/Container"
 
 const AdminHome = () => {
     return (
-        <div>
+        <div className="text-center">
             <Navbar className="bg-body-tertiary shadow-lg">
                 <Container>
                     <Link to="/">
                         <Navbar.Brand>
                             <PiStudentFill size={45} />
-                            {' '}
                             STUDENT PROFILING SYSTEM
                         </Navbar.Brand>
                     </Link>

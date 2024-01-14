@@ -1,12 +1,14 @@
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 import { FaHome } from 'react-icons/fa';
-import { FaListCheck } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import TotalStudents from '../Components/Pages/TotalStudents';
 import AddStudentModal from '../Modals/AddStudentModal';
 import AcademLevels from '../Modals/AcademLevels';
 import { FiLogOut } from "react-icons/fi";
+import Button from "react-bootstrap/Button"
+import Loading from '../SweetAlerts/Loading';
+
 
 const AdminSideBar = () => {
   return (
@@ -14,12 +16,17 @@ const AdminSideBar = () => {
       <Container fluid>
         <Row>
           <Col xs={2} id="sidebar" style={{ background: 'linear-gradient(to bottom, #000000, #333333)', minHeight: '91vh' }}>
-            <Nav defaultActiveKey="#home" className="flex-column m-2">
-              <Link className='p-3'><FaHome /> Home</Link>
+            <Nav defaultActiveKey="#home" className="flex-column mt-5">
+              <Link className='p-3'>
+                <Button variant='outline-primary'>
+                  <FaHome />  Home
+                </Button>
+              </Link>
               <Link className='p-3'><AddStudentModal /> </Link>
-              <Link className='p-3'><FaListCheck /> View Students</Link>
               <Link className='p-3'> <AcademLevels /></Link>
-              <Link className='p-3'><FiLogOut /> Sign Out</Link>
+              <Link className='p-3'to="/">
+                <Button variant='outline-primary' onClick={Loading}> <FiLogOut /> Sign Out </Button>
+              </Link>
             </Nav>
           </Col>
           <Col xs={10} id="page-content">

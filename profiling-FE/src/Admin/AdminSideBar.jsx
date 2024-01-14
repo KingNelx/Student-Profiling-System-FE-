@@ -22,9 +22,11 @@ const AdminSideBar = () => {
                   <FaHome />  Home
                 </Button>
               </Link>
-              <Link className='p-3'><AddStudentModal /> </Link>
+              <div className='p-3'>
+                <AddStudentModal />
+              </div>
               <Link className='p-3'> <AcademLevels /></Link>
-              <Link className='p-3'to="/">
+              <Link className='p-3' to="/">
                 <Button variant='outline-primary' onClick={Loading}> <FiLogOut /> Sign Out </Button>
               </Link>
             </Nav>

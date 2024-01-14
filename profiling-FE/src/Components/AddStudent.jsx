@@ -59,11 +59,13 @@ const AddStudent = () => {
 
     const submitForm = async (e) => {
         e.preventDefault()
-        const result = await axios.post("http://localhost:8080/clerk/student/add-new", student)
         try {
+            const result = await axios.post("http://localhost:8080/clerk/student/add-new", student)
             if (result.status === 200) {
                 setStudent(result.data)
                 navigate("/adminHome")
+            } else {
+                console.error("Unexpected response status:", result.status);
             }
         } catch (e) {
             console.log(e)
@@ -75,7 +77,6 @@ const AddStudent = () => {
             <Container>
                 <Form onSubmit={(e) => submitForm(e)}>
                     <Row>
-
                         <Col>
                             <FloatingLabel
                                 controlId="floatingInput"
@@ -126,7 +127,7 @@ const AddStudent = () => {
                             >
                                 <Form.Control type={"text"} placeholder="Student ID" required
                                     name="studentId"
-                                    value={student.studentId}
+                                    value={studentId}
                                     onChange={(e) => updateFormFields(e)}
                                 />
                             </FloatingLabel>
@@ -233,7 +234,7 @@ const AddStudent = () => {
                             >
                                 <Form.Control type={"text"} placeholder="Course Code" required
                                     name="courseCode"
-                                    value={courseCode}
+                                    value={(student.myCourse.courseCode)}
                                     onChange={(e) => updateFormFields(e)}
                                 />
                             </FloatingLabel>
@@ -245,7 +246,11 @@ const AddStudent = () => {
                                 className="mt-4"
                                 label="COURSE TITLE"
                             >
-                                <Form.Control type={"text"} placeholder="Course Title" required />
+                                <Form.Control type={"text"} placeholder="Course Title" required
+                                    name="courseTitle"
+                                    value={courseTitle}
+                                    onChange={(e) => updateFormFields(e)}
+                                />
                             </FloatingLabel>
                         </Col>
 
@@ -259,7 +264,11 @@ const AddStudent = () => {
                                 className="mt-4"
                                 label="COURSE DESCRIPTION"
                             >
-                                <Form.Control type={"text"} placeholder="Course Description" required />
+                                <Form.Control type={"text"} placeholder="Course Description" required
+                                    name="description"
+                                    value={description}
+                                    onChange={(e) => updateFormFields(e)}
+                                />
                             </FloatingLabel>
                         </Col>
 
@@ -269,7 +278,11 @@ const AddStudent = () => {
                                 className="mt-4"
                                 label="COURSE INSTRUCTOR"
                             >
-                                <Form.Control type={"text"} placeholder="Course Instructor" required />
+                                <Form.Control type={"text"} placeholder="Course Instructor" required
+                                    name="instructor"
+                                    value={instructor}
+                                    onChange={(e) => updateFormFields(e)}
+                                />
                             </FloatingLabel>
                         </Col>
 
@@ -279,7 +292,11 @@ const AddStudent = () => {
                                 className="mt-4"
                                 label="COURSE SCHEDULE"
                             >
-                                <Form.Control type={"text"} placeholder="Course Schedule" required />
+                                <Form.Control type={"text"} placeholder="Course Schedule" required
+                                    name="schedule"
+                                    value={schedule}
+                                    onChange={(e) => updateFormFields(e)}
+                                />
                             </FloatingLabel>
                         </Col>
 
@@ -289,13 +306,19 @@ const AddStudent = () => {
                                 className="mt-4"
                                 label="COURSE SEMESTER"
                             >
-                                <Form.Control type={"text"} placeholder="Course Semester" required />
+                                <Form.Control
+                                    type={"text"}
+                                    placeholder="Course Semester"
+                                    required
+                                    name="semester"
+                                    value={semester}
+                                    onChange={(e) => updateFormFields(e)}
+                                />
                             </FloatingLabel>
                         </Col>
-
                     </Row>
                     <div className="mt-3">
-                        <Button type="submit" variant="outline-primary" > ADD RECORD </Button>
+                        <Button variant="outline-primary" type="submit" > ADD RECORD </Button>
                     </div>
                 </Form>
             </Container>

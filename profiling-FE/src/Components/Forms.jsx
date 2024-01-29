@@ -7,8 +7,44 @@ import FloatingLabel from "react-bootstrap/FloatingLabel"
 import SignInButton from "./SignInButton"
 import Lottie from "lottie-react"
 import logIn from "../Animations/log-in.json"
+import SignUpButton from "./SignUpButton"
+import FooterMessage from "./FooterMessage"
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import axios from "axios"
+import ErrorNotExisted from "../Alerts/ErrorNotExisted"
 
 const Forms = () => {
+
+    const navigate = useNavigate()
+
+    const [signUp, setAccount] = useState({
+        email: "",
+        userName: "",
+        password: "",
+        
+    })
+
+    const { email, userName, password } = signUp
+
+    const updateFormFields = (e) => {
+        const { name, value } = e.target
+        setAccount({ ...signUp, [name]: value.toUpperCase() })
+    }
+
+    const submitForm = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.get("http://localhost:8080/clerk/sign-in", { params: signUp })
+            if (response.status === 200) {
+                navigate("/admin-home")
+            }
+        } catch (e) {
+            console.log(" SOMETHING WENT WRONG " + e)
+            setTimeout(ErrorNotExisted(), 7000)
+        }
+    }
+
     return (
         <div className="text-center">
             <Container>
@@ -19,14 +55,20 @@ const Forms = () => {
                                 animationData={logIn}
                             />
                         </Col>
-                        <Col>
-                            <Form className="mt-5">
+                        <Col style={
+                            {marginTop: "15vh"}
+                        }>
+                            <Form className="mt-5" onSubmit={(e) => submitForm(e)}>
                                 <FloatingLabel
                                     controlId="floatingInput"
                                     className="mb-3 mt-2 m-3"
                                     label="Email Address"
                                 >
-                                    <Form.Control type={"email"} required placeholder="Email Address" />
+                                    <Form.Control type={"email"} required placeholder="Email Address"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => updateFormFields(e)}
+                                    />
                                 </FloatingLabel>
 
                                 <FloatingLabel
@@ -34,7 +76,11 @@ const Forms = () => {
                                     className="mb-3 mt-2 m-3"
                                     label="Username"
                                 >
-                                    <Form.Control type={"text"} required placeholder="Username" />
+                                    <Form.Control type={"text"} required placeholder="Username"
+                                        name="userName"
+                                        value={userName}
+                                        onChange={(e) => updateFormFields(e)}
+                                    />
                                 </FloatingLabel>
 
                                 <FloatingLabel
@@ -42,25 +88,35 @@ const Forms = () => {
                                     className="mb-3 mt-2 m-3"
                                     label="Password"
                                 >
-                                    <Form.Control type={"password"} required placeholder="Password" />
+                                    <Form.Control type={"password"} required placeholder="Password"
+                                        name="password"
+                                        value={password}
+                                        onChange={(e) => updateFormFields(e)}
+                                    />
                                 </FloatingLabel>
 
 
 
-                                <FloatingLabel
+                                {/* <FloatingLabel
                                     controlId="floatingInput"
                                     className="mb-3 mt-2 m-3"
                                     label="Confirm Password"
                                 >
-                                    <Form.Control type={"text"} required placeholder="Confirm Password" />
-                                </FloatingLabel>
+                                    <Form.Control type={"text"} required placeholder="Confirm Password"
+                                        name="confirmPassword"
+                                        value={confirmPassword}
+                                        onChange={(e) => updateFormFields(e)}
+                                    />
+                                </FloatingLabel> */}
                                 <div className="mb-3 mt-3">
-                                    <SignInButton />
+                                    <SignInButton /> {" "}
+                                    <SignUpButton />
                                 </div>
                             </Form>
                         </Col>
                     </Row>
                 </Card>
+                <FooterMessage />
             </Container>
         </div>
     );

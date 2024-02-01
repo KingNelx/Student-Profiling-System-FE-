@@ -1,7 +1,11 @@
+import AdminNavBar from "./AdminNavBar";
+
 const AdminHome = () => {
     return (  
         <div>
-            TEST
+            <nav className="shadow-lg">
+                <AdminNavBar />
+            </nav>
         </div>
     );
 }

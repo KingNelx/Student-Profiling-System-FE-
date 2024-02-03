@@ -1,11 +1,13 @@
-import AdminNavBar from "./AdminNavBar";
+import AdminHeadTitle from "./AdminHeadTitle";
+import AdminSideBar from "./AdminSideBar";
 
 const AdminHome = () => {
     return (  
         <div>
             <nav className="shadow-lg">
-                <AdminNavBar />
+                <AdminHeadTitle />
             </nav>
+            <AdminSideBar />
         </div>
     );
 }

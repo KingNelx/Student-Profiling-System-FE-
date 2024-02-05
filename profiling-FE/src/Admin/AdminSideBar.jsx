@@ -9,6 +9,7 @@ import {
 } from 'cdbreact';
 import { Link } from "react-router-dom"
 import LoadingInterval from '../Alerts/LoadingInterval';
+import Dashboard from './Dashboard';
 
 
 const AdminSideBar = () => {
@@ -30,7 +31,7 @@ const AdminSideBar = () => {
             </CDBSidebar>
             <div style={{ flex: 1, overflow: 'auto', textAlign: 'center', marginTop: '10vh'}}>
                 {/* Add your main content here */}
-                <h1>Main Content Goes Here</h1>
+                <Dashboard />
                 {/* Add more components/content as needed */}
             </div>
         </div>

@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import FemaleList from '../Data/FemaleList';
+import StudentList from '../Data/StudentList';
 
 
-
-const FemaleModal = () => {
+const StudentListModal = () => {
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <div>
             <>
+
                 <Button variant="outline-primary" onClick={handleShow} >
                     VIEW
                 </Button>
@@ -24,19 +23,19 @@ const FemaleModal = () => {
                     onHide={handleClose}
                     backdrop="static"
                     keyboard={false}
-                    size='xl'
+                    size='lg'
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>LIST OF FEMALES ENROLLED</Modal.Title>
+                        <Modal.Title>LIST OF ALL STUDENTS ENROLLED</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <FemaleList />
+                        <StudentList />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                     
+                      
                     </Modal.Footer>
                 </Modal>
             </>
@@ -44,4 +43,4 @@ const FemaleModal = () => {
     );
 }
 
-export default FemaleModal;
+export default StudentListModal;

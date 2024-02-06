@@ -1,7 +1,7 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from "axios"
 import { useState, useEffect } from "react"
+import StudentListModal from './Modals/StudentListModal';
 
 const StudentCount = () => {
 
@@ -26,11 +26,13 @@ const StudentCount = () => {
         <div>
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
-                    <p><b>Total of Students that Enrolled</b></p>
+                    <p style={{
+                        backgroundColor: "skyblue"
+                    }}><b>Total of Students that Enrolled</b></p>
                     <Card.Text>
                         <b> {totalStudents}</b>
                     </Card.Text>
-                    <Button variant="outline-primary">VIEW</Button>
+                    <StudentListModal />
                 </Card.Body>
             </Card>
         </div>

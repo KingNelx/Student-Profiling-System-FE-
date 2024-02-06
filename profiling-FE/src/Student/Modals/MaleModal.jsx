@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import TotalMale from '../Data/TotalMale';
+import MaleList from '../Data/MaleList';
 
 
 const MaleModal = () => {
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -24,19 +23,19 @@ const MaleModal = () => {
                     onHide={handleClose}
                     backdrop="static"
                     keyboard={false}
-                    size='lg'
+                    size='xl'
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>LIST OF MALES ENROLLED</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <TotalMale />
+                        <MaleList />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary">Understood</Button>
+                      
                     </Modal.Footer>
                 </Modal>
             </>

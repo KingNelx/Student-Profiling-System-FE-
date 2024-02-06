@@ -1,15 +1,37 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useState, useEffect } from "react"
+import axios from "axios"
 import FemaleModal from './Modals/FemaleModal';
 
 const FemaleCount = () => {
+
+
+    const [femaleCount, setCount] = useState(0)
+
+    const result = async () => {
+        try {
+            const response = await axios.get("http://localhost:8080/clerk/student/total/female")
+            if (response.status === 200) {
+                setCount(response.data)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        result()
+    }, [])
+
     return (
         <div>
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
-                    <p><b>Total of Male Students Enrolled</b></p>
+                    <p style={{
+                        backgroundColor: "skyblue"
+                    }}><b>Total of Female Students Enrolled</b></p>
                     <Card.Text>
-                        100 Total
+                        {femaleCount}
                     </Card.Text>
                     <FemaleModal />
                 </Card.Body>

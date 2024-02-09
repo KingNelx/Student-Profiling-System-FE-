@@ -143,11 +143,11 @@ const AddRecord = () => {
                             >
                                 <Form.Select>
                                     <option>Select</option>
-                                    <option value={1}>Freshamn</option>
-                                    <option value={2}>Sophomore</option>
-                                    <option value={3}>Junior</option>
-                                    <option value={4}>Senior</option>
-                                    <option value={5}>Irregular</option>
+                                    <option value={1}>FRESHMAN</option>
+                                    <option value={2}>SOPHOMORE</option>
+                                    <option value={3}>JUNIOR</option>
+                                    <option value={4}>SENIOR</option>
+                                    <option value={5}>IRREGULAR</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>

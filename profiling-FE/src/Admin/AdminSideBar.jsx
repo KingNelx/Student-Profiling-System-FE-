@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom"
 import LoadingInterval from '../Alerts/LoadingInterval';
 import Dashboard from './Dashboard';
+import AddRecordModal from '../Student/Modals/AddRecordModal';
 
 
 const AdminSideBar = () => {
@@ -20,11 +21,16 @@ const AdminSideBar = () => {
                     KingNelx
                 </CDBSidebarHeader>
                 <CDBSidebarContent>
-                    <CDBSidebarMenu>
-                        <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
-                        <CDBSidebarMenuItem icon="user">Add Record</CDBSidebarMenuItem>
+                    <CDBSidebarMenu >
+                        <CDBSidebarMenuItem icon="th-large">
+                            <span className='px-2 mx-1'>Dashboard</span>
+                        </CDBSidebarMenuItem>
+                        <CDBSidebarMenuItem icon="user">
+                            <AddRecordModal />
+                        </CDBSidebarMenuItem>
+                        <CDBSidebarMenuItem icon="list"> <span className='px-2 mx-1'>Academic Levels</span></CDBSidebarMenuItem>
                         <CDBSidebarMenuItem icon="sign" iconType="solid">
-                            <Link to="/" onClick={LoadingInterval}>Sign out</Link>
+                            <Link to="/" onClick={LoadingInterval}> <span className='px-2 mx-1'>Sign out</span></Link>
                         </CDBSidebarMenuItem>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>

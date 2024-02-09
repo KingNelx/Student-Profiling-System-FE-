@@ -2,6 +2,8 @@ import Table from "react-bootstrap/Table"
 import axios from "axios"
 import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container"
+import { FaUsersViewfinder } from "react-icons/fa6";
+import Button from "react-bootstrap/Button"
 
 const StudentList = () => {
 
@@ -44,17 +46,31 @@ const StudentList = () => {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        TEST
-                                    </td>
-                                    <td>
-                                        TEST
-                                    </td>
-                                </tr>
-                            </tbody>
-
+                            {
+                                students.map((value) => (
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {value.studentId}
+                                            </td>
+                                            <td>
+                                                {value.firstName}
+                                            </td>
+                                            <td>
+                                                {value.lastName}
+                                            </td>
+                                            <td>
+                                                {value.academicLevel}
+                                            </td>
+                                            <td>
+                                                <Button variant="outline-primary" >
+                                                    <FaUsersViewfinder />
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                ))
+                            }
                         </Table>
                     ) : (
                         <p className="text-center"> NO DATA FOUND</p>

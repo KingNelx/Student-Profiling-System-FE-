@@ -23,7 +23,7 @@ const StudentListModal = () => {
                     onHide={handleClose}
                     backdrop="static"
                     keyboard={false}
-                    size='lg'
+                    size='xl'
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>LIST OF ALL STUDENTS ENROLLED</Modal.Title>

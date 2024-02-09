@@ -29,7 +29,7 @@ const AdminSideBar = () => {
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
             </CDBSidebar>
-            <div style={{ flex: 1, overflow: 'auto', textAlign: 'center', marginTop: '10vh'}}>
+            <div style={{ flex: 1, overflow: 'auto', textAlign: 'center', marginTop: '10vh' }}>
                 {/* Add your main content here */}
                 <Dashboard />
                 {/* Add more components/content as needed */}

@@ -2,6 +2,8 @@ import Card from 'react-bootstrap/Card';
 import axios from "axios"
 import { useState, useEffect } from "react"
 import StudentListModal from './Modals/StudentListModal';
+import total_ from "../Animations/allstudents.json"
+import Lottie from "lottie-react"
 
 const StudentCount = () => {
 
@@ -22,13 +24,21 @@ const StudentCount = () => {
     useEffect(() => {
         totalStudent()
     }, [])
+
     return (
         <div>
             <Card style={{ width: '15rem' }}>
+                <div style={{
+                    height: "25vh"
+                }}>
+                    <Lottie
+                        animationData={total_}
+                    />
+                </div>
                 <Card.Body>
                     <p style={{
                         backgroundColor: "skyblue"
-                    }}><b>Total of Students that Enrolled</b></p>
+                    }}><b>Total of Students</b></p>
                     <Card.Text>
                         <b> {totalStudents}</b>
                     </Card.Text>

@@ -8,6 +8,8 @@ import junior from "../Animations/junior.json"
 import senior from "../Animations/senior.json"
 import irregular from "../Animations/irregular.json"
 import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom"
+import LoadingInterval from "../Alerts/LoadingInterval"
 
 const AcademicLists = () => {
 
@@ -26,7 +28,10 @@ const AcademicLists = () => {
                         <Lottie
                             animationData={freshman}
                         />
-                        <Button variant='outline-primary'>Select</Button>
+                        <Link to="/academic-levels/freshman">
+                            <Button variant='outline-primary' onClick={LoadingInterval}>Select</Button>
+                        </Link>
+
                     </Col>
 
                     <Col>
@@ -34,7 +39,9 @@ const AcademicLists = () => {
                         <Lottie
                             animationData={sophomore}
                         />
-                        <Button variant='outline-primary'>Select</Button>
+                        <Link to="/academic-levels/sophomore">
+                            <Button variant='outline-primary' onClick={LoadingInterval}>Select</Button>
+                        </Link>
                     </Col>
 
                     <Col>
@@ -42,7 +49,9 @@ const AcademicLists = () => {
                         <Lottie
                             animationData={junior}
                         />
-                        <Button variant='outline-primary'>Select</Button>
+                        <Link to="/academic-levels/junior">
+                            <Button variant='outline-primary' onClick={LoadingInterval}>Select</Button>
+                        </Link>
                     </Col>
 
                     <Col>
@@ -50,7 +59,9 @@ const AcademicLists = () => {
                         <Lottie
                             animationData={senior}
                         />
-                        <Button variant='outline-primary'>Select</Button>
+                        <Link to="/academic-levels/senior">
+                            <Button variant='outline-primary' onClick={LoadingInterval}>Select</Button>
+                        </Link>
                     </Col>
 
                     <Col>
@@ -58,7 +69,9 @@ const AcademicLists = () => {
                         <Lottie
                             animationData={irregular}
                         />
-                        <Button variant='outline-primary'>Select</Button>
+                        <Link to="/academic-levels/irregular">
+                            <Button variant='outline-primary' onClick={LoadingInterval}>Select</Button>
+                        </Link>
                     </Col>
                 </Row>
 

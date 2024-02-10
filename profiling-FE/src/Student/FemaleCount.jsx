@@ -2,6 +2,8 @@ import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from "react"
 import axios from "axios"
 import FemaleModal from './Modals/FemaleModal';
+import female_ from "../Animations/female.json"
+import Lottie from "lottie-react"
 
 const FemaleCount = () => {
 
@@ -27,9 +29,17 @@ const FemaleCount = () => {
         <div>
             <Card style={{ width: '15rem' }}>
                 <Card.Body>
+                    <div style={{
+                        height: "25vh"
+                    }}>
+                        <Lottie
+                            animationData={female_}
+                            width={"50"}
+                        />
+                    </div>
                     <p style={{
                         backgroundColor: "skyblue"
-                    }}><b>Total of Female Students Enrolled</b></p>
+                    }}><b>Total of Female Students</b></p>
                     <Card.Text>
                         {femaleCount}
                     </Card.Text>

@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AcademicLists from '../../Pages/AcademicLists';
+import IrregularData from '../Data/IrregularData';
 
-const AcademeLevels = () => {
+
+const IrregularModal = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
 
     return (
         <div>
             <>
-                <Button variant="outline" onClick={handleShow} style={
-                    { border: "none", color: "black" }
-                }>
-                    Academic Levels
+
+                <Button variant="outline-primary" onClick={handleShow} >
+                    VIEW
                 </Button>
 
                 <Modal
@@ -27,10 +26,10 @@ const AcademeLevels = () => {
                     size='xl'
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Select Levels to View each Students</Modal.Title>
+                        <Modal.Title>LIST OF IRREGULAR ENROLLED</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AcademicLists />
+                        <IrregularData />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
@@ -43,4 +42,4 @@ const AcademeLevels = () => {
     );
 }
 
-export default AcademeLevels;
+export default IrregularModal;

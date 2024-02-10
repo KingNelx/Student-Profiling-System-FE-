@@ -5,6 +5,7 @@ import HomeNavBar from "./Pages/HomeNavBar";
 import SignUpForm from "./Components/SignUpForm"
 import AdminHome from "./Admin/AdminHome";
 
+
 const App = () => {
     return (
         <div className="bg-main ">

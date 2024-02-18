@@ -6,8 +6,8 @@ const AdminHeadTitle = () => {
         <div>
             <Navbar className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="#home" className='m-auto'>
-                        ADMIN HOME
+                    <Navbar.Brand href="#home" className='m-auto fw-bold'>
+                     STUDENT PROFILING SYSTEM
                     </Navbar.Brand>
                 </Container>
             </Navbar>

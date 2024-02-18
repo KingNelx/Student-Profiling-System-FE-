@@ -16,7 +16,7 @@ import AddRecordModal from '../Student/Modals/AddRecordModal';
 
 const AdminSideBar = () => {
     return (
-        <div style={{ display: 'flex', height: '91vh' }}>
+        <div style={{ display: 'flex', height: '92vh' }}>
             <CDBSidebar textColor="#333" backgroundColor="white" className='shadow-lg'>
                 <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
                     KingNelx
@@ -28,6 +28,12 @@ const AdminSideBar = () => {
                         </CDBSidebarMenuItem>
                         <CDBSidebarMenuItem icon="user">
                             <AddRecordModal />
+                        </CDBSidebarMenuItem>
+                        <CDBSidebarMenuItem icon='flag'>
+                            <span className='px-2 mx-1'>Statistics</span>
+                        </CDBSidebarMenuItem>
+                        <CDBSidebarMenuItem icon='envelope'>
+                            <span className='px-2 mx-1'>Reports</span>
                         </CDBSidebarMenuItem>
                         <CDBSidebarMenuItem icon="sign" iconType="solid">
                             <Link to="/" onClick={LoadingInterval}> <span className='px-2 mx-1'>Sign out</span></Link>

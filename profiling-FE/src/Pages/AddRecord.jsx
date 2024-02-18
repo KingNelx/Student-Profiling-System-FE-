@@ -3,16 +3,98 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import FloatingLabel from "react-bootstrap/FloatingLabel"
+import Button from "react-bootstrap/Button"
+import { useState } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import StudentDuplicate from "../Alerts/StudentDuplicate"
+import RecordAdded from "../Alerts/RecordAdded"
+import { useForm } from "react-hook-form"
 
 const AddRecord = () => {
 
     const backgroundStudent = "STUDENT BACKGROUND"
     const CourseInfo = "COURSE & SUBJECT INFORMATION"
 
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const navigate = useNavigate();
+
+    const [studentData, setStudentData] = useState({
+        firstName: "",
+        middleInitial: "",
+        lastName: "",
+        studentId: "",
+        dateOfBirth: "",
+        gender: "",
+        temporaryAddress: "",
+        permanentAddress: "",
+        contactInformation: "",
+        academicLevel: "",
+    })
+
+
+    const { firstName, middleInitial, lastName, studentId, dateOfBirth, gender, temporaryAddress,
+        permanentAddress, contactInformation, academicLevel } = studentData;
+
+    const [courseData, setCourseData] = useState({
+        courseCode: "",
+        courseTitle: "",
+        description: "",
+        instructor: "",
+        schedule: "",
+        semester: ""
+    })
+
+    const { courseCode, courseTitle, description, instructor, schedule, semester } = courseData;
+
+
+
+    const updateStudentForm = (e) => {
+        const { name, value } = e.target
+        setStudentData({ ...studentData, [name]: value.toUpperCase() })
+    }
+
+
+    const updateCourseForm = (e) => {
+        const { name, value } = e.target
+        setCourseData({ ...courseData, [name]: value.toUpperCase() })
+    }
+
+
+    const response = async (e) => {
+
+        try {
+
+            const dataToSend = {
+                studentData: studentData,
+                courseData: courseData
+            };
+
+            const result = await axios.post('http://localhost:8080/clerk/student/add-new', dataToSend);
+            if (result.status === 200) {
+                setStudentData(result.data);
+                setCourseData(result.data);
+                navigate('/admin-home');
+            }
+        } catch (error) {
+            console.error('Error occurred:', error);
+            setTimeout(StudentDuplicate(), 3000);
+        }
+    };
+
+
     return (
         <div>
             <Container>
-                <Form style={{ height: "400px", overflowX: "hidden" }}>
+                <Form style={{ height: "400px", overflowX: "hidden" }} className="mx-2 px-2"
+                    onSubmit={handleSubmit((e) => response(e))}
+                >
                     <p className="text-center fw-bold">{backgroundStudent}</p>
                     <Row>
                         <Col>
@@ -21,17 +103,27 @@ const AddRecord = () => {
                                 label="Firstname"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" required placeholder="Firstname" />
+                                <Form.Control type={"text"} required placeholder="Firstname"
+                                    {...register("firstName")}
+                                    value={firstName}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
                         <Col>
                             <FloatingLabel
                                 controlId="floatingInput"
-                                label="MiddleInitial"
+                                label="Middle Initial"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" required placeholder="MiddleInitial" />
+                                <Form.Control type={"text"} required placeholder="Middle Initial"
+                                    {...register("middleInitial")}
+                                    value={middleInitial}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
@@ -41,7 +133,12 @@ const AddRecord = () => {
                                 label="Lastname"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" required placeholder="Lastname" />
+                                <Form.Control type={"text"} required placeholder="Lastname"
+                                    {...register("lastName")}
+                                    value={lastName}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
                     </Row>
@@ -53,7 +150,12 @@ const AddRecord = () => {
                                 label="Student ID"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" placeholder="Student ID" required />
+                                <Form.Control type={"text"} placeholder="Student ID" required
+                                    {...register("studentId")}
+                                    value={studentId}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
@@ -63,7 +165,12 @@ const AddRecord = () => {
                                 label="Date of Birth"
                                 className="mb-3"
                             >
-                                <Form.Control type="date" placeholder="Date of Birth" required />
+                                <Form.Control type={"date"} placeholder="Date of Birth" required
+                                    {...register("dateOfBirth")}
+                                    value={dateOfBirth}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
@@ -73,10 +180,17 @@ const AddRecord = () => {
                                 label="Gender"
                                 className="mb-3"
                             >
-                                <Form.Select required>
+                                <Form.Select required
+                                    type={"text"}
+                                    autoSave="off"
+                                    autoComplete="off"
+                                    {...register("gender")}
+                                    value={gender}
+                                    onChange={(e) => updateStudentForm(e)}
+                                >
                                     <option>Select</option>
-                                    <option value={1}>MALE</option>
-                                    <option value={2}>FEMALE</option>
+                                    <option >MALE</option>
+                                    <option >FEMALE</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -89,7 +203,12 @@ const AddRecord = () => {
                                 label="Temporary Address"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" placeholder="Temporary Address" required />
+                                <Form.Control type={"text"} placeholder="Temporary Address" required
+                                    {...register("temporaryAddress")}
+                                    value={temporaryAddress}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
@@ -99,7 +218,12 @@ const AddRecord = () => {
                                 label="Permanent Address"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" placeholder="Permanent Address" required />
+                                <Form.Control type={"text"} placeholder="Permanent Address" required
+                                    {...register("permanentAddress")}
+                                    value={permanentAddress}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
 
@@ -109,7 +233,12 @@ const AddRecord = () => {
                                 label="Contact Information"
                                 className="mb-3"
                             >
-                                <Form.Control type="text" placeholder="Contact Information" required />
+                                <Form.Control type={"text"} placeholder="Contact Information" required
+                                    {...register("contactInformation")}
+                                    value={contactInformation}
+                                    onChange={(e) => updateStudentForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
                     </Row>
@@ -121,13 +250,21 @@ const AddRecord = () => {
                                 label="Academic Level"
                                 className="mb-3"
                             >
-                                <Form.Select>
+                                <Form.Select required
+                                    type={"text"}
+                                    autoSave="off"
+                                    autoComplete="off"
+                                    {...register("academicLevel")}
+                                    value={academicLevel}
+                                    onChange={(e) => updateStudentForm(e)}
+                                >
                                     <option>Select</option>
-                                    <option value={1}>Freshamn</option>
-                                    <option value={2}>Sophomore</option>
-                                    <option value={3}>Junior</option>
-                                    <option value={4}>Senior</option>
-                                    <option value={5}>Irregular</option>
+                                    <option >FRESHMAN</option>
+                                    <option >SOPHOMORE</option>
+                                    <option >JUNIOR</option>
+                                    <option >SENIOR</option>
+                                    <option >IRREGULAR</option>
+                                    <option >RETURNEE</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -138,20 +275,100 @@ const AddRecord = () => {
                         <Col>
                             <FloatingLabel
                                 controlId="floatingInput"
-                                label="Academic Level"
+                                label="Course Code"
                                 className="mb-3"
                             >
-                                <Form.Select>
-                                    <option>Select</option>
-                                    <option value={1}>FRESHMAN</option>
-                                    <option value={2}>SOPHOMORE</option>
-                                    <option value={3}>JUNIOR</option>
-                                    <option value={4}>SENIOR</option>
-                                    <option value={5}>IRREGULAR</option>
-                                </Form.Select>
+                                <Form.Control type={"text"} required placeholder="Course Code"
+                                    {...register("courseCode")}
+                                    value={courseCode}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
                             </FloatingLabel>
                         </Col>
+
+                        <Col>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Course Title"
+                                className="mb-3"
+                            >
+                                <Form.Control type={"text"} required placeholder="Course Title"
+                                    {...register("courseTitle")}
+                                    value={courseTitle}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
+                            </FloatingLabel>
+                        </Col>
+
+                        <Col>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Description"
+                                className="mb-3"
+                            >
+                                <Form.Control type={"text"} required placeholder="Description"
+                                    {...register("description")}
+                                    value={description}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
+                            </FloatingLabel>
+                        </Col>
+
                     </Row>
+
+                    <Row>
+
+                        <Col>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Instructor"
+                                className="mb-3"
+                            >
+                                <Form.Control type={"text"} required placeholder="Instructor"
+                                    {...register("instructor")}
+                                    value={instructor}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
+                            </FloatingLabel>
+                        </Col>
+
+                        <Col>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Schedule"
+                                className="mb-3"
+                            >
+                                <Form.Control type={"text"} required placeholder="Schedule"
+                                    {...register("schedule")}
+                                    value={schedule}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
+                            </FloatingLabel>
+                        </Col>
+
+                        <Col>
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Semester"
+                                className="mb-3"
+                            >
+                                <Form.Control type={"text"} required placeholder="Semester"
+                                    {...register("semester")}
+                                    value={semester}
+                                    onChange={(e) => updateCourseForm(e)}
+                                    autoSave="off"
+                                    autoComplete="off" />
+                            </FloatingLabel>
+                        </Col>
+
+                    </Row>
+
+                    <Button type="submit" onClick={RecordAdded}>Add Record</Button>
                 </Form>
             </Container>
         </div>

@@ -22,7 +22,7 @@ const Forms = () => {
         email: "",
         userName: "",
         password: "",
-        
+
     })
 
     const { email, userName, password } = signUp
@@ -56,7 +56,7 @@ const Forms = () => {
                             />
                         </Col>
                         <Col style={
-                            {marginTop: "15vh"}
+                            { marginTop: "15vh" }
                         }>
                             <Form className="mt-5" onSubmit={(e) => submitForm(e)}>
                                 <FloatingLabel
@@ -67,6 +67,8 @@ const Forms = () => {
                                     <Form.Control type={"email"} required placeholder="Email Address"
                                         name="email"
                                         value={email}
+                                        autoSave="off"
+                                        autoComplete="off"
                                         onChange={(e) => updateFormFields(e)}
                                     />
                                 </FloatingLabel>
@@ -79,6 +81,8 @@ const Forms = () => {
                                     <Form.Control type={"text"} required placeholder="Username"
                                         name="userName"
                                         value={userName}
+                                        autoSave="off"
+                                        autoComplete="off"
                                         onChange={(e) => updateFormFields(e)}
                                     />
                                 </FloatingLabel>
@@ -91,6 +95,8 @@ const Forms = () => {
                                     <Form.Control type={"password"} required placeholder="Password"
                                         name="password"
                                         value={password}
+                                        autoSave="off"
+                                        autoComplete="off"
                                         onChange={(e) => updateFormFields(e)}
                                     />
                                 </FloatingLabel>

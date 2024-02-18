@@ -38,12 +38,9 @@ const SignUpForm = () => {
 
     const submitForm = async (e) => {
         e.preventDefault()
-
-
         try {
             const reponse = await axios.post("http://localhost:8080/clerk/create-account", signUp)
             if (reponse.status === 200) {
-                window.location.reload()
                 navigate("/")
             }
         } catch (e) {
@@ -51,7 +48,7 @@ const SignUpForm = () => {
             setTimeout(ErrorMessage(), 7000)
         }
     }
-
+D
     return (
         <div>
             <Navbar className="bg-body-tertiary shadow-lg p-2">
@@ -82,6 +79,8 @@ const SignUpForm = () => {
                                         <Form.Control type={"email"} required placeholder="Email Address"
                                             name="email"
                                             value={email}
+                                            autoSave="off"
+                                            autoComplete="off"
                                             onChange={(e) => updateFormFields(e)}
                                         />
                                     </FloatingLabel>
@@ -94,6 +93,8 @@ const SignUpForm = () => {
                                         <Form.Control type={"text"} required placeholder="Username"
                                             name="userName"
                                             value={userName}
+                                            autoSave="off"
+                                            autoComplete="off"
                                             onChange={(e) => updateFormFields(e)}
                                         />
                                     </FloatingLabel>
@@ -106,6 +107,8 @@ const SignUpForm = () => {
                                         <Form.Control type={"password"} required placeholder="Password"
                                             name="password"
                                             value={password}
+                                            autoSave="off"
+                                            autoComplete="off"
                                             onChange={(e) => updateFormFields(e)}
                                         />
                                     </FloatingLabel>
@@ -120,12 +123,14 @@ const SignUpForm = () => {
                                         <Form.Control type={"password"} required placeholder="Confirm Password"
                                             name="confirmPassword"
                                             value={confirmPassword}
+                                            autoSave="off"
+                                            autoComplete="off"
                                             onChange={(e) => updateFormFields(e)}
                                         />
                                     </FloatingLabel>
                                     <div className="mb-3 mt-3 text-center">
                                         <Button type="submit" variant="outline-primary" onClick={SuccessMessage}> SIGN UP </Button>
-                                        {" "}
+                                          {" "}
                                         <Link to="/"><Button variant="outline-danger" onClick={LoadingInterval}> GO BACK </Button></Link>
                                     </div>
                                 </Form>

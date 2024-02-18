@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container"
 import { FaUsersViewfinder } from "react-icons/fa6";
 import Button from "react-bootstrap/Button"
+import DeleteRecord from "../../Alerts/DeleteRecord";
 
 const StudentList = () => {
 
@@ -19,6 +20,18 @@ const StudentList = () => {
             console.log(e)
         }
     }
+
+
+    const removeStudent = async (id) => {
+        const responnse = await axios.delete(`http://localhost:8080/clerk/student/remove-data/${id}`)
+        if (responnse.status === 200) {
+            setTimeout(() => {
+                setTimeout(() => window.location.reload(), 3000)
+            })
+            result();
+        }
+    }
+
     useEffect(() => {
         result()
     }, [])
@@ -44,6 +57,9 @@ const StudentList = () => {
                                     <th>
                                         ACADEMIC LEVEL
                                     </th>
+                                    <th>
+                                        ACTION
+                                    </th>
                                 </tr>
                             </thead>
                             {
@@ -65,6 +81,9 @@ const StudentList = () => {
                                             <td>
                                                 <Button variant="outline-primary" >
                                                     <FaUsersViewfinder />
+                                                </Button> {" "}
+                                                <Button variant="outline-danger" >
+                                                    <FaUsersViewfinder onClick={() => { removeStudent(value.id); DeleteRecord() }} />
                                                 </Button>
                                             </td>
                                         </tr>

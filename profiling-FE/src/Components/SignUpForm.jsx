@@ -48,7 +48,7 @@ const SignUpForm = () => {
             setTimeout(ErrorMessage(), 7000)
         }
     }
-D
+
     return (
         <div>
             <Navbar className="bg-body-tertiary shadow-lg p-2">

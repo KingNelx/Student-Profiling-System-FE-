@@ -19,13 +19,11 @@ const AddRecord = () => {
     const {
         register,
         handleSubmit,
-        watch,
-        formState: { errors },
     } = useForm();
 
     const navigate = useNavigate();
 
-    const [studentData, setStudentData] = useState({
+    const [student, setData] = useState({
         firstName: "",
         middleInitial: "",
         lastName: "",
@@ -36,58 +34,49 @@ const AddRecord = () => {
         permanentAddress: "",
         contactInformation: "",
         academicLevel: "",
-    })
+        myCourse: [{
+            courseCode: "", courseTitle: "", description: "", instructor: "", schedule: "", semester: ""
+        }]
+    });
+
+    const {
+        firstName,
+        middleInitial,
+        lastName,
+        studentId,
+        dateOfBirth,
+        gender,
+        temporaryAddress,
+        permanentAddress,
+        contactInformation,
+        academicLevel,
+        myCourse: [
+            {
+                courseCode, courseTitle, description, instructor, schedule, semester
+            }
+        ]
+    } = student || {}
 
 
-    const { firstName, middleInitial, lastName, studentId, dateOfBirth, gender, temporaryAddress,
-        permanentAddress, contactInformation, academicLevel } = studentData;
-
-    const [courseData, setCourseData] = useState({
-        courseCode: "",
-        courseTitle: "",
-        description: "",
-        instructor: "",
-        schedule: "",
-        semester: ""
-    })
-
-    const { courseCode, courseTitle, description, instructor, schedule, semester } = courseData;
 
 
+    const response = async () => {
+        try {
+            const result = await axios.post('http://localhost:8080/clerk/student/add-new', student)
+            if (result.status === 200) {
+                setData(result.data);
+                navigate("/admin-home")
+            }
+        } catch (e) {
+            console.log(e)
+            setTimeout(StudentDuplicate(), 300)
+        }
+    }
 
     const updateStudentForm = (e) => {
         const { name, value } = e.target
-        setStudentData({ ...studentData, [name]: value.toUpperCase() })
+        setData({ ...student, [name]: value.toUpperCase() })
     }
-
-
-    const updateCourseForm = (e) => {
-        const { name, value } = e.target
-        setCourseData({ ...courseData, [name]: value.toUpperCase() })
-    }
-
-
-    const response = async (e) => {
-
-        try {
-
-            const dataToSend = {
-                studentData: studentData,
-                courseData: courseData
-            };
-
-            const result = await axios.post('http://localhost:8080/clerk/student/add-new', dataToSend);
-            if (result.status === 200) {
-                setStudentData(result.data);
-                setCourseData(result.data);
-                navigate('/admin-home');
-            }
-        } catch (error) {
-            console.error('Error occurred:', error);
-            setTimeout(StudentDuplicate(), 3000);
-        }
-    };
-
 
     return (
         <div>
@@ -281,7 +270,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Course Code"
                                     {...register("courseCode")}
                                     value={courseCode}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>
@@ -296,7 +285,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Course Title"
                                     {...register("courseTitle")}
                                     value={courseTitle}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>
@@ -311,7 +300,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Description"
                                     {...register("description")}
                                     value={description}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>
@@ -330,7 +319,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Instructor"
                                     {...register("instructor")}
                                     value={instructor}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>
@@ -345,7 +334,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Schedule"
                                     {...register("schedule")}
                                     value={schedule}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>
@@ -360,7 +349,7 @@ const AddRecord = () => {
                                 <Form.Control type={"text"} required placeholder="Semester"
                                     {...register("semester")}
                                     value={semester}
-                                    onChange={(e) => updateCourseForm(e)}
+                                    onChange={(e) => updateStudentForm(e)}
                                     autoSave="off"
                                     autoComplete="off" />
                             </FloatingLabel>

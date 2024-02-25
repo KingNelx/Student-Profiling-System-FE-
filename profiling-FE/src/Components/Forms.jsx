@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
 import ErrorNotExisted from "../Alerts/ErrorNotExisted"
+import { useForm } from "react-hook-form"
 
 const Forms = () => {
 
@@ -32,8 +33,8 @@ const Forms = () => {
         setAccount({ ...signUp, [name]: value.toUpperCase() })
     }
 
-    const submitForm = async (e) => {
-        e.preventDefault()
+    const submitForm = async () => {
+        
         try {
             const response = await axios.get("http://localhost:8080/clerk/sign-in", { params: signUp })
             if (response.status === 200) {
@@ -41,9 +42,15 @@ const Forms = () => {
             }
         } catch (e) {
             console.log(" SOMETHING WENT WRONG " + e)
-            setTimeout(ErrorNotExisted(), 7000)
+            setTimeout(ErrorNotExisted())
         }
     }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     return (
         <div className="text-center">
@@ -58,14 +65,14 @@ const Forms = () => {
                         <Col style={
                             { marginTop: "15vh" }
                         }>
-                            <Form className="mt-5" onSubmit={(e) => submitForm(e)}>
+                            <Form className="mt-5"  onSubmit={handleSubmit((e) => submitForm(e))} >
                                 <FloatingLabel
                                     controlId="floatingInput"
                                     className="mb-3 mt-2 m-3"
                                     label="Email Address"
                                 >
                                     <Form.Control type={"email"} required placeholder="Email Address"
-                                        name="email"
+                                        {...register("email")}
                                         value={email}
                                         autoSave="off"
                                         autoComplete="off"
@@ -79,7 +86,7 @@ const Forms = () => {
                                     label="Username"
                                 >
                                     <Form.Control type={"text"} required placeholder="Username"
-                                        name="userName"
+                                         {...register("userName")}
                                         value={userName}
                                         autoSave="off"
                                         autoComplete="off"
@@ -93,7 +100,7 @@ const Forms = () => {
                                     label="Password"
                                 >
                                     <Form.Control type={"password"} required placeholder="Password"
-                                        name="password"
+                                         {...register("password")}
                                         value={password}
                                         autoSave="off"
                                         autoComplete="off"

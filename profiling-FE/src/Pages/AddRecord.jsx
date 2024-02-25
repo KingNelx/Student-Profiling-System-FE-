@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import FloatingLabel from "react-bootstrap/FloatingLabel"
 import Button from "react-bootstrap/Button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import StudentDuplicate from "../Alerts/StudentDuplicate"
@@ -34,9 +34,16 @@ const AddRecord = () => {
         permanentAddress: "",
         contactInformation: "",
         academicLevel: "",
-        myCourse: [{
-            courseCode: "", courseTitle: "", description: "", instructor: "", schedule: "", semester: ""
-        }]
+        myCourse: [
+            {
+                courseCode: "",
+                courseTitle: "",
+                description: "",
+                instructor: "",
+                schedule: "",
+                semester: ""
+            }
+        ]
     });
 
     const {
@@ -50,15 +57,13 @@ const AddRecord = () => {
         permanentAddress,
         contactInformation,
         academicLevel,
-        myCourse: [
-            {
-                courseCode, courseTitle, description, instructor, schedule, semester
-            }
-        ]
-    } = student || {}
+        myCourse: [{ courseCode, courseTitle, description, instructor, schedule, semester }]
+    } = student
 
-
-
+    const updateStudentForm = (e) => {
+        const { name, value } = e.target
+        setData(() => ({ ...student, [name]: value.toUpperCase() }))
+    }
 
     const response = async () => {
         try {
@@ -73,10 +78,6 @@ const AddRecord = () => {
         }
     }
 
-    const updateStudentForm = (e) => {
-        const { name, value } = e.target
-        setData({ ...student, [name]: value.toUpperCase() })
-    }
 
     return (
         <div>

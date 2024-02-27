@@ -34,16 +34,14 @@ const AddRecord = () => {
         permanentAddress: "",
         contactInformation: "",
         academicLevel: "",
-        myCourse: [
-            {
-                courseCode: "",
-                courseTitle: "",
-                description: "",
-                instructor: "",
-                schedule: "",
-                semester: ""
-            }
-        ]
+        myCourse: [{
+            courseCode: "",
+            courseTitle: "",
+            description: "",
+            instructor: "",
+            schedule: "",
+            semester: ""
+        }]
     });
 
     const {
@@ -57,13 +55,24 @@ const AddRecord = () => {
         permanentAddress,
         contactInformation,
         academicLevel,
-        myCourse: [{ courseCode, courseTitle, description, instructor, schedule, semester }]
-    } = student
+        myCourse: [
+            {
+                courseCode,
+                courseTitle,
+                description,
+                instructor,
+                schedule,
+                semester
+            }
+        ]
+    } = student;
+
+
 
     const updateStudentForm = (e) => {
-        const { name, value } = e.target
-        setData(() => ({ ...student, [name]: value.toUpperCase() }))
-    }
+        const { name, value } = e.target;
+        setData(() => ({ ...student, [name]: value.toUpperCase() }));
+    };
 
     const response = async () => {
         try {

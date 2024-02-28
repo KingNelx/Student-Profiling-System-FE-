@@ -34,14 +34,7 @@ const AddRecord = () => {
         permanentAddress: "",
         contactInformation: "",
         academicLevel: "",
-        myCourse: [{
-            courseCode: "",
-            courseTitle: "",
-            description: "",
-            instructor: "",
-            schedule: "",
-            semester: ""
-        }]
+        myCourse: []
     });
 
     const {
@@ -55,24 +48,40 @@ const AddRecord = () => {
         permanentAddress,
         contactInformation,
         academicLevel,
-        myCourse: [
-            {
-                courseCode,
-                courseTitle,
-                description,
-                instructor,
-                schedule,
-                semester
-            }
-        ]
+        myCourse // Destructure the entire myCourse array
     } = student;
+
+    const {
+        courseCode,
+        courseTitle,
+        description,
+        instructor,
+        schedule,
+        semester
+    } = myCourse;
 
 
 
     const updateStudentForm = (e) => {
-        const { name, value } = e.target;
-        setData(() => ({ ...student, [name]: value.toUpperCase() }));
+        const { name, value } = e.target || e; // Ensure that e.target is accessible
+    
+        // Check if the target name is within myCourse array
+        if (name.startsWith("myCourse")) {
+            const updatedMyCourse = [...student.myCourse]; // Create a copy of myCourse array
+            const [courseIndex, courseProperty] = name.split("."); // Split the name to get index and property
+    
+            // Update the specific property of the course
+            updatedMyCourse[courseIndex][courseProperty] = value.toUpperCase();
+    
+            setData((prevStudent) => ({ ...prevStudent, myCourse: updatedMyCourse }));
+        } else {
+            // If not within myCourse array, update the state normally
+            setData((prevStudent) => ({ ...prevStudent, [name]: value.toUpperCase() }));
+        }
     };
+    
+    
+    
 
     const response = async () => {
         try {
